@@ -15,7 +15,11 @@ import joblib
 import random as rd
 import datetime
 
-Data = MongoClient("mongodb://localhost:27017/")
+
+Key_Mongo_Cloud = "mongodb://aioverflow:12345@ac-pu6wews-shard-00-00.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-01.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-02.me4dkct.mongodb.net:27017/?ssl=true&replicaSet=atlas-jcoztp-shard-0&authSource=admin&retryWrites=true&w=majority"
+Key_Mongo_Local = "mongodb://localhost:27017/"
+
+Data = MongoClient(Key_Mongo_Cloud)
 PatientData = Data['Test']['Test']
 LoginDatabase = Data['Test']['LoginCred']
 
