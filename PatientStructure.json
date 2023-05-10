@@ -1,0 +1,71 @@
+{
+    "Patient_Id": "23ST245",
+    "Patient_Name": "Jack",
+    "Patient_Age": "23",
+    "Patient_Gender": "Male",
+    "Patient_Height": "",
+    "Patient_Weight": "",
+    "Patient_Contact_No": "",
+    "Employed": true,
+    "Occupation": "",
+    "Address": "",
+    "ListOfAssesment": [  
+      {
+        "Date" : "2023-04-12",
+        "Complaint" : "Main Problem",
+        "Injury" : "Head Injury",
+        "DateOfInjury" : "Date only",
+        "DateOfInjuryforSurgery" : "Date only but for surgery",
+        "DecriptionOfInjury" : "I have skull surgery",
+        "RecievedTherapy" : "Basic Description",
+        "DateofTherapy" : "When the therapy was recieved",
+        "CurrentCondition" : "Worse , Same , Better",
+        "CurrentStatusSymptoms" : "Constant , Intermittent",
+        "AtWorstPain" : "Scale between 1 to 10",
+        "SurgicalHistory" : "Anyother Surgical History",
+        "ReferalDoctor" : "Name of the Referal Doctor",
+        "MakesConditionBetter" : "Will be a list of objects",
+        "MakesConditionBetterWorse" : "Will be a list of objects",
+        "MedicalIntervention" : "will be list of objects",
+        "GoalsAfterTreat" : "What goals wanted to achive",
+        "MedicalInformation" : "Any Medical Information List of Complications",
+        "PrevSurger" : "If any previous Surgeries",
+        "OtherInformation" : "If any other Information",
+        "Medications" : "If any Medications",
+        "Allergies" : "If any allergies",
+        "SeniorDoctorPrescription" : {},
+        "JuniorDoctorPrescription" : {},
+        "TrainerPrescription" : {},
+        "Feedback": {}
+      }
+
+    ]
+
+
+}
+
+"Assesment": {
+  "Date" : "2023-04-12",
+  "Complaint" : "Main Problem",
+  "Injury" : "Head Injury",
+  "DateOfInjury" : "Date only",
+  "DateOfInjuryforSurgery" : "Date only but for surgery",
+  "DecriptionOfSurgery" : "I have skull surgery",
+  "RecievedTherapy" : "Basic Description",
+  "DateofTherapy" : "When the therapy was recieved",
+  "CurrentCondition" : "Worse , Same , Better",
+  "CurrentStatusSymptoms" : "Constant , Intermittent",
+  "AtWorstPain" : "Scale between 1 to 10",
+  "SurgicalHistory" : "Anyother Surgical History",
+  "ReferalDoctor" : "Name of the Referal Doctor",
+  "MakesConditionBetter" : "Will be a list of objects",
+  "MakesConditionBetterWorse" : "Will be a list of objects",
+  "MedicalIntervention" : "will be list of objects",
+  "GoalsAfterTreat" : "What goals wanted to achive",
+  "MedicalInformation" : "Any Medical Information List of Complications",
+  "PrevSurger" : "If any previous Surgeries",
+  "OtherInformation" : "If any other Information",
+  "Medications" : "If any Medications",
+  "Allergies" : "If any allergies"
+}
+
