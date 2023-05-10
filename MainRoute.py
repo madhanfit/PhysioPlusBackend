@@ -5,8 +5,6 @@ from collections import Counter
 from urllib import request
 import pandas as pd
 from fastapi import FastAPI, Request, Query
-from typing import Optional
-from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
 import json
 from fastapi.encoders import jsonable_encoder
