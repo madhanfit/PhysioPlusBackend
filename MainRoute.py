@@ -325,7 +325,34 @@ async def ShoulderAssessment(info : Request):
 
     print(req_info)
 
-    return {"Status" : "Working"}
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.ShoulderAssessment": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}
+
+    
+    
 
 
 @app.post("/KneeAssessment")
@@ -337,19 +364,67 @@ async def KneeAssessment(info : Request):
 
     print(req_info)
 
-    return {"Status" : "Working"}  
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.KneeAssessment": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}  
 
 
 @app.post("/BalanceAssessment")
 async def BalanceAssessment(info : Request):
-
     print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
     print(req_info)
 
-    return {"Status" : "Working"}  
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.BalanceAssessment": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}  
+
 
 
 
@@ -363,34 +438,105 @@ async def BalanceAssessment(info : Request):
 
     print(req_info)
 
-    return {"   " : "Working"}
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.LowBackAssessment": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}
 
 
 
 
 @app.post("/PARQPlusAssessment")
 async def PARQPlusAssessmen(info : Request):
-
     print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
     print(req_info)
 
-    return {"Status" : "Working"}  
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.PARQPlusAssessmen": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}
+
 
 
 
 @app.post("/FMSAssessment")
 async def FMSAssessment(info : Request):
-
     print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
     print(req_info)
 
-    return {"Status" : "Working"}  
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.FMSAssessment": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}
 
 
 @app.post("/TreatmentPrescription")
@@ -402,12 +548,34 @@ async def TreatmentPrescription(info : Request):
 
     print(req_info)
 
-    return {"Status" : "Working"}  
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
+
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # print(req_info)
+
+        PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": {
+                    "Happy" : "Man"
+                }
+            }}
+        )
+
+        #medKCO,personal,duration,painAss,irritability:
+
+        return {"Status" : "Successful"}
 
 @app.post("/GeneralAssessment")
 async def GeneralAssessment(info : Request):
-
-
 
     print(await info.body())
     req_info = await info.json()
