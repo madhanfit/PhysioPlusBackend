@@ -1,4 +1,4 @@
-
+ 
 import re
 import math
 from collections import Counter
@@ -13,6 +13,7 @@ import joblib
 import random as rd
 import datetime
 
+from datetime import date
 
 Key_Mongo_Cloud = "mongodb://aioverflow:12345@ac-pu6wews-shard-00-00.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-01.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-02.me4dkct.mongodb.net:27017/?ssl=true&replicaSet=atlas-jcoztp-shard-0&authSource=admin&retryWrites=true&w=majority"
 Key_Mongo_Local = "mongodb://localhost:27017/"
@@ -67,7 +68,7 @@ async def loginCheck(info : Request):
 
 
 
-# Receptionist Routes -------
+# -------------------- Receptionist Routes -------
 
 @app.post("/newPatient")
 async def NewPatient(info : Request):
@@ -87,7 +88,7 @@ async def NewPatient(info : Request):
                 "Employed" : req_info["Employed"],
                 "Occupation" : req_info["Occupation"],
                 "Address" : req_info["Address"],
-                "Assesment" : []
+                "Assessment" : []
             }
     
     
@@ -127,23 +128,23 @@ async def addBasicAssessment(info : Request):
 
         # --- MakesConditionWorse Pre-Processing ------- #
         
-        MakesConditionWorse = [i['value'] for i in req_info['Assesment']['MakesConditionWorse']]
+        MakesConditionWorse = [i['value'] for i in req_info['Assessment']['MakesConditionWorse']]
         print(MakesConditionWorse)
-        req_info['Assesment']['MakesConditionWorse'] = MakesConditionWorse
+        req_info['Assessment']['MakesConditionWorse'] = MakesConditionWorse
 
-        MakesConditionBetter = [i['value'] for i in req_info['Assesment']['MakesConditionBetter']]
+        MakesConditionBetter = [i['value'] for i in req_info['Assessment']['MakesConditionBetter']]
         print(MakesConditionBetter)
-        req_info['Assesment']['MakesConditionBetter'] = MakesConditionBetter
+        req_info['Assessment']['MakesConditionBetter'] = MakesConditionBetter
 
-        MedicalInformation = [i['value'] for i in req_info['Assesment']['MedicalInformation']]
+        MedicalInformation = [i['value'] for i in req_info['Assessment']['MedicalInformation']]
         print(MedicalInformation)
-        req_info['Assesment']['MedicalInformation'] = MedicalInformation
+        req_info['Assessment']['MedicalInformation'] = MedicalInformation
 
-        MedicalIntervention = [i['value'] for i in req_info['Assesment']['MedicalIntervention']]
+        MedicalIntervention = [i['value'] for i in req_info['Assessment']['MedicalIntervention']]
         print(MedicalIntervention)
-        req_info['Assesment']['MedicalIntervention'] = MedicalIntervention
+        req_info['Assessment']['MedicalIntervention'] = MedicalIntervention
 
-        UpdateDict = req_info['Assesment']
+        UpdateDict = req_info['Assessment']
         UpdateDict["SeniorDoctorPrescription"] = dict()
         UpdateDict["JuniorDoctorPrescription"] = dict()
         UpdateDict["TrainerPrescription"] = dict()
@@ -153,13 +154,13 @@ async def addBasicAssessment(info : Request):
 
         # print(UpdateDict)
 
-        Result['Assesment'].append(UpdateDict)
-        UpdateAssigment = Result['Assesment']
+        Result['Assessment'].append(UpdateDict)
+        UpdateAssigment = Result['Assessment']
 
         # print(UpdateAssigment)
 
         myquery = { "Patient_Id": SearchKey }
-        newvalues = { "$set": { "Assesment": UpdateAssigment } }
+        newvalues = { "$set": { "Assessment": UpdateAssigment } }
         PatientData.update_one(myquery, newvalues)
         return {"Satus" : "Successfully"}
     
@@ -194,12 +195,12 @@ async def allPatients():
         for i in Result:
             del i['_id']
         for i in Result:
-            LastAsses = i['Assesment']
+            LastAsses = i['Assessment']
             Checker = len(LastAsses)
             if Checker == 0:
-                i['LastAssesment'] = 'No Assesment'
+                i['LastAssessment'] = 'No Assessment'
             else:
-                i['LastAssesment'] = LastAsses[len(LastAsses) - 1]
+                i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
         return {"allPatients" : Result}
     
 
@@ -255,7 +256,7 @@ async def patientFeedback(info : Request):
         return {"Status" : "Patient Not Found"}
     else:
         Result = dict(Find)
-        AllAsses = Result['Assesment']
+        AllAsses = Result['Assessment']
         UpdateFeed = None
 
         idx = 0
@@ -265,13 +266,13 @@ async def patientFeedback(info : Request):
                 break
             idx += 1
         if UpdateFeed == None:
-            return {"Status" : "Date of Assesment doesn't exits"}
+            return {"Status" : "Date of Assessment doesn't exits"}
         else:
             UpdateFeed['Feedback'] = req_info['Feedback']
             AllAsses[idx] = UpdateFeed
             check = PatientData.update_one({'Patient_Id' : req_info["Patient_Id"]},
                    {"$set": {
-                       "Assesment": AllAsses,
+                       "Assessment": AllAsses,
                         }
                    }
                 )
@@ -283,7 +284,7 @@ async def patientFeedback(info : Request):
 
 
 
-# -------------------------- Senior Doctor Routes ---------------------------------
+################ -------------------------- Senior Doctor Routes --------------------------------- ################
 
 @app.get("/allPatientsToday")
 async def allPatientsToday():
@@ -295,11 +296,11 @@ async def allPatientsToday():
 
 
     for Data in Results:
-        for i in Data['Assesment']:
+        for i in Data['Assessment']:
             if i['Date'] == str(datetime.date.today()) and i['SeniorWrittenPres'] == False:
                 print("Happy")
                 del Data['_id']
-                Data['Assesment'] = i
+                Data['Assessment'] = i
                 DatedPatients.append(Data)
                 print(Data)
                 break
@@ -310,9 +311,164 @@ async def allPatientsToday():
     }
 
 
+@app.post("/ShoulderAssessment")
+async def ShoulderAssessment(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"Status" : "Working"}
+
+
+@app.post("/KneeAssessment")
+async def KneeAssessment(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"Status" : "Working"}  
+
+
+@app.post("/BalanceAssessment")
+async def BalanceAssessment(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"Status" : "Working"}  
 
 
 
-    
+
+@app.post("/LowBackAssessment")
+async def BalanceAssessment(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"   " : "Working"}
+
+
+
+
+@app.post("/PARQPlusAssessment")
+async def PARQPlusAssessmen(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"Status" : "Working"}  
+
+
+
+@app.post("/FMSAssessment")
+async def FMSAssessment(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"Status" : "Working"}  
+
+
+@app.post("/TreatmentPrescription")
+async def TreatmentPrescription(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    return {"Status" : "Working"}  
+
+@app.post("/GeneralAssessment")
+async def GeneralAssessment(info : Request):
+
+
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    print(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+       # Update the document in MongoDB
+        PatientData.update_one(
+            {"Patient_Id": "23ST787", "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "ReasonForReference": "Updated Reason",
+                        "ReferredBy": "Updated ReferredBy",
+                        "VitalSign": {
+                            "BP": 234,
+                            "Temp": 234,
+                            "Spo2": 423,
+                            "RR": 2423,
+                            "Others": 2343
+                        },
+                        "History": {
+                            "Past": "I had make over",
+                            "Present": "I had choco"
+                        },
+                        "Medical_K_C_O": [
+                            "DM",
+                            "HT",
+                            "CAD",
+                            "THYROID",
+                            "IDH",
+                            "OSTEO",
+                            "HYST",
+                            "CHOLES",
+                            "CABG",
+                            "CA",
+                            "OTHERS"
+                        ],
+                        "Family_Personal": [
+                            "Married",
+                            "Smoker",
+                            "Alcoholic"
+                        ],
+                        "EarlyMorningStiffness": "Yes/No",
+                        "PainAssessment": "Options are there in form",
+                        "Duration": "Options",
+                        "Nature": []
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {}
+                }
+            }}
+        )
+
+
+
 
 
