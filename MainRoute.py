@@ -341,9 +341,9 @@ async def ShoulderAssessment(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.ShoulderAssessment": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.ShoulderAssessment": 
+                    req_info
+                
             }}
         )
 
@@ -380,9 +380,9 @@ async def KneeAssessment(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.KneeAssessment": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.KneeAssessment": 
+                    req_info
+                
             }}
         )
 
@@ -415,9 +415,9 @@ async def BalanceAssessment(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.BalanceAssessment": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.BalanceAssessment": 
+                    req_info
+                
             }}
         )
 
@@ -454,9 +454,9 @@ async def BalanceAssessment(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.LowBackAssessment": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.LowBackAssessment": 
+                    req_info
+                
             }}
         )
 
@@ -491,9 +491,7 @@ async def PARQPlusAssessmen(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.PARQPlusAssessmen": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.PARQPlusAssessmen": req_info
             }}
         )
 
@@ -528,9 +526,9 @@ async def FMSAssessment(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.FMSAssessment": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.FMSAssessment": 
+                    req_info
+                
             }}
         )
 
@@ -564,9 +562,9 @@ async def TreatmentPrescription(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": {
-                    "Happy" : "Man"
-                }
+                "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": 
+                    req_info
+                
             }}
         )
 
