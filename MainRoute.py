@@ -491,7 +491,7 @@ async def PARQPlusAssessmen(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.PARQPlusAssessmen": req_info
+                "Assessment.$.SeniorDoctorPrescription.PARQPlusAssessment": req_info
             }}
         )
 
@@ -562,11 +562,11 @@ async def TreatmentPrescription(info : Request):
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": 
-                    req_info
-                
+                "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": req_info
             }}
         )
+        print(req_info)
+        print("added")
 
         #medKCO,personal,duration,painAss,irritability:
 
