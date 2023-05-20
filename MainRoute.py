@@ -187,7 +187,7 @@ async def viewPatient(info : Request):
 @app.get("/allPatients")
 async def allPatients():
     Find = PatientData.find({})
-
+    print("Hello")
     if Find == None:
         return {"Status" : "Patient Not Found"}
     else:
@@ -300,7 +300,7 @@ async def allPatientsToday():
             if i['Date'] == str(datetime.date.today()) and i['SeniorWrittenPres'] == False:
                 print("Happy")
                 del Data['_id']
-                Data['Assessment'] = i
+                Data['LastAssessment'] = i
                 DatedPatients.append(Data)
                 print(Data)
                 break
@@ -415,48 +415,13 @@ async def GeneralAssessment(info : Request):
     if Find == None:
         return {"Status" : "Patient Not Found" }
     else:
-       # Update the document in MongoDB
+        # Update the document in MongoDB:
+        del req_info['Patient_Id']
         PatientData.update_one(
-            {"Patient_Id": "23ST787", "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": req_info['Patient_Id'], "Assessment.Date": str(datetime.date.today())},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription": {
-                    "GeneralAssessment": {
-                        "ReasonForReference": "Updated Reason",
-                        "ReferredBy": "Updated ReferredBy",
-                        "VitalSign": {
-                            "BP": 234,
-                            "Temp": 234,
-                            "Spo2": 423,
-                            "RR": 2423,
-                            "Others": 2343
-                        },
-                        "History": {
-                            "Past": "I had make over",
-                            "Present": "I had choco"
-                        },
-                        "Medical_K_C_O": [
-                            "DM",
-                            "HT",
-                            "CAD",
-                            "THYROID",
-                            "IDH",
-                            "OSTEO",
-                            "HYST",
-                            "CHOLES",
-                            "CABG",
-                            "CA",
-                            "OTHERS"
-                        ],
-                        "Family_Personal": [
-                            "Married",
-                            "Smoker",
-                            "Alcoholic"
-                        ],
-                        "EarlyMorningStiffness": "Yes/No",
-                        "PainAssessment": "Options are there in form",
-                        "Duration": "Options",
-                        "Nature": []
-                    },
+                    "GeneralAssessment": req_info,
                     "ShoulderAssessment": {},
                     "KneeAssessment": {},
                     "BalanceAssessment": {},
