@@ -418,7 +418,7 @@ async def GeneralAssessment(info : Request):
         # Update the document in MongoDB:
         del req_info['Patient_Id']
         PatientData.update_one(
-            {"Patient_Id": req_info['Patient_Id'], "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription": {
                     "GeneralAssessment": req_info,
@@ -432,6 +432,8 @@ async def GeneralAssessment(info : Request):
                 }
             }}
         )
+
+        return {"Status" : "Successful"}
 
 
 
