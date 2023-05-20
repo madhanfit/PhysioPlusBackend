@@ -34,6 +34,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+### ----- General Functions ----------
+
+def Dict_to_List(Dictionary):
+    return [i['value'] for i in Dictionary]
+
 # --------------------------- Login Routes -----------------------------------
 
 @app.post("/loginCheck")
@@ -417,6 +422,12 @@ async def GeneralAssessment(info : Request):
     else:
         # Update the document in MongoDB:
         del req_info['Patient_Id']
+
+        ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        for i in ListChanges:
+            req_info[i] = Dict_to_List(req_info[i])
+        print(req_info)
+
         PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
@@ -432,6 +443,8 @@ async def GeneralAssessment(info : Request):
                 }
             }}
         )
+
+        #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
 
