@@ -793,17 +793,18 @@ async def TreatmentTracker(info : Request):
         ResultDict['Patient_Height'] = Find['Patient_Height']
         ResultDict['Patient_Weight'] = Find['Patient_Weight']
         ResultDict['Patient_Contact_No'] = Find['Patient_Contact_No']
-        ResultDict['DailyReview'] = None
-
+    
         ListOfItems = []
 
         for i in Find['Assessment']:
             CurrDict = {}
-            CurrDict['Date'] = i['Date']
+            CurrDict['GeneralDate'] = i['Date']
             CurrDict['DateWise'] = i['JuniorDoctorPrescription']['DayWise']
             ListOfItems.append(CurrDict)
         
-        ResultDict['DailyReview'] == ListOfItems
+        ResultDict['DailyReview'] = ListOfItems
+
+        print(ListOfItems)
 
         return ResultDict
 
