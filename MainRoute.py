@@ -812,7 +812,7 @@ async def TreatmentTracker(info : Request):
 
 
 
-@app.post("/TreatmentTracker")
+@app.post("/UpdateTreatmentTracker")
 async def TreatmentTracker(info : Request):
     print(await info.body())
     req_info = await info.json()
@@ -824,21 +824,28 @@ async def TreatmentTracker(info : Request):
     if Find == None:
         return {"Status" : "Patient Not Found" }
     
+    updateDayWise = None
+
+    for i in Find['Assessment']:
+        if i['Date'] == req_info['GeneralAssessmentDate']:
+            updateDayWise = i['JuniorDoctorPrescription']['DayWise']
+            break
+    
+    updateDayWise += req_info['DateWise']
+    
     Status = PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['GeneralAssessmentDate']},
             {"$set": {
-                "Assessment.$.SeniorDoctorPrescription": {
-                    "GeneralAssessment": req_info,
-                    "ShoulderAssessment": {},
-                    "KneeAssessment": {},
-                    "BalanceAssessment": {},
-                    "LowBackAssessment": {},
-                    "PARQPlusAssessment": {},
-                    "FMSAssessment": {},
-                    "TreatmentPrescription": {}
+                "Assessment.$.JuniorDoctorPrescription": {
+                    "DayWise": updateDayWise
                 }
             }}
         )
+    
+    if Status.acknowledged == True:
+        return {"Status" : "Successful"}
+    else:
+        return {"Status" : "Not Successful"}
 
     
 
