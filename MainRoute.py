@@ -151,7 +151,7 @@ async def addBasicAssessment(info : Request):
 
         UpdateDict = req_info['Assessment']
         UpdateDict["SeniorDoctorPrescription"] = dict()
-        UpdateDict["JuniorDoctorPrescription"] = dict()
+        UpdateDict["JuniorDoctorPrescription"] = dict({"DayWise" : []})
         UpdateDict["TrainerPrescription"] = dict()
         UpdateDict["Feedback"] = {}
         UpdateDict["SeniorWrittenPres"] = False
@@ -768,5 +768,76 @@ async def GetTreatmentPrescription(info : Request):
                 ResultSend = i['SeniorDoctorPrescription']['TreatmentPrescription']
                 return ResultSend
     return {"Status" : "Not Found"}
+    
+
+###-------------------- Junior Route --------------------- ######
+
+@app.post("/GetTreatmentTracker")
+async def TreatmentTracker(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        ResultDict = {}
+        Find = dict(Find)
+        ResultDict['Patient_Id'] = Find['Patient_Id']
+        ResultDict['Patient_Name'] = Find['Patient_Name']
+        ResultDict['Patient_Age'] = Find['Patient_Age']
+        ResultDict['Patient_Gender'] = Find['Patient_Gender']
+        ResultDict['Patient_Height'] = Find['Patient_Height']
+        ResultDict['Patient_Weight'] = Find['Patient_Weight']
+        ResultDict['Patient_Contact_No'] = Find['Patient_Contact_No']
+        ResultDict['DailyReview'] = None
+
+        ListOfItems = []
+
+        for i in Find['Assessment']:
+            CurrDict = {}
+            CurrDict['Date'] = i['Date']
+            CurrDict['DateWise'] = i['JuniorDoctorPrescription']['DayWise']
+            ListOfItems.append(CurrDict)
+        
+        ResultDict['DailyReview'] == ListOfItems
+
+        return ResultDict
+
+
+
+
+
+@app.post("/TreatmentTracker")
+async def TreatmentTracker(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    
+    Status = PatientData.update_one(
+            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"$set": {
+                "Assessment.$.SeniorDoctorPrescription": {
+                    "GeneralAssessment": req_info,
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {}
+                }
+            }}
+        )
+
     
 
