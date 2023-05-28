@@ -289,7 +289,7 @@ async def patientFeedback(info : Request):
 
 
 
-################ -------------------------- Senior Doctor Routes --------------------------------- ################
+################ -------------------------- Senior / Junior Doctor Routes --------------------------------- ################
 
 @app.get("/allPatientsToday")
 async def allPatientsToday():
@@ -548,6 +548,7 @@ async def TreatmentPrescription(info : Request):
 
     SearchKey = req_info['Patient_Id']
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
+
     if Find == None:
         return {"Status" : "Patient Not Found" }
     else:
@@ -559,14 +560,13 @@ async def TreatmentPrescription(info : Request):
         #     req_info[i] = Dict_to_List(req_info[i])
         # print(req_info)
 
-        PatientData.update_one(
+        status = PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": req_info
             }}
         )
-        print(req_info)
-        print("added")
+        print("Status:",status.acknowledged)
 
         #medKCO,personal,duration,painAss,irritability:
 
@@ -575,11 +575,11 @@ async def TreatmentPrescription(info : Request):
 @app.post("/GeneralAssessment")
 async def GeneralAssessment(info : Request):
 
-    print(await info.body())
+    ## print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
-    print(req_info)
+    ## print(req_info)
 
     SearchKey = req_info['Patient_Id']
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
@@ -590,11 +590,12 @@ async def GeneralAssessment(info : Request):
         del req_info['Patient_Id']
 
         ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+
         for i in ListChanges:
             req_info[i] = Dict_to_List(req_info[i])
-        print(req_info)
+        ## print(req_info)
 
-        PatientData.update_one(
+        Status = PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription": {
@@ -610,11 +611,162 @@ async def GeneralAssessment(info : Request):
             }}
         )
 
+        print(Status)
+        print(Status)
+
+        
+
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
 
 
+@app.post("/GetShoulderAssessment")
+async def GetShoulderAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['ShoulderAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
 
 
+
+@app.post("/GetKneeAssessment")
+async def GetKneeAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['KneeAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
+    
+
+@app.post("/GetBalanceAssessment")
+async def GetBalanceAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['BalanceAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
+    
+
+@app.post("/GetLowBackAssessment")
+async def GetLowBackAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['LowBackAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
+    
+
+@app.post("/GetPARQPlusAssessment")
+async def GetPARQPlusAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['PARQPlusAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
+    
+
+@app.post("/GetFMSAssessment")
+async def GetFMSAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['FMSAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
+    
+
+
+@app.post("/GetTreatmentPrescription")
+async def GetTreatmentPrescription(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['TreatmentPrescription']
+                return ResultSend
+    return {"Status" : "Not Found"}
+    
 
