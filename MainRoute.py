@@ -798,7 +798,7 @@ async def TreatmentTracker(info : Request):
 
         for i in Find['Assessment']:
             CurrDict = {}
-            CurrDict['GeneralDate'] = i['Date']
+            CurrDict['GeneralAssessmentDate'] = i['Date']
             CurrDict['DateWise'] = i['JuniorDoctorPrescription']['DayWise']
             ListOfItems.append(CurrDict)
         
