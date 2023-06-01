@@ -831,6 +831,14 @@ async def TreatmentTracker(info : Request):
             updateDayWise = i['JuniorDoctorPrescription']['DayWise']
             break
     
+    RecievedDates = [i['Date'] for i in req_info['DateWise']]
+    ExsistingDates = [i['Date'] for i in updateDayWise]
+
+    for i in RecievedDates:
+        if i in ExsistingDates:
+            return {"status" : "date already exsits"}
+
+    
     updateDayWise += req_info['DateWise']
     
     Status = PatientData.update_one(
