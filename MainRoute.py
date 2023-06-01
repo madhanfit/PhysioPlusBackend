@@ -21,6 +21,7 @@ Key_Mongo_Local = "mongodb://localhost:27017/"
 Data = MongoClient(Key_Mongo_Cloud)
 PatientData = Data['Test']['Test']
 LoginDatabase = Data['Test']['LoginCred']
+ReviewData = Data['Test']['Reviews']
 
 app = FastAPI()
 
@@ -835,9 +836,8 @@ async def TreatmentTracker(info : Request):
     SetOfDates = set(RecievedDates)
 
     if len(SetOfDates) < len(RecievedDates):
-        return {"status" : "duplicates exsists"}
+        return {"status" : "duplicates exists"}
 
-    
     updateDayWise = req_info['DateWise']
     
     Status = PatientData.update_one(
@@ -854,5 +854,36 @@ async def TreatmentTracker(info : Request):
     else:
         return {"Status" : "Not Successful"}
 
+
+
+
+@app.post("/RaiseReview")
+async def RaiseReview(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
     
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    
+    SearchKey = req_info['Patient_Id']
+    Find = ReviewData.find_one({'Patient_Id' : SearchKey})
+
+    if Find:
+        return {"Status" : "Review already exists"}
+    
+    req_info['SeniorDoctorViewed'] =  False
+    
+    Check = ReviewData.insert_one(req_info)
+
+    if Check.acknowledged == True:
+        return {"Status" : True}
+    else:
+        return {"Status" :  False}
+    
+
+
 
