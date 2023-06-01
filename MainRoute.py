@@ -832,11 +832,10 @@ async def TreatmentTracker(info : Request):
             break
     
     RecievedDates = [i['Date'] for i in req_info['DateWise']]
-    ExsistingDates = [i['Date'] for i in updateDayWise]
+    SetOfDates = set(RecievedDates)
 
-    for i in RecievedDates:
-        if i in ExsistingDates:
-            return {"status" : "date already exsits"}
+    if len(SetOfDates) < len(RecievedDates):
+        return {"status" : "duplicates exsists"}
 
     
     updateDayWise = req_info['DateWise']
