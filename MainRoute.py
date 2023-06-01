@@ -802,7 +802,7 @@ async def TreatmentTracker(info : Request):
             CurrDict['DateWise'] = i['JuniorDoctorPrescription']['DayWise']
             ListOfItems.append(CurrDict)
         
-        ResultDict['DailyReview'] = ListOfItems
+        ResultDict['DailyReview'] = ListOfItems[::-1]
 
         print(ListOfItems)
 
@@ -839,7 +839,7 @@ async def TreatmentTracker(info : Request):
             return {"status" : "date already exsits"}
 
     
-    updateDayWise += req_info['DateWise']
+    updateDayWise = req_info['DateWise']
     
     Status = PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": req_info['GeneralAssessmentDate']},
