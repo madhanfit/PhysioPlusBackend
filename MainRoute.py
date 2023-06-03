@@ -792,13 +792,16 @@ async def UpdateReview(info : Request):
         Find = list(Find)
         for i in Find:
             if i['SeniorDoctorViewed'] == False and i['DateOfReview'] == req_info['DateOfReview']:
-                Status = PatientData.update_one(
-                    {"Patient_Id": SearchKey, "DateOfReview": req_info['DateOfReview']},
-                    {"$set": {
-                        "SeniorDoctorViewed" : True
-                    }}
-                )
-
+                query = {
+                    "DateOfReview": req_info['DateOfReview'],
+                    "Patient_Id" : req_info['Patient_Id']
+                }
+                update = {
+                    "$set": {
+                        "SeniorDoctorViewed": True
+                    }
+                }
+                Status = ReviewData.update_many(query, update)
                 if Status.acknowledged == True:
                     return {"Status" : "successful"}
             if i['SeniorDoctorViewed'] == True:
@@ -812,10 +815,14 @@ async def AllReviews():
     Find = ReviewData.find({})
     Find = list(Find)
 
-    for i in Find:
-        del i['_id']
+    FinalList = []
 
-    return {"AllReviews" : Find[::-1]}
+    for i in Find:
+        if i['SeniorDoctorViewed'] == False:
+            del i['_id']
+            FinalList.append(i)
+
+    return {"AllReviews" : FinalList[::-1]}
 
 
 @app.get("/ReviewCount")
@@ -823,10 +830,14 @@ async def ReviewCount():
     Find = ReviewData.find({})
     Find = list(Find)
 
-    for i in Find:
-        del i['_id']
+    FinalList = []
 
-    return {"ReviewCount" : len(Find[::-1])}
+    for i in Find:
+        if i['SeniorDoctorViewed'] == False:
+            del i['_id']
+            FinalList.append(i)
+
+    return {"AllReviews" : len(FinalList[::-1])}
 
 
 
