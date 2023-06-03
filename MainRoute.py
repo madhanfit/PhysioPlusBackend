@@ -771,6 +771,72 @@ async def GetTreatmentPrescription(info : Request):
     return {"Status" : "Not Found"}
     
 
+@app.post("/UpdateReview")
+async def UpdateReview(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    
+    SearchKey = req_info['Patient_Id']
+    Find = ReviewData.find({'Patient_Id' : SearchKey})
+    Find = list(Find)
+
+    if Find == []:
+        return {"Status" : "Review not found"}
+    else:
+        Find = list(Find)
+        for i in Find:
+            if i['SeniorDoctorViewed'] == False and i['DateOfReview'] == req_info['DateOfReview']:
+                Status = PatientData.update_one(
+                    {"Patient_Id": SearchKey, "DateOfReview": req_info['DateOfReview']},
+                    {"$set": {
+                        "SeniorDoctorViewed" : True
+                    }}
+                )
+
+                if Status.acknowledged == True:
+                    return {"Status" : "successful"}
+            if i['SeniorDoctorViewed'] == True:
+                return {"Status" : "Already updated"}
+
+    return {"Status" : "Couldn't update"}
+
+
+@app.get("/AllReviews")
+async def AllReviews():
+    Find = ReviewData.find({})
+    Find = list(Find)
+
+    for i in Find:
+        del i['_id']
+
+    return {"AllReviews" : Find[::-1]}
+
+
+@app.get("/ReviewCount")
+async def ReviewCount():
+    Find = ReviewData.find({})
+    Find = list(Find)
+
+    for i in Find:
+        del i['_id']
+
+    return {"ReviewCount" : len(Find[::-1])}
+
+
+
+
+
+
+
+
+
+
 ###-------------------- Junior Route --------------------- ######
 
 @app.post("/GetTreatmentTracker")
@@ -854,7 +920,7 @@ async def TreatmentTracker(info : Request):
     else:
         return {"Status" : "Not Successful"}
 
-
+    
 
 
 @app.post("/RaiseReview")
@@ -870,11 +936,14 @@ async def RaiseReview(info : Request):
         return {"Status" : "Patient Not Found" }
     
     SearchKey = req_info['Patient_Id']
-    Find = ReviewData.find_one({'Patient_Id' : SearchKey})
-
-    if Find:
-        return {"Status" : "Review already exists"}
+    Find = ReviewData.find({'Patient_Id' : SearchKey})
+    Find = list(Find)
     
+    for i in Find:
+        if i['DateOfReview'] == req_info['DateOfReview']:
+            return {"Status" : "Review already exists for this date"}
+    
+
     req_info['SeniorDoctorViewed'] =  False
     
     Check = ReviewData.insert_one(req_info)
