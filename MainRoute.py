@@ -332,8 +332,15 @@ async def allPatientsToday():
                 print("Happy")
                 del Data['_id']
                 Data['LastAssessment'] = i
+                Data['Status'] = None
+                if "TreatmentPrescription" in i['SeniorDoctorPrescription']:
+                    if i['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
+                        Data['Status'] = "Prescription Completed"
+                    else:
+                        Data['Status'] = "Partially Completed"
+                else:
+                    Data['Status'] = "Not Yet Started"
                 DatedPatients.append(Data)
-                print(Data)
                 break
     
 
