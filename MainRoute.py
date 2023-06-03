@@ -867,6 +867,25 @@ async def ReviewCount():
 
 
 
+@app.post("/ViewReview")
+async def ViewReview(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    
+    SearchKey = req_info['Patient_Id']
+    Find = ReviewData.find_one({'Patient_Id' : SearchKey , "DateOfReview" : req_info['DateOfReview']})
+
+    if Find != None:
+        del Find['_id']
+        return Find
+    else:
+        return {"Status" : "Not Found"}
 
 
 
