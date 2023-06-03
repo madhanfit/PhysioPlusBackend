@@ -292,6 +292,31 @@ async def patientFeedback(info : Request):
 
 ################ -------------------------- Senior / Junior Doctor Routes --------------------------------- ################
 
+@app.get("/allPatientsTodayCount")
+async def allPatientsTodayCount():
+    Find = PatientData.find({})
+    Results = list(Find)
+
+    DatedPatients = []
+
+
+
+    for Data in Results:
+        for i in Data['Assessment']:
+            if i['Date'] == str(datetime.date.today()) and i['SeniorWrittenPres'] == False:
+                print("Happy")
+                del Data['_id']
+                Data['LastAssessment'] = i
+                DatedPatients.append(Data)
+                print(Data)
+                break
+    
+
+    return {
+        "allPatientsTodayCount" : len(DatedPatients)
+    }
+
+
 @app.get("/allPatientsToday")
 async def allPatientsToday():
     Find = PatientData.find({})
@@ -960,9 +985,9 @@ async def RaiseReview(info : Request):
     Check = ReviewData.insert_one(req_info)
 
     if Check.acknowledged == True:
-        return {"Status" : True}
+        return {"Status" : "successful"}
     else:
-        return {"Status" :  False}
+        return {"Status" :  "no successful"}
     
 
 
