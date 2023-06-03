@@ -837,7 +837,7 @@ async def ReviewCount():
             del i['_id']
             FinalList.append(i)
 
-    return {"AllReviews" : len(FinalList[::-1])}
+    return {"ReviewCount" : len(FinalList[::-1])}
 
 
 
