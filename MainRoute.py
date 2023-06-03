@@ -205,8 +205,16 @@ async def allPatients():
             Checker = len(LastAsses)
             if Checker == 0:
                 i['LastAssessment'] = 'No Assessment'
+                i['Status'] = None
             else:
                 i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
+                if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
+                    if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
+                        i['Status'] = "Completed"
+                    else:
+                        i['Status'] = "Partial"
+                else:
+                    i['Status'] = "Not Yet"
         return {"allPatients" : Result}
     
 
@@ -335,11 +343,11 @@ async def allPatientsToday():
                 Data['Status'] = None
                 if "TreatmentPrescription" in i['SeniorDoctorPrescription']:
                     if i['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
-                        Data['Status'] = "Prescription Completed"
+                        Data['Status'] = "Completed"
                     else:
-                        Data['Status'] = "Partially Completed"
+                        Data['Status'] = "Partial"
                 else:
-                    Data['Status'] = "Not Yet Started"
+                    Data['Status'] = "Not Yet"
                 DatedPatients.append(Data)
                 break
     
