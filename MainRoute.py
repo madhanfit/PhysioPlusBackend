@@ -205,7 +205,7 @@ async def allPatients():
             Checker = len(LastAsses)
             if Checker == 0:
                 i['LastAssessment'] = 'No Assessment'
-                i['Status'] = None
+                i['Status'] = "Not Yet"
             else:
                 i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
                 if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
