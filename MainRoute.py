@@ -660,6 +660,27 @@ async def GeneralAssessment(info : Request):
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
+    
+
+@app.post("/GetGeneralAssessment")
+async def GetGeneralAssessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    else:
+        Find = dict(Find)
+        Assessment = Find['Assessment']
+        for i in Assessment:
+            if i['Date'] == req_info['Date']:
+                ResultSend = i['SeniorDoctorPrescription']['GeneralAssessment']
+                return ResultSend
+    return {"Status" : "Not Found"}
 
 
 @app.post("/GetShoulderAssessment")
