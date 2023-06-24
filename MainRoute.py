@@ -41,6 +41,17 @@ app.add_middleware(
 def Dict_to_List(Dictionary):
     return [i['value'] for i in Dictionary]
 
+def process_dictionary(data):
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if isinstance(value, list) and all(isinstance(item, dict) and "value" in item and "label" in item for item in value):
+                data[key] = [item["value"] for item in value]
+            else:
+                process_dictionary(value)
+    elif isinstance(data, list):
+        for i in range(len(data)):
+            process_dictionary(data[i])
+
 # --------------------------- Login Routes -----------------------------------
 
 @app.post("/loginCheck")
@@ -181,7 +192,7 @@ async def viewPatient(info : Request):
     else:
         Result = dict(Find)
         del Result['_id']
-
+        process_dictionary(Result)
         return Result
 
 @app.get("/allPatients")
