@@ -360,6 +360,7 @@ async def allPatientsToday():
         "allPatientsToday" : DatedPatients
     }
 
+## Adding Assessments;
 
 @app.post("/ShoulderAssessment")
 async def ShoulderAssessment(info : Request):
@@ -384,7 +385,7 @@ async def ShoulderAssessment(info : Request):
         # print(req_info)
 
         PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.ShoulderAssessment": 
                     req_info
@@ -423,7 +424,7 @@ async def KneeAssessment(info : Request):
         # print(req_info)
 
         PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.KneeAssessment": 
                     req_info
@@ -458,7 +459,7 @@ async def BalanceAssessment(info : Request):
         # print(req_info)
 
         PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.BalanceAssessment": 
                     req_info
@@ -475,9 +476,9 @@ async def BalanceAssessment(info : Request):
 
 
 @app.post("/LowBackAssessment")
-async def BalanceAssessment(info : Request):
+async def LowBackAssessment(info : Request):
 
-    print(await info.body())
+    # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
@@ -497,7 +498,7 @@ async def BalanceAssessment(info : Request):
         # print(req_info)
 
         PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.LowBackAssessment": 
                     req_info
@@ -534,7 +535,7 @@ async def PARQPlusAssessmen(info : Request):
         # print(req_info)
 
         PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.PARQPlusAssessment": req_info
             }}
@@ -569,7 +570,7 @@ async def FMSAssessment(info : Request):
         # print(req_info)
 
         PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.FMSAssessment": 
                     req_info
@@ -606,7 +607,7 @@ async def TreatmentPrescription(info : Request):
         # print(req_info)
 
         status = PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": req_info
             }}
@@ -634,14 +635,14 @@ async def GeneralAssessment(info : Request):
         # Update the document in MongoDB:
         del req_info['Patient_Id']
 
-        ListChanges = ["medKCO","personal","duration","painAss","irritability"]
+        # ListChanges = ["medKCO","personal","duration","painAss","irritability"]
 
         # for i in ListChanges:
         #     req_info[i] = Dict_to_List(req_info[i])
         # ## print(req_info)
 
         Status = PatientData.update_one(
-            {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},
+            {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
                 "Assessment.$.SeniorDoctorPrescription": {
                     "GeneralAssessment": req_info,
