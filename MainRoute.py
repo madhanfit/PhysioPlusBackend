@@ -192,7 +192,7 @@ async def viewPatient(info : Request):
     else:
         Result = dict(Find)
         del Result['_id']
-        process_dictionary(Result)
+        # process_dictionary(Result)
         return Result
 
 @app.get("/allPatients")
