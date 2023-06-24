@@ -632,9 +632,9 @@ async def GeneralAssessment(info : Request):
 
         ListChanges = ["medKCO","personal","duration","painAss","irritability"]
 
-        for i in ListChanges:
-            req_info[i] = Dict_to_List(req_info[i])
-        ## print(req_info)
+        # for i in ListChanges:
+        #     req_info[i] = Dict_to_List(req_info[i])
+        # ## print(req_info)
 
         Status = PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": str(datetime.date.today())},

@@ -1,0 +1,3444 @@
+[
+    {
+        "_id": {
+            "$oid": "647b009788c5c2e20b38f2e0"
+        },
+        "Patient_Id": "23ST555",
+        "Patient_Name": "Chethan Reddy",
+        "Patient_Age": "21",
+        "Patient_Gender": "Male",
+        "Patient_Height": "178",
+        "Patient_Weight": "101",
+        "Patient_Contact_No": "9030496717",
+        "Employed": true,
+        "Occupation": "Data Engineer Intern",
+        "Address": "20-3-15R2, Siva Jyothi nagar Tirupati 510517 AP",
+        "Assessment": [
+            {
+                "Date": "2023-06-03",
+                "Complaint": "Severe Back Pain",
+                "Injury": "No",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": "No, I am not Injured",
+                "RecievedTherapy": "No ",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "yes Back Surgery",
+                "ReferalDoctor": "Dr. Reddy",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Prolonged Positioning",
+                    "Worse as day progresses"
+                ],
+                "MakesConditionBetter": [
+                    "Rising",
+                    "Standing",
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI",
+                    "Injections",
+                    "BackBone"
+                ],
+                "GoalsAfterTreat": "get relief of neck pain",
+                "MedicalInformation": [
+                    "Difficulty Swallowing",
+                    "Pacemaker"
+                ],
+                "OtherInformation": "Yes",
+                "Medications": "Crocin",
+                "Allergies": "Bust",
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-05-20",
+                        "ReferrenceReason": "cwcwecwecwec",
+                        "ReferredBy": "cwecwec",
+                        "VitalSigns": {
+                            "BP": "cwecwe",
+                            "Temp": "cwec",
+                            "SPO2": "wecwe",
+                            "RR": "cwec",
+                            "OtherVitals": "wecwec"
+                        },
+                        "pastSA": "wecwe",
+                        "presentSA": "wecwec",
+                        "medKCO": [
+                            "cwevv",
+                            "HT"
+                        ],
+                        "personal": [
+                            "Married"
+                        ],
+                        "stiffness": "No",
+                        "duration": [
+                            "Years"
+                        ],
+                        "painAss": [
+                            "Acute"
+                        ],
+                        "irritability": [
+                            "Transient"
+                        ],
+                        "nature": {
+                            "bones": [
+                                {
+                                    "value": "Nagging",
+                                    "label": "Nagging"
+                                }
+                            ],
+                            "ligament": [
+                                {
+                                    "value": "Stabbing",
+                                    "label": "Stabbing"
+                                }
+                            ],
+                            "muscle": [
+                                {
+                                    "value": "Throbbing",
+                                    "label": "Throbbing"
+                                }
+                            ],
+                            "arterioles": [
+                                {
+                                    "value": "Throbbing",
+                                    "label": "Throbbing"
+                                }
+                            ],
+                            "visceral": [
+                                {
+                                    "value": "Referred",
+                                    "label": "Referred"
+                                }
+                            ],
+                            "neural": [
+                                {
+                                    "value": "Lightening",
+                                    "label": "Lightening"
+                                }
+                            ]
+                        },
+                        "observation": {
+                            "bodyBuilt": [
+                                {
+                                    "value": "Mesomorph",
+                                    "label": "Mesomorph"
+                                }
+                            ],
+                            "posture": [
+                                {
+                                    "value": "Handedness",
+                                    "label": "Handedness"
+                                }
+                            ],
+                            "cervical": [
+                                {
+                                    "value": "Flat Neck",
+                                    "label": "Flat Neck"
+                                }
+                            ],
+                            "lumbarSpine": [
+                                {
+                                    "value": "Kyphosis",
+                                    "label": "Kyphosis"
+                                }
+                            ],
+                            "scapula": [
+                                {
+                                    "value": "Downward Rotated",
+                                    "label": "Downward Rotated"
+                                }
+                            ],
+                            "oedema": [
+                                {
+                                    "value": "Non-pitting",
+                                    "label": "Non-pitting"
+                                }
+                            ],
+                            "muscleWasting": [
+                                {
+                                    "value": "Yes",
+                                    "label": "Yes"
+                                }
+                            ],
+                            "attitudeOfLimb": [
+                                {
+                                    "value": "Scars",
+                                    "label": "Scars"
+                                }
+                            ],
+                            "onPalpation": [
+                                {
+                                    "value": "Warmth",
+                                    "label": "Warmth"
+                                }
+                            ]
+                        },
+                        "examination": {
+                            "limbLength": [
+                                {
+                                    "value": "Apparent",
+                                    "label": "Apparent"
+                                }
+                            ],
+                            "gait": [
+                                {
+                                    "value": "Antalgic",
+                                    "label": "Antalgic"
+                                }
+                            ],
+                            "ROMExam": "dvvevrev",
+                            "endFeel": [
+                                {
+                                    "value": "Soft Tissue",
+                                    "label": "Soft Tissue"
+                                }
+                            ]
+                        },
+                        "sensoryExamination": {
+                            "grading": "S2",
+                            "dermatomes": "revrev",
+                            "dtr": "9+",
+                            "jointPlayMovements": "vervrevrev"
+                        },
+                        "funcQuestionnares": "vervrevre",
+                        "deformity": "erve",
+                        "resistedIsometric": "rverver",
+                        "specialTest": "verve",
+                        "plan": "rvrevrev"
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {
+                        "posture": "qwyop",
+                        "gaitAnalysis": "asktop",
+                        "tandemWalk": "n",
+                        "tandemWalkReverse": "ymnrym",
+                        "sitToStandTest": "tumtm",
+                        "forwardAndBackwardWalk": "tum",
+                        "circleWalk": "mtym",
+                        "sidewaysWalk": "tymtym",
+                        "walkingWithHeel": "tym",
+                        "walkingWithToes": "ytmytm",
+                        "rombergsSign": "",
+                        "normalPosture": "",
+                        "normalPostureWithEyesOccluded": "",
+                        "pushBackwardsWithEyesOccluded": "",
+                        "pushForwardsWithEyesOccluded": "",
+                        "pushRightToLeftSidewaysWithEyesOccluded": "",
+                        "pushLeftToRightSidewaysWithEyesOccluded": "",
+                        "feetTogetherWithEyesOccluded": "",
+                        "withSupport": "",
+                        "withoutSupport": "",
+                        "lookForHipAbduction": "",
+                        "standingQuadripodPosition": "",
+                        "frenkelsWithVariousAngles": "mytmt",
+                        "singleLegSmallKneeBend": "ymtym",
+                        "dorsiflexionAndPlantarflexionOnWeightBearing": "",
+                        "ankleAndFootFullWeightBearingWithSmallKneeBend": "tym",
+                        "nystagmus": "myt",
+                        "fingerToFinger": "",
+                        "fingerToNose": "",
+                        "fingerOpposition": "",
+                        "pronationSupination": "",
+                        "massGrasp": "",
+                        "handTapping": "",
+                        "alternateHeelToKnee": "",
+                        "alternateHeelToToe": "",
+                        "feetTapping": "",
+                        "drawingCircleInHand": "",
+                        "drawingCircleInFoot": ""
+                    },
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {}
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {
+                    "overAll": 12,
+                    "effecitive": "Yes",
+                    "treatmentPlan": "Yes",
+                    "confortable": "Yes",
+                    "punctual": "Yes",
+                    "recommend": 2,
+                    "suggestions": "Need Car Parking ",
+                    "experience": "Very Good experience"
+                },
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            },
+            {
+                "Date": "2023-06-03",
+                "Complaint": null,
+                "Injury": null,
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": null,
+                "RecievedTherapy": null,
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": 5,
+                "SurgicalHistory": null,
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [],
+                "MakesConditionBetter": [],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647b040188c5c2e20b38f2e1"
+        },
+        "Patient_Id": "23ST512",
+        "Patient_Name": "Jack Reddy",
+        "Patient_Age": "34",
+        "Patient_Gender": "Others",
+        "Patient_Height": "178",
+        "Patient_Weight": "78",
+        "Patient_Contact_No": "09030496717",
+        "Employed": true,
+        "Occupation": "Artist In cinema",
+        "Address": "20-3-15R2, New York City, London",
+        "Assessment": [
+            {
+                "Date": "2023-06-03",
+                "Complaint": "None",
+                "Injury": null,
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": null,
+                "RecievedTherapy": null,
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": 5,
+                "SurgicalHistory": null,
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [],
+                "MakesConditionBetter": [],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-06-03",
+                        "ReferrenceReason": null,
+                        "ReferredBy": null,
+                        "VitalSigns": {
+                            "BP": null,
+                            "Temp": null,
+                            "SPO2": null,
+                            "RR": null,
+                            "OtherVitals": null
+                        },
+                        "pastSA": null,
+                        "presentSA": null,
+                        "medKCO": [],
+                        "personal": [],
+                        "stiffness": null,
+                        "duration": [],
+                        "painAss": [],
+                        "irritability": [],
+                        "nature": {
+                            "bones": [],
+                            "ligament": [],
+                            "muscle": [],
+                            "arterioles": [],
+                            "visceral": [],
+                            "neural": []
+                        },
+                        "observation": {
+                            "bodyBuilt": [],
+                            "posture": [],
+                            "cervical": [],
+                            "lumbarSpine": [],
+                            "scapula": [],
+                            "oedema": [],
+                            "muscleWasting": [],
+                            "attitudeOfLimb": [],
+                            "onPalpation": []
+                        },
+                        "examination": {
+                            "limbLength": [],
+                            "gait": [],
+                            "ROMExam": null,
+                            "endFeel": []
+                        },
+                        "sensoryExamination": {
+                            "grading": null,
+                            "dermatomes": null,
+                            "dtr": null,
+                            "jointPlayMovements": null
+                        },
+                        "funcQuestionnares": null,
+                        "deformity": null,
+                        "resistedIsometric": null,
+                        "specialTest": null,
+                        "plan": null
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {
+                        "PastHistory": "He",
+                        "SurgicalHistory": "NOne",
+                        "PainHistory": "scdsadsf",
+                        "Onset": "adsfdas",
+                        "Duration": "dfadfad",
+                        "AggravatingFactor": "asdfasdfdfa",
+                        "RelievingFactor": "dsfasdfdsaf",
+                        "RadiatingPain": "asdfasdfafadsfasdfdsfsdafasdfasdfasdf",
+                        "VAS": 2,
+                        "OnObservation": "fa",
+                        "BodyBuilt": "fdsfaadsfadfadsfdf",
+                        "Posture": "asdfadsfadsas",
+                        "Gait": "dfasd",
+                        "Swelling": "dfadsfads",
+                        "Inflammation": "adsfads",
+                        "Deformity": "fadsfadsfads",
+                        "ValgusKnee": "fadsfadsf",
+                        "VarusKnee": "adfadsfdsafadsfsdafdsf",
+                        "OnPalpation": "dfdasfasdfasd",
+                        "Tenderness": "fsadfsadfsadffads",
+                        "Warmth": "adsadsfsdaf",
+                        "OnExamination": "adsfasd",
+                        "Musclepower": {
+                            "Flexors": {
+                                "Right": "",
+                                "Left": ""
+                            },
+                            "Extensors": {
+                                "Right": "",
+                                "Left": ""
+                            }
+                        },
+                        "RangeOfMotion": {
+                            "Flexors": {
+                                "Right": "",
+                                "Left": ""
+                            },
+                            "Extensors": {
+                                "Right": "",
+                                "Left": ""
+                            }
+                        },
+                        "FunctionalAssessment": {
+                            "StairClimbing": "",
+                            "Cycling": "",
+                            "Walking": "",
+                            "Squatting": "",
+                            "Others": ""
+                        },
+                        "SpecialTest": {
+                            "VarusTest": "",
+                            "ACQTest": "",
+                            "SmallKneeBend": "",
+                            "KneeToWall": "",
+                            "ProneLyingKneeFlexingTest": "",
+                            "PatellaTapTest": ""
+                        },
+                        "LimbLengthDiscrepancy": "",
+                        "FootAngulations": "",
+                        "MedialDeviation": "",
+                        "LateralDeviation": "",
+                        "AdductorTightness": "",
+                        "ITBandTightness": "",
+                        "Investigation": {
+                            "XRay": "",
+                            "MRI": "",
+                            "CTScan": "",
+                            "Other": ""
+                        },
+                        "Diagnosis": "fadsfads"
+                    },
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {
+                        "general_health_q1": "NO",
+                        "general_health_q2": "NO",
+                        "general_health_q3": "NO",
+                        "general_health_q4": "NO",
+                        "general_health_q5": "NO",
+                        "general_health_q6": "NO",
+                        "general_health_q7": "NO",
+                        "general_health_q8": "NO",
+                        "general_health_q9": "NO",
+                        "general_health_q10": "NO",
+                        "general_health_q11": "NO",
+                        "general_health_q12": "NO",
+                        "general_health_q13": "NO",
+                        "general_health_q14": "NO",
+                        "general_health_q15": "NO",
+                        "general_health_q16": "NO",
+                        "general_health_q17": "NO",
+                        "general_health_q18": "NO",
+                        "general_health_q19": "NO",
+                        "general_health_q20": "NO",
+                        "general_health_q21": "NO",
+                        "general_health_q22": "NO",
+                        "general_health_q23": "NO",
+                        "general_health_q24": "NO",
+                        "general_health_q25": "NO",
+                        "general_health_q26": "NO",
+                        "general_health_q27": "NO",
+                        "general_health_q28": "NO",
+                        "general_health_q29": "NO",
+                        "general_health_q30": "NO",
+                        "general_health_q31": "NO",
+                        "general_health_q32": "NO",
+                        "general_health_q33": "NO",
+                        "general_health_q34": "NO",
+                        "general_health_q35": "NO",
+                        "general_health_q36": "NO",
+                        "general_health_q37": "NO",
+                        "general_health_q38": "NO",
+                        "general_health_q39": "NO",
+                        "general_health_q40": "NO",
+                        "general_health_q41": "NO",
+                        "general_health_q42": "NO",
+                        "general_health_q43": "NO",
+                        "general_health_q44": "NO",
+                        "general_health_q45": "NO",
+                        "general_health_q46": "NO",
+                        "general_health_q47": "NO",
+                        "general_health_q48": "NO",
+                        "general_health_q49": "NO"
+                    },
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {
+                        "diagnosis": "Done",
+                        "reviewNext": "2023-06-18",
+                        "numberOfDays": "20",
+                        "contraindication": "e",
+                        "followUp": "ad",
+                        "exercise": "ad",
+                        "exercisePrescription": "adfad"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647b258791560cbd36a4f5f8"
+        },
+        "Patient_Id": "23ST598",
+        "Patient_Name": "Subhanu Sankar Roy",
+        "Patient_Age": "21",
+        "Patient_Gender": "Male",
+        "Patient_Height": "175",
+        "Patient_Weight": "65",
+        "Patient_Contact_No": "8697103665",
+        "Employed": true,
+        "Occupation": "SDE Intern",
+        "Address": "2nd Floor, 1/65 Rajendra Prasad Colony, opposite lane of Golfgreen Police Station",
+        "Assessment": [
+            {
+                "Date": "2023-06-03",
+                "Complaint": "qwertyuiop",
+                "Injury": "Concussion in head",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": null,
+                "RecievedTherapy": null,
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "8",
+                "SurgicalHistory": null,
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Rising"
+                ],
+                "MakesConditionBetter": [
+                    "Bending"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [
+                    "Difficulty Swallowing"
+                ],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647b3f7f3c8b8db19f8d377b"
+        },
+        "Patient_Id": "23ST748",
+        "Patient_Name": "D Elangovan",
+        "Patient_Age": null,
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": null,
+        "Employed": false,
+        "Occupation": null,
+        "Address": null,
+        "Assessment": [
+            {
+                "Date": "2023-06-03",
+                "Complaint": "neck pain",
+                "Injury": "nil",
+                "DateOfInjury": null,
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "nil",
+                "RecievedTherapy": "nil",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "no",
+                "ReferalDoctor": "Nil",
+                "MakesConditionWorse": [
+                    "Bending"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "Injections"
+                ],
+                "GoalsAfterTreat": "pain should reduce",
+                "MedicalInformation": [],
+                "OtherInformation": "nil",
+                "Medications": "para",
+                "Allergies": "nil",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647c1b8a3e20e5084ea142bc"
+        },
+        "Patient_Id": "23ST324",
+        "Patient_Name": "Rohan",
+        "Patient_Age": "54",
+        "Patient_Gender": "Male",
+        "Patient_Height": "322",
+        "Patient_Weight": "87",
+        "Patient_Contact_No": "09030496717",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "20-3-15R2",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1bac5d881d563aa142bc"
+        },
+        "Patient_Id": "23ST425",
+        "Patient_Name": "A Chethan Reddy",
+        "Patient_Age": null,
+        "Patient_Gender": "Male",
+        "Patient_Height": "76",
+        "Patient_Weight": "87",
+        "Patient_Contact_No": "09030496717",
+        "Employed": true,
+        "Occupation": "jlhgkiu",
+        "Address": "20-3-15R2",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1bf63e20e5084ea142bd"
+        },
+        "Patient_Id": "23ST582",
+        "Patient_Name": "Ham",
+        "Patient_Age": "87",
+        "Patient_Gender": "Male",
+        "Patient_Height": "675",
+        "Patient_Weight": "8976",
+        "Patient_Contact_No": "876",
+        "Employed": true,
+        "Occupation": "klh",
+        "Address": "Tirupati, jack ma",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1c1e3e20e5084ea142be"
+        },
+        "Patient_Id": "23ST914",
+        "Patient_Name": "karti",
+        "Patient_Age": "54",
+        "Patient_Gender": "Male",
+        "Patient_Height": "231",
+        "Patient_Weight": "766",
+        "Patient_Contact_No": "09030496717",
+        "Employed": true,
+        "Occupation": "sde",
+        "Address": "20-3-15R2",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1d253e20e5084ea142bf"
+        },
+        "Patient_Id": "23ST626",
+        "Patient_Name": "A Chethan Reddy",
+        "Patient_Age": "234",
+        "Patient_Gender": "Male",
+        "Patient_Height": "2343",
+        "Patient_Weight": "23423",
+        "Patient_Contact_No": "09030496717",
+        "Employed": true,
+        "Occupation": "23432",
+        "Address": "20-3-15R2",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1d493e20e5084ea142c0"
+        },
+        "Patient_Id": "23ST160",
+        "Patient_Name": "Nick",
+        "Patient_Age": "34",
+        "Patient_Gender": "Female",
+        "Patient_Height": "234",
+        "Patient_Weight": "234",
+        "Patient_Contact_No": "34234234",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "342r3e",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1d8177cab2f529a142bc"
+        },
+        "Patient_Id": "23ST789",
+        "Patient_Name": "Jack Roma",
+        "Patient_Age": "23",
+        "Patient_Gender": "Female",
+        "Patient_Height": "25",
+        "Patient_Weight": "234",
+        "Patient_Contact_No": "234235",
+        "Employed": true,
+        "Occupation": "adf",
+        "Address": "fadsfsad",
+        "Assessment": [
+            {
+                "Date": "2023-06-04",
+                "Complaint": "Yes",
+                "Injury": "ad",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": "adf",
+                "RecievedTherapy": "adf",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": 5,
+                "SurgicalHistory": "adf",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [],
+                "MakesConditionBetter": [],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-06-04",
+                        "ReferrenceReason": "Te Yea;lsdkfj;",
+                        "ReferredBy": null,
+                        "VitalSigns": {
+                            "BP": null,
+                            "Temp": null,
+                            "SPO2": null,
+                            "RR": null,
+                            "OtherVitals": null
+                        },
+                        "pastSA": null,
+                        "presentSA": null,
+                        "medKCO": [],
+                        "personal": [],
+                        "stiffness": null,
+                        "duration": [],
+                        "painAss": [],
+                        "irritability": [],
+                        "nature": {
+                            "bones": [],
+                            "ligament": [],
+                            "muscle": [],
+                            "arterioles": [],
+                            "visceral": [],
+                            "neural": []
+                        },
+                        "observation": {
+                            "bodyBuilt": [],
+                            "posture": [],
+                            "cervical": [],
+                            "lumbarSpine": [],
+                            "scapula": [],
+                            "oedema": [],
+                            "muscleWasting": [],
+                            "attitudeOfLimb": [],
+                            "onPalpation": []
+                        },
+                        "examination": {
+                            "limbLength": [],
+                            "gait": [],
+                            "ROMExam": null,
+                            "endFeel": []
+                        },
+                        "sensoryExamination": {
+                            "grading": null,
+                            "dermatomes": null,
+                            "dtr": null,
+                            "jointPlayMovements": null
+                        },
+                        "funcQuestionnares": null,
+                        "deformity": null,
+                        "resistedIsometric": null,
+                        "specialTest": null,
+                        "plan": null
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {
+                        "diagnosis": "asdf",
+                        "reviewNext": "2023-06-12",
+                        "numberOfDays": "0234",
+                        "contraindication": "234",
+                        "followUp": "234",
+                        "exercise": "dsfasdf",
+                        "exercisePrescription": "adsfasd"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647c1dbe5d881d563aa142bd"
+        },
+        "Patient_Id": "23ST334",
+        "Patient_Name": "Roma",
+        "Patient_Age": "23",
+        "Patient_Gender": "Male",
+        "Patient_Height": "",
+        "Patient_Weight": "",
+        "Patient_Contact_No": "",
+        "Employed": false,
+        "Occupation": null,
+        "Address": null,
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1e005d881d563aa142be"
+        },
+        "Patient_Id": "23ST1000",
+        "Patient_Name": "A Chethan Reddy",
+        "Patient_Age": null,
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "09030496717",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "20-3-15R2",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1e08610d59d52aa142bc"
+        },
+        "Patient_Id": "23ST875",
+        "Patient_Name": null,
+        "Patient_Age": null,
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": null,
+        "Employed": false,
+        "Occupation": null,
+        "Address": null,
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1e143e20e5084ea142c1"
+        },
+        "Patient_Id": "23ST255",
+        "Patient_Name": null,
+        "Patient_Age": null,
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": null,
+        "Employed": false,
+        "Occupation": null,
+        "Address": null,
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c1f4e5d881d563aa142bf"
+        },
+        "Patient_Id": "23ST949",
+        "Patient_Name": "",
+        "Patient_Age": 20,
+        "Patient_Gender": "Male",
+        "Patient_Height": 160,
+        "Patient_Weight": 60,
+        "Patient_Contact_No": "",
+        "Employed": false,
+        "Occupation": "",
+        "Address": "",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647c21274f9fd3d4782a01b4"
+        },
+        "Patient_Id": "23ST581",
+        "Patient_Name": "",
+        "Patient_Age": 20,
+        "Patient_Gender": "Male",
+        "Patient_Height": 160,
+        "Patient_Weight": 60,
+        "Patient_Contact_No": "08697103665",
+        "Employed": false,
+        "Occupation": "",
+        "Address": "",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "647de97ebb8d466c5fb2a9ec"
+        },
+        "Patient_Id": "23ST986",
+        "Patient_Name": "Mr.Madhan",
+        "Patient_Age": "45",
+        "Patient_Gender": "Male",
+        "Patient_Height": "168",
+        "Patient_Weight": "72",
+        "Patient_Contact_No": "95663767777",
+        "Employed": true,
+        "Occupation": "physio",
+        "Address": "cheyyar",
+        "Assessment": [
+            {
+                "Date": "2023-06-05",
+                "Complaint": "back pain",
+                "Injury": "nil",
+                "DateOfInjury": "2005-05-05",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "no injury , pain in long sitting",
+                "RecievedTherapy": "no",
+                "DateofTherapy": null,
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "6",
+                "SurgicalHistory": "nil",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Sitting",
+                    "Prolonged Positioning",
+                    "Lying"
+                ],
+                "MakesConditionBetter": [
+                    "Lying"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NI;L",
+                "MedicalInformation": [
+                    "High Blood Pressure"
+                ],
+                "OtherInformation": "CANT ABLE TO TOLERATE MORE HEAT",
+                "Medications": "T.TELMA AM 40MG",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-06-05",
+                        "ReferrenceReason": "pain",
+                        "ReferredBy": "nil",
+                        "VitalSigns": {
+                            "BP": "140/80",
+                            "Temp": "nil",
+                            "SPO2": "nil",
+                            "RR": "nil",
+                            "OtherVitals": "nil"
+                        },
+                        "pastSA": "pain on long sitting",
+                        "presentSA": "same as it is",
+                        "medKCO": [
+                            "HT"
+                        ],
+                        "personal": [
+                            "Married"
+                        ],
+                        "stiffness": null,
+                        "duration": [
+                            "Years"
+                        ],
+                        "painAss": [
+                            "Chronic",
+                            "Gradual"
+                        ],
+                        "irritability": [
+                            "Sleep Disturbance"
+                        ],
+                        "nature": {
+                            "bones": [],
+                            "ligament": [
+                                {
+                                    "value": "Sharp",
+                                    "label": "Sharp"
+                                }
+                            ],
+                            "muscle": [
+                                {
+                                    "value": "Cramping",
+                                    "label": "Cramping"
+                                }
+                            ],
+                            "arterioles": [
+                                {
+                                    "value": "Diffuse",
+                                    "label": "Diffuse"
+                                }
+                            ],
+                            "visceral": [
+                                {
+                                    "value": "Referred",
+                                    "label": "Referred"
+                                }
+                            ],
+                            "neural": [
+                                {
+                                    "value": "Sharp",
+                                    "label": "Sharp"
+                                }
+                            ]
+                        },
+                        "observation": {
+                            "bodyBuilt": [
+                                {
+                                    "value": "Ectomorph",
+                                    "label": "Ectomorph"
+                                }
+                            ],
+                            "posture": [
+                                {
+                                    "value": "Typical",
+                                    "label": "Typical"
+                                }
+                            ],
+                            "cervical": [
+                                {
+                                    "value": "Chin Poke",
+                                    "label": "Chin Poke"
+                                }
+                            ],
+                            "lumbarSpine": [
+                                {
+                                    "value": "Scoliosis",
+                                    "label": "Scoliosis"
+                                }
+                            ],
+                            "scapula": [],
+                            "oedema": [
+                                {
+                                    "label": "NIL",
+                                    "value": "NIL",
+                                    "__isNew__": true
+                                }
+                            ],
+                            "muscleWasting": [
+                                {
+                                    "label": "NIL",
+                                    "value": "NIL",
+                                    "__isNew__": true
+                                }
+                            ],
+                            "attitudeOfLimb": [
+                                {
+                                    "label": "NIL",
+                                    "value": "NIL",
+                                    "__isNew__": true
+                                }
+                            ],
+                            "onPalpation": [
+                                {
+                                    "value": "Nodules",
+                                    "label": "Nodules"
+                                },
+                                {
+                                    "value": "Spasm",
+                                    "label": "Spasm"
+                                }
+                            ]
+                        },
+                        "examination": {
+                            "limbLength": [
+                                {
+                                    "label": "NORMAL",
+                                    "value": "NORMAL",
+                                    "__isNew__": true
+                                }
+                            ],
+                            "gait": [
+                                {
+                                    "value": "Others",
+                                    "label": "Others"
+                                },
+                                {
+                                    "label": "NORMAL",
+                                    "value": "NORMAL",
+                                    "__isNew__": true
+                                }
+                            ],
+                            "ROMExam": "NIL",
+                            "endFeel": [
+                                {
+                                    "label": "PAIN",
+                                    "value": "PAIN",
+                                    "__isNew__": true
+                                }
+                            ]
+                        },
+                        "sensoryExamination": {
+                            "grading": "S1",
+                            "dermatomes": null,
+                            "dtr": "5+",
+                            "jointPlayMovements": "NORMAL"
+                        },
+                        "funcQuestionnares": "SLR,FLEXION ON STANDING POSITIVE",
+                        "deformity": "NIL",
+                        "resistedIsometric": "NIL",
+                        "specialTest": "SLR POSITIVE\nFLEXION POSITIVE\n",
+                        "plan": "SWD + IFT FOR 10 DAYS"
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {
+                        "diagnosis": "MECHANICAL LOW BACK AKE",
+                        "reviewNext": "2023-06-27",
+                        "numberOfDays": "10",
+                        "contraindication": "NIL",
+                        "followUp": "ALTERNATE DAYS",
+                        "exercise": "PELVIC BRIDGING AND CORE EXERCISES",
+                        "exercisePrescription": "CORE STRENGTHINING AND CORE STABILITY"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": [
+                        {
+                            "Date": "2023-06-05",
+                            "PainScale": "6",
+                            "Comments": "NIL"
+                        }
+                    ]
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647ec05777c043f7fec2a9a9"
+        },
+        "Patient_Id": "23ST638",
+        "Patient_Name": "Saravanan",
+        "Patient_Age": "27",
+        "Patient_Gender": "Male",
+        "Patient_Height": "162",
+        "Patient_Weight": "66",
+        "Patient_Contact_No": "1234567892",
+        "Employed": true,
+        "Occupation": null,
+        "Address": "business",
+        "Assessment": [
+            {
+                "Date": "2023-06-06",
+                "Complaint": "back pain",
+                "Injury": "no",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": "no",
+                "RecievedTherapy": "no",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "no",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Standing",
+                    "teaching"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "zero pain",
+                "MedicalInformation": [],
+                "OtherInformation": "nil",
+                "Medications": "no",
+                "Allergies": "no",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647ec697dc319a287913c2fc"
+        },
+        "Patient_Id": "23ST320",
+        "Patient_Name": "MRS.HEMAVATHY",
+        "Patient_Age": "40",
+        "Patient_Gender": "Female",
+        "Patient_Height": "152",
+        "Patient_Weight": "60",
+        "Patient_Contact_No": "9791411996",
+        "Employed": true,
+        "Occupation": "PFRS",
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-05",
+                "Complaint": "NECK PAIN",
+                "Injury": "nil",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "ELECTRO",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "6",
+                "SurgicalHistory": "nil",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Sitting",
+                    "Prolonged Positioning"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "NIL"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "Diabetes"
+                ],
+                "OtherInformation": "VERTIGO",
+                "Medications": "DIABETIC MEDICINES",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": [
+                        {
+                            "Date": "2023-06-05",
+                            "PainScale": "6",
+                            "Comments": ""
+                        },
+                        {
+                            "Date": "2023-06-06",
+                            "PainScale": "5",
+                            "Comments": ""
+                        },
+                        {
+                            "Date": "2023-06-07",
+                            "PainScale": "4",
+                            "Comments": ""
+                        }
+                    ]
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            },
+            {
+                "Date": "2023-06-05",
+                "Complaint": "NECK PAIN",
+                "Injury": "nil",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "ELECTRO",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "6",
+                "SurgicalHistory": "nil",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Sitting",
+                    "Prolonged Positioning"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "NIL"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "Diabetes"
+                ],
+                "OtherInformation": "VERTIGO",
+                "Medications": "DIABETIC MEDICINES",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "647ee6b13ff83805e45e5294"
+        },
+        "Patient_Id": "23ST347",
+        "Patient_Name": "MRS.PAVITHRA",
+        "Patient_Age": "30",
+        "Patient_Gender": "Female",
+        "Patient_Height": "168",
+        "Patient_Weight": "77",
+        "Patient_Contact_No": "8807413990",
+        "Employed": true,
+        "Occupation": "CLINICAL COORDINATOR",
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-05",
+                "Complaint": "BACK PAIN",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "8",
+                "SurgicalHistory": "nil",
+                "ReferalDoctor": "DR.AZHAGU",
+                "MakesConditionWorse": [
+                    "Movement",
+                    "Sitting",
+                    "Prolonged Positioning"
+                ],
+                "MakesConditionBetter": [
+                    "Rest",
+                    "Walking"
+                ],
+                "MedicalIntervention": [
+                    "NIL"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "Diabetes"
+                ],
+                "OtherInformation": "IMPLANT",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "64801028ef4ccd35d5f4f813"
+        },
+        "Patient_Id": "23ST615",
+        "Patient_Name": "MR.GOPINATH",
+        "Patient_Age": "24",
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "8838414857",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "PERANAMALLUR",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "64801150ef4ccd35d5f4f814"
+        },
+        "Patient_Id": "23ST265",
+        "Patient_Name": "MRS.SURIYAKALA",
+        "Patient_Age": "50",
+        "Patient_Gender": "Female",
+        "Patient_Height": "",
+        "Patient_Weight": null,
+        "Patient_Contact_No": "8675422130",
+        "Employed": true,
+        "Occupation": "TEACHER",
+        "Address": "THIRUVATHIPURAM",
+        "Assessment": [
+            {
+                "Date": "2023-06-07",
+                "Complaint": "BACK PAIN",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": "DR.AZHAGU NADESAN",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Stairs"
+                ],
+                "MakesConditionBetter": [
+                    "Heat"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "NIL"
+                ],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {
+                    "LowBackAssessment": {
+                        "recentHistory": "PAIN IN LOW BACK",
+                        "pastHistory": "NO HISTORY OF PREVIOUS INJURY",
+                        "surgicalHistory": "NIL",
+                        "onsetDuration": "20 DAYS",
+                        "aggravatingFactor": "DURING ACTIVITIES",
+                        "relievingFactor": "AT REST",
+                        "radiatingPain": "YES",
+                        "built": "OBESE",
+                        "posture": "LORDOTIC ",
+                        "gait": "ANTALGIC",
+                        "inflammationSwelling": "NO",
+                        "muscleWasting": "NO",
+                        "compensatoryMovements": "YES. DURING WALK",
+                        "alignment": "ATYPICAL",
+                        "swelling": "NO",
+                        "tendernessWarmth": "YES",
+                        "forwardBending": "YES PAIN POSITIVE",
+                        "bendingToNormalPosition": "",
+                        "extension": "",
+                        "sideFlexion": "PAIN POSITIVE",
+                        "sideRotation": "PAIN POSITIVE",
+                        "straightLegRaise": "PAIN POSITIVE",
+                        "ehl": "BETTER",
+                        "lltt": "POSITIVE",
+                        "singleLimbStanding": "POSITIVE",
+                        "psis": "NIL",
+                        "spinalRotation": "NIL",
+                        "rotation": "NIL",
+                        "leftMusclePower": "NORMAL",
+                        "rightMusclePower": "NORMAL",
+                        "flexersExtensorsAbductors": "NORMAL",
+                        "adductors": "",
+                        "internalRotators": "",
+                        "externalRotators": "",
+                        "kneeFlexures": "",
+                        "kneeRotators": "",
+                        "kneeExtensors": "",
+                        "planterFlexures": "",
+                        "dorsiFlexures": "",
+                        "invertors": "",
+                        "evertors": "",
+                        "stairClimbing": "YES",
+                        "cycling": "",
+                        "walking": "",
+                        "squatting": "DIFFICULT",
+                        "ADL": "DIFFICULT",
+                        "investigation": "X-RAY"
+                    },
+                    "TreatmentPrescription": {
+                        "diagnosis": "SPONDYLOLISTHESIS",
+                        "reviewNext": "2023-06-09",
+                        "numberOfDays": "14",
+                        "contraindication": "AVOID EXTENTION",
+                        "followUp": "REVIEW 3 DAYS ONCE",
+                        "exercise": "NIL",
+                        "exercisePrescription": "NIL"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            },
+            {
+                "Date": "2023-05-29",
+                "Complaint": "BACK PAIN",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": "DR.AZHAGU NADESAN",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Worse in PM",
+                    "Worse In AM"
+                ],
+                "MakesConditionBetter": [
+                    "Medication"
+                ],
+                "MedicalIntervention": [
+                    "NIL",
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "648011dcbdee65c604f4f813"
+        },
+        "Patient_Id": "23ST901",
+        "Patient_Name": "MRS.M.PRIYA",
+        "Patient_Age": "39",
+        "Patient_Gender": "Female",
+        "Patient_Height": "155",
+        "Patient_Weight": "76",
+        "Patient_Contact_No": "8939711381",
+        "Employed": true,
+        "Occupation": "HOUSE WIFE",
+        "Address": "CHITATATHUR",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "6480124c5db6d3dd1ef4f813"
+        },
+        "Patient_Id": "23ST181",
+        "Patient_Name": "MRS.NUTHANA",
+        "Patient_Age": "55",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9994306819",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-07",
+                "Complaint": "NECK PAIN",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "8",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "N/A Cast Just Removed"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-06-07",
+                        "ReferrenceReason": null,
+                        "ReferredBy": "dr.baskar",
+                        "VitalSigns": {
+                            "BP": null,
+                            "Temp": null,
+                            "SPO2": null,
+                            "RR": null,
+                            "OtherVitals": null
+                        },
+                        "pastSA": "H/O NECK PAIN FOR PAST 2 MONTH",
+                        "presentSA": "C/O NECK PAIN ",
+                        "medKCO": [
+                            "DM"
+                        ],
+                        "personal": [
+                            "Married"
+                        ],
+                        "stiffness": null,
+                        "duration": [
+                            "Months"
+                        ],
+                        "painAss": [
+                            "Gradual"
+                        ],
+                        "irritability": [
+                            "Intermittent"
+                        ],
+                        "nature": {
+                            "bones": [
+                                {
+                                    "value": "Dull",
+                                    "label": "Dull"
+                                }
+                            ],
+                            "ligament": [],
+                            "muscle": [
+                                {
+                                    "value": "Cramping",
+                                    "label": "Cramping"
+                                }
+                            ],
+                            "arterioles": [],
+                            "visceral": [],
+                            "neural": []
+                        },
+                        "observation": {
+                            "bodyBuilt": [
+                                {
+                                    "value": "Mesomorph",
+                                    "label": "Mesomorph"
+                                }
+                            ],
+                            "posture": [],
+                            "cervical": [
+                                {
+                                    "value": "Mid Cervical Hinge (C4-C5)",
+                                    "label": "Mid Cervical Hinge (C4-C5)"
+                                }
+                            ],
+                            "lumbarSpine": [],
+                            "scapula": [],
+                            "oedema": [],
+                            "muscleWasting": [],
+                            "attitudeOfLimb": [],
+                            "onPalpation": [
+                                {
+                                    "value": "Warmth",
+                                    "label": "Warmth"
+                                },
+                                {
+                                    "value": "Spasm",
+                                    "label": "Spasm"
+                                }
+                            ]
+                        },
+                        "examination": {
+                            "limbLength": [],
+                            "gait": [],
+                            "ROMExam": "NECK FLEXORS AND EXTENSORS PAINFUL RESTRICTION.     MUSCLE POWER 4/5",
+                            "endFeel": [
+                                {
+                                    "value": "Soft Tissue",
+                                    "label": "Soft Tissue"
+                                }
+                            ]
+                        },
+                        "sensoryExamination": {
+                            "grading": null,
+                            "dermatomes": null,
+                            "dtr": null,
+                            "jointPlayMovements": null
+                        },
+                        "funcQuestionnares": null,
+                        "deformity": "nil",
+                        "resistedIsometric": "nil",
+                        "specialTest": "COMPRESSION TEST POSITIVE",
+                        "plan": null
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {
+                        "diagnosis": "CERVICAL SPONDYLOSIS WITH BRACHIAL NEURALGIA",
+                        "reviewNext": "2023-06-09",
+                        "numberOfDays": "10",
+                        "contraindication": "AVOID NECK  FLEXION AND EXTENSION",
+                        "followUp": "REVIEW 3 DAYS ONCE",
+                        "exercise": "ISOMETRIC NECK EXS AND STRUGGING EXERCISE",
+                        "exercisePrescription": "NECK ISOMETRIC EXS &STRUGGING EXS"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "64801e045db6d3dd1ef4f814"
+        },
+        "Patient_Id": "23ST804",
+        "Patient_Name": "MRS NEELEMA",
+        "Patient_Age": "41",
+        "Patient_Gender": "Female",
+        "Patient_Height": "5.21",
+        "Patient_Weight": "78",
+        "Patient_Contact_No": "9487233331",
+        "Employed": true,
+        "Occupation": "HOUSE WIFE",
+        "Address": "CHEYYAR",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "6480229bbdee65c604f4f814"
+        },
+        "Patient_Id": "23ST392",
+        "Patient_Name": "MR.DEVARAJ",
+        "Patient_Age": "61",
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": "70",
+        "Patient_Contact_No": "8870752334",
+        "Employed": true,
+        "Occupation": "FARMER",
+        "Address": "NALAM HOSPITAL",
+        "Assessment": [
+            {
+                "Date": "2023-06-07",
+                "Complaint": "kNEE & BACK PAIN",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "8",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": "NALAM HOSPITAL",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Prolonged Positioning",
+                    "Worse in PM"
+                ],
+                "MakesConditionBetter": [
+                    "Rest",
+                    "Medication"
+                ],
+                "MedicalIntervention": [
+                    "CatScan"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "64815f6356862b263dccd5d8"
+        },
+        "Patient_Id": "23ST635",
+        "Patient_Name": "MR.ELUMALAI",
+        "Patient_Age": "47",
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9345553890",
+        "Employed": false,
+        "Occupation": "DRIVER",
+        "Address": "ILANEER KUNDRAM",
+        "Assessment": [
+            {
+                "Date": "2023-06-08",
+                "Complaint": "C/O SHOULDER PAIN SINCE 20 DAYS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "7",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Worse in PM"
+                ],
+                "MakesConditionBetter": [],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "648160ad4b1d20f86cccd5d8"
+        },
+        "Patient_Id": "23ST217",
+        "Patient_Name": "MRS.ANBARASI",
+        "Patient_Age": "56",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9787907035",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-08",
+                "Complaint": "LT SIDE KNEE PAIN",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "8",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Sitting",
+                    "Bending"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "High Blood Pressure",
+                    "Diabetes"
+                ],
+                "OtherInformation": "NIL",
+                "Medications": "TAKING MEDICINES FOR BP & SUGAR",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "64817de94b1d20f86cccd5d9"
+        },
+        "Patient_Id": "23ST673",
+        "Patient_Name": "MR.MOHAMMED BUHARI",
+        "Patient_Age": "48",
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": null,
+        "Employed": true,
+        "Occupation": "PETTY SHOP",
+        "Address": "KUMBAKONAM",
+        "Assessment": [
+            {
+                "Date": "2023-06-08",
+                "Complaint": "C/O BACK PAIN SINCE 6 MONTHS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "7",
+                "SurgicalHistory": "Surgery done for cancer in 2019",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Worse in PM",
+                    "Sitting"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI",
+                    "CatScan"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "Diabetes"
+                ],
+                "OtherInformation": "NIL",
+                "Medications": "TAKING MEDICINES FOR SUGAR",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "648182394b1d20f86cccd5da"
+        },
+        "Patient_Id": "23ST546",
+        "Patient_Name": "MR.RAJAGOPAL",
+        "Patient_Age": "71",
+        "Patient_Gender": "Male",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9840309966",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-06",
+                "Complaint": "C/O SHOULDER PAIN SINCE 10 DAYS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "7",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Movement"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "Diabetes"
+                ],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6482b8ba53425114c2db1aeb"
+        },
+        "Patient_Id": "23ST368",
+        "Patient_Name": "MS.NIRMALA",
+        "Patient_Age": "34",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9500324501",
+        "Employed": true,
+        "Occupation": "BUSINESS",
+        "Address": "ANNA NAGAR, CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-09",
+                "Complaint": "C/O NECK PAIN SINCE 4 YEARS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "TAKEN PHYSIOTHERAPY FOR NECK ",
+                "DateofTherapy": "2019-03-01",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Prolonged Positioning",
+                    "Worse in PM"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6484613c201f41b2f4916363"
+        },
+        "Patient_Id": "23ST484",
+        "Patient_Name": "Ram Krishna",
+        "Patient_Age": "34",
+        "Patient_Gender": "Male",
+        "Patient_Height": "156",
+        "Patient_Weight": "67",
+        "Patient_Contact_No": "09030496717",
+        "Employed": true,
+        "Occupation": "Data Engineer",
+        "Address": "20-3-15R2, Tirupati",
+        "Assessment": [
+            {
+                "Date": "2023-06-10",
+                "Complaint": "Neck pain",
+                "Injury": "Yes ",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": "ad;lfkja",
+                "RecievedTherapy": "adfaldksj",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "asdfl;a",
+                "ReferalDoctor": "adslfkjas",
+                "MakesConditionWorse": [
+                    "Sitting",
+                    "Rising"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "CatScan"
+                ],
+                "GoalsAfterTreat": "adsf",
+                "MedicalInformation": [
+                    "Difficulty Swallowing"
+                ],
+                "OtherInformation": "adf",
+                "Medications": "adsf",
+                "Allergies": "asfa",
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-06-10",
+                        "ReferrenceReason": "None iuoghlijh",
+                        "ReferredBy": "adflkajds",
+                        "VitalSigns": {
+                            "BP": "adsf",
+                            "Temp": "adsf",
+                            "SPO2": "asdf",
+                            "RR": "adf",
+                            "OtherVitals": "adsf"
+                        },
+                        "pastSA": "adf",
+                        "presentSA": "adsfa",
+                        "medKCO": [
+                            "DM"
+                        ],
+                        "personal": [
+                            "Married"
+                        ],
+                        "stiffness": null,
+                        "duration": [
+                            "Months"
+                        ],
+                        "painAss": [
+                            "Insidious"
+                        ],
+                        "irritability": [
+                            "Intermittent"
+                        ],
+                        "nature": {
+                            "bones": [
+                                {
+                                    "value": "Nagging",
+                                    "label": "Nagging"
+                                }
+                            ],
+                            "ligament": [
+                                {
+                                    "value": "Stabbing",
+                                    "label": "Stabbing"
+                                }
+                            ],
+                            "muscle": [
+                                {
+                                    "value": "Aching",
+                                    "label": "Aching"
+                                }
+                            ],
+                            "arterioles": [
+                                {
+                                    "value": "Throbbing",
+                                    "label": "Throbbing"
+                                }
+                            ],
+                            "visceral": [
+                                {
+                                    "value": "Referred",
+                                    "label": "Referred"
+                                }
+                            ],
+                            "neural": [
+                                {
+                                    "value": "Lightening",
+                                    "label": "Lightening"
+                                }
+                            ]
+                        },
+                        "observation": {
+                            "bodyBuilt": [
+                                {
+                                    "value": "Mesomorph",
+                                    "label": "Mesomorph"
+                                }
+                            ],
+                            "posture": [
+                                {
+                                    "value": "Typical",
+                                    "label": "Typical"
+                                }
+                            ],
+                            "cervical": [
+                                {
+                                    "value": "Chin Poke",
+                                    "label": "Chin Poke"
+                                }
+                            ],
+                            "lumbarSpine": [
+                                {
+                                    "value": "Scoliosis",
+                                    "label": "Scoliosis"
+                                }
+                            ],
+                            "scapula": [
+                                {
+                                    "value": "Downward Rotated",
+                                    "label": "Downward Rotated"
+                                }
+                            ],
+                            "oedema": [
+                                {
+                                    "value": "Non-pitting",
+                                    "label": "Non-pitting"
+                                }
+                            ],
+                            "muscleWasting": [
+                                {
+                                    "value": "No",
+                                    "label": "No"
+                                }
+                            ],
+                            "attitudeOfLimb": [
+                                {
+                                    "value": "Scars",
+                                    "label": "Scars"
+                                }
+                            ],
+                            "onPalpation": [
+                                {
+                                    "value": "Crepitus",
+                                    "label": "Crepitus"
+                                }
+                            ]
+                        },
+                        "examination": {
+                            "limbLength": [
+                                {
+                                    "value": "True",
+                                    "label": "True"
+                                }
+                            ],
+                            "gait": [
+                                {
+                                    "value": "Trendelenburg",
+                                    "label": "Trendelenburg"
+                                }
+                            ],
+                            "ROMExam": "adfads",
+                            "endFeel": [
+                                {
+                                    "value": "Soft Tissue",
+                                    "label": "Soft Tissue"
+                                }
+                            ]
+                        },
+                        "sensoryExamination": {
+                            "grading": null,
+                            "dermatomes": "adsfa",
+                            "dtr": null,
+                            "jointPlayMovements": "asdf"
+                        },
+                        "funcQuestionnares": "asdfadf",
+                        "deformity": "asdfads",
+                        "resistedIsometric": "adsfad",
+                        "specialTest": "asdfa",
+                        "plan": "asdfa"
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {
+                        "diagnosis": "adsfads",
+                        "reviewNext": "2023-06-15",
+                        "numberOfDays": "2",
+                        "contraindication": "asdfad",
+                        "followUp": "adfa",
+                        "exercise": "adsfadsf",
+                        "exercisePrescription": "adsfads"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": [
+                        {
+                            "Date": "2023-06-11",
+                            "PainScale": "9",
+                            "Comments": "Heavy Pain"
+                        },
+                        {
+                            "Date": "2023-06-12",
+                            "PainScale": "8",
+                            "Comments": "Pain is reducing"
+                        },
+                        {
+                            "Date": "2023-06-13",
+                            "PainScale": "5",
+                            "Comments": "good"
+                        },
+                        {
+                            "Date": "2023-06-14",
+                            "PainScale": "7",
+                            "Comments": "Heavy Pain"
+                        }
+                    ]
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6484629d2af339928c916363"
+        },
+        "Patient_Id": "23ST165",
+        "Patient_Name": "James Jack",
+        "Patient_Age": "45",
+        "Patient_Gender": "Male",
+        "Patient_Height": "178",
+        "Patient_Weight": "34",
+        "Patient_Contact_No": "84563454",
+        "Employed": true,
+        "Occupation": "Tifac Intern",
+        "Address": "20-3-15R2, Tirupati",
+        "Assessment": [
+            {
+                "Date": "2023-06-10",
+                "Complaint": "Back pain",
+                "Injury": "yes",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": "Yes there is",
+                "RecievedTherapy": "NOne",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "10",
+                "SurgicalHistory": "yes",
+                "ReferalDoctor": "Dr. Reddy",
+                "MakesConditionWorse": [
+                    "Prolonged Positioning",
+                    "Sitting",
+                    "Movement",
+                    "Worse as day progresses"
+                ],
+                "MakesConditionBetter": [
+                    "Sitting"
+                ],
+                "MedicalIntervention": [
+                    "Injections"
+                ],
+                "GoalsAfterTreat": "get relief of head pain",
+                "MedicalInformation": [
+                    "Arthritis"
+                ],
+                "OtherInformation": "NA",
+                "Medications": "crocin",
+                "Allergies": "Dust ",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6486a6581d905164b763d7bf"
+        },
+        "Patient_Id": "23ST885",
+        "Patient_Name": "MRS.KANTHA",
+        "Patient_Age": "45",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9787477791",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "VEMBAKKAM",
+        "Assessment": [
+            {
+                "Date": "2023-06-12",
+                "Complaint": "C/O BACK PAIN SINCE 2 DAYS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Sitting",
+                    "Walking"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": [
+                        {
+                            "Date": "2023-06-13",
+                            "PainScale": "5",
+                            "Comments": "sdfghjkl"
+                        },
+                        {
+                            "Date": "2023-06-14",
+                            "PainScale": "7",
+                            "Comments": ""
+                        },
+                        {
+                            "Date": "2023-06-15",
+                            "PainScale": "4",
+                            "Comments": ""
+                        }
+                    ]
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6486a79c1fe65b3cdd63d7bf"
+        },
+        "Patient_Id": "23ST873",
+        "Patient_Name": "MRS.VALLI",
+        "Patient_Age": "42",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "9788019947",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "THENKALANI",
+        "Assessment": [
+            {
+                "Date": "2023-06-12",
+                "Complaint": "C/O BACK PAIN SINCE 1 MONTH",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "8",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Walking",
+                    "Movement"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "NIL"
+                ],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6487fcd3847e625ee57ae1d0"
+        },
+        "Patient_Id": "23ST927",
+        "Patient_Name": "MRS.GIRIJA",
+        "Patient_Age": "57",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": "8056053098",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "MORANAM",
+        "Assessment": [
+            {
+                "Date": "2023-06-13",
+                "Complaint": "C/O RT KNEE PAIN SINCE 4 MONTHS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "8",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": "DR.ANANDAN",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Rising",
+                    "Walking",
+                    "Movement"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [
+                    "High Blood Pressure"
+                ],
+                "OtherInformation": "NIL",
+                "Medications": "Taking Tablets for BP",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6487fe315b124f17c27ae1d0"
+        },
+        "Patient_Id": "23ST700",
+        "Patient_Name": "MRS.ANNAMMAL",
+        "Patient_Age": "48",
+        "Patient_Gender": "Female",
+        "Patient_Height": null,
+        "Patient_Weight": null,
+        "Patient_Contact_No": null,
+        "Employed": false,
+        "Occupation": null,
+        "Address": "THUMBAI",
+        "Assessment": []
+    },
+    {
+        "_id": {
+            "$oid": "6487fe325b124f17c27ae1d1"
+        },
+        "Patient_Id": "23ST575",
+        "Patient_Name": "MRS.ANNAMMAL",
+        "Patient_Age": "48",
+        "Patient_Gender": "Female",
+        "Patient_Height": "160",
+        "Patient_Weight": "75",
+        "Patient_Contact_No": "12364987",
+        "Employed": false,
+        "Occupation": null,
+        "Address": "THUMBAI",
+        "Assessment": [
+            {
+                "Date": "2023-06-13",
+                "Complaint": "C/O RT SHOULDER PAIN SINCE 6 MONTHS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": "DR.SURESH",
+                "MakesConditionWorse": [
+                    "Rising",
+                    "Movement"
+                ],
+                "MakesConditionBetter": [
+                    "Rest",
+                    "Heat"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6489e496da64a0a546d629cc"
+        },
+        "Patient_Id": "23ST233",
+        "Patient_Name": "Rosy",
+        "Patient_Age": "24",
+        "Patient_Gender": "Male",
+        "Patient_Height": "24",
+        "Patient_Weight": "234",
+        "Patient_Contact_No": "3423",
+        "Employed": true,
+        "Occupation": null,
+        "Address": "werqwefewf",
+        "Assessment": [
+            {
+                "Date": "2023-06-14",
+                "Complaint": "Blab",
+                "Injury": "hed",
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": "adfa",
+                "RecievedTherapy": "asdfads",
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": "adf",
+                "ReferalDoctor": "adsfa",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Prolonged Positioning",
+                    "Movement",
+                    "Walking"
+                ],
+                "MakesConditionBetter": [
+                    "Rising",
+                    "Standing",
+                    "Walking"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI",
+                    "CatScan"
+                ],
+                "GoalsAfterTreat": "adsfads",
+                "MedicalInformation": [
+                    "Arthritis",
+                    "Heart Trouble",
+                    "Epilepsy/Seizures",
+                    "Pacemaker"
+                ],
+                "OtherInformation": "asdfads",
+                "Medications": "asdfasd",
+                "Allergies": "asdfads",
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "DateOfAssessment": "2023-06-14",
+                        "ReferrenceReason": "Yes there is",
+                        "ReferredBy": null,
+                        "VitalSigns": {
+                            "BP": null,
+                            "Temp": null,
+                            "SPO2": null,
+                            "RR": null,
+                            "OtherVitals": null
+                        },
+                        "pastSA": null,
+                        "presentSA": null,
+                        "medKCO": [],
+                        "personal": [],
+                        "stiffness": null,
+                        "duration": [],
+                        "painAss": [],
+                        "irritability": [],
+                        "nature": {
+                            "bones": [],
+                            "ligament": [],
+                            "muscle": [],
+                            "arterioles": [],
+                            "visceral": [],
+                            "neural": []
+                        },
+                        "observation": {
+                            "bodyBuilt": [],
+                            "posture": [],
+                            "cervical": [],
+                            "lumbarSpine": [],
+                            "scapula": [],
+                            "oedema": [],
+                            "muscleWasting": [],
+                            "attitudeOfLimb": [],
+                            "onPalpation": []
+                        },
+                        "examination": {
+                            "limbLength": [],
+                            "gait": [],
+                            "ROMExam": null,
+                            "endFeel": []
+                        },
+                        "sensoryExamination": {
+                            "grading": null,
+                            "dermatomes": null,
+                            "dtr": null,
+                            "jointPlayMovements": null
+                        },
+                        "funcQuestionnares": null,
+                        "deformity": null,
+                        "resistedIsometric": null,
+                        "specialTest": null,
+                        "plan": null
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {
+                        "PastHistory": "",
+                        "SurgicalHistory": "",
+                        "PainHistory": "",
+                        "Onset": "",
+                        "Duration": "",
+                        "AggravatingFactor": "",
+                        "RelievingFactor": "",
+                        "RadiatingPain": "",
+                        "VAS": 2,
+                        "OnObservation": "",
+                        "BodyBuilt": "",
+                        "Posture": "",
+                        "Gait": "",
+                        "Swelling": "yhrtgerwe",
+                        "Inflammation": "",
+                        "Deformity": "",
+                        "ValgusKnee": "qwert",
+                        "VarusKnee": "qrh",
+                        "OnPalpation": "uyfwedq",
+                        "Tenderness": "",
+                        "Warmth": "",
+                        "OnExamination": "",
+                        "Musclepower": {
+                            "Flexors": {
+                                "Right": "",
+                                "Left": ""
+                            },
+                            "Extensors": {
+                                "Right": "",
+                                "Left": ""
+                            }
+                        },
+                        "RangeOfMotion": {
+                            "Flexors": {
+                                "Right": "",
+                                "Left": ""
+                            },
+                            "Extensors": {
+                                "Right": "",
+                                "Left": ""
+                            }
+                        },
+                        "FunctionalAssessment": {
+                            "StairClimbing": "",
+                            "Cycling": "",
+                            "Walking": "",
+                            "Squatting": "",
+                            "Others": ""
+                        },
+                        "SpecialTest": {
+                            "VarusTest": "",
+                            "ACQTest": "",
+                            "SmallKneeBend": "",
+                            "KneeToWall": "",
+                            "ProneLyingKneeFlexingTest": "",
+                            "PatellaTapTest": ""
+                        },
+                        "LimbLengthDiscrepancy": "",
+                        "FootAngulations": "",
+                        "MedialDeviation": "",
+                        "LateralDeviation": "",
+                        "AdductorTightness": "",
+                        "ITBandTightness": "",
+                        "Investigation": {
+                            "XRay": "",
+                            "MRI": "",
+                            "CTScan": "",
+                            "Other": ""
+                        },
+                        "Diagnosis": ""
+                    },
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {}
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "648c7a81b0eb7f12ace13696"
+        },
+        "Patient_Id": "23ST298",
+        "Patient_Name": "S S Roy",
+        "Patient_Age": "25",
+        "Patient_Gender": "Male",
+        "Patient_Height": "165",
+        "Patient_Weight": 60,
+        "Patient_Contact_No": "123789456",
+        "Employed": true,
+        "Occupation": "SDE",
+        "Address": "opposite lane of Golfgreen Police Station",
+        "Assessment": [
+            {
+                "Date": "2023-06-16",
+                "Complaint": "qwertyuiop",
+                "Injury": null,
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": null,
+                "RecievedTherapy": null,
+                "DateofTherapy": null,
+                "CurrentCondition": "📈 Better",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "9",
+                "SurgicalHistory": null,
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Sitting"
+                ],
+                "MakesConditionBetter": [
+                    "Bending"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI",
+                    "CatScan"
+                ],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [
+                    "Difficulty Swallowing",
+                    "High Blood Pressure"
+                ],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "648d3f09359509a6e7f71bf8"
+        },
+        "Patient_Id": "23ST249",
+        "Patient_Name": "MR.SELVAN",
+        "Patient_Age": "54",
+        "Patient_Gender": "Male",
+        "Patient_Height": "",
+        "Patient_Weight": "",
+        "Patient_Contact_No": "9865071606",
+        "Employed": true,
+        "Occupation": "LIC Agent",
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-17",
+                "Complaint": "C/O BACK PAIN SINCE 6 MONTHS",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "7",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {
+                    "LowBackAssessment": {
+                        "recentHistory": "PAIN IN LOW BACK",
+                        "pastHistory": "NO HISTORY OF PREVIOUS INJURY",
+                        "surgicalHistory": "NIL",
+                        "onsetDuration": "6MONTH",
+                        "aggravatingFactor": "BENDING ACTIVITIES",
+                        "relievingFactor": "AT REST",
+                        "radiatingPain": "NIL",
+                        "built": "NORMAL",
+                        "posture": "NORMAL",
+                        "gait": "NORMAL",
+                        "inflammationSwelling": "NO",
+                        "muscleWasting": "NO",
+                        "compensatoryMovements": "NO",
+                        "alignment": "NORMAL",
+                        "swelling": "NO",
+                        "tendernessWarmth": "YES",
+                        "forwardBending": "YES PAIN POSITIVE",
+                        "bendingToNormalPosition": "",
+                        "extension": "",
+                        "sideFlexion": "NO PAIN",
+                        "sideRotation": "NO PAIN",
+                        "straightLegRaise": "NEGATIVE",
+                        "ehl": "NEGATIVE",
+                        "lltt": "NEGATIVE",
+                        "singleLimbStanding": "NEGATIVE",
+                        "psis": "NIL",
+                        "spinalRotation": "NIL",
+                        "rotation": "NIL",
+                        "leftMusclePower": "NORMAL",
+                        "rightMusclePower": "",
+                        "flexersExtensorsAbductors": "",
+                        "adductors": "",
+                        "internalRotators": "",
+                        "externalRotators": "",
+                        "kneeFlexures": "",
+                        "kneeRotators": "",
+                        "kneeExtensors": "",
+                        "planterFlexures": "",
+                        "dorsiFlexures": "",
+                        "invertors": "",
+                        "evertors": "",
+                        "stairClimbing": "",
+                        "cycling": "",
+                        "walking": "",
+                        "squatting": "",
+                        "ADL": "",
+                        "investigation": ""
+                    },
+                    "TreatmentPrescription": {
+                        "diagnosis": "LOW BACK ACHE",
+                        "reviewNext": "2023-06-16",
+                        "numberOfDays": "5",
+                        "contraindication": "AVOID BENDING ACTIVITIES",
+                        "followUp": "REVIEW 3 DAYS ONCE",
+                        "exercise": "NIL",
+                        "exercisePrescription": "NIL"
+                    }
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6493cad98672b2a5bf538ae3"
+        },
+        "Patient_Id": "23ST998",
+        "Patient_Name": "roobini",
+        "Patient_Age": "25",
+        "Patient_Gender": "Female",
+        "Patient_Height": 160,
+        "Patient_Weight": 60,
+        "Patient_Contact_No": "6374453794",
+        "Employed": true,
+        "Occupation": "selfemployed",
+        "Address": "cheyyar",
+        "Assessment": [
+            {
+                "Date": "2023-06-22",
+                "Complaint": "c/o neck pain since 6 months",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "nil",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "📈 Better",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "5",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Worse as day progresses",
+                    "Prolonged Positioning"
+                ],
+                "MakesConditionBetter": [
+                    "Rest"
+                ],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": "NIL",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6493ce8061e6010f8e538ae3"
+        },
+        "Patient_Id": "23ST834",
+        "Patient_Name": "MR.THIRU",
+        "Patient_Age": "26",
+        "Patient_Gender": "Male",
+        "Patient_Height": "180",
+        "Patient_Weight": "80",
+        "Patient_Contact_No": "9391495459",
+        "Employed": false,
+        "Occupation": "",
+        "Address": "CHEYYAR",
+        "Assessment": [
+            {
+                "Date": "2023-06-22",
+                "Complaint": "C/O Back pain since one year",
+                "Injury": "NIL",
+                "DateOfInjury": "",
+                "DateOfSurgery": "",
+                "DecriptionOfInjury": "NIL",
+                "RecievedTherapy": "NIL",
+                "DateofTherapy": "",
+                "CurrentCondition": "🟥 Same",
+                "CurrentStatusSymptoms": "Intermittent",
+                "AtWorstPain": "7",
+                "SurgicalHistory": "NIL",
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [
+                    "Prolonged Positioning"
+                ],
+                "MakesConditionBetter": [
+                    "Lying"
+                ],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": "i won completly alright from my pain",
+                "MedicalInformation": [],
+                "OtherInformation": "NIL",
+                "Medications": "NIL",
+                "Allergies": "NIL",
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            },
+            {
+                "Date": "",
+                "Complaint": null,
+                "Injury": null,
+                "DateOfInjury": null,
+                "DateOfSurgery": null,
+                "DecriptionOfInjury": null,
+                "RecievedTherapy": null,
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": 5,
+                "SurgicalHistory": null,
+                "ReferalDoctor": null,
+                "MakesConditionWorse": [],
+                "MakesConditionBetter": [],
+                "MedicalIntervention": [],
+                "GoalsAfterTreat": null,
+                "MedicalInformation": [],
+                "OtherInformation": null,
+                "Medications": null,
+                "Allergies": null,
+                "SeniorDoctorPrescription": {},
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6496864d85990d44e8b7f732"
+        },
+        "Patient_Id": "23ST855",
+        "Patient_Name": "Test Patient 24 June",
+        "Patient_Age": "55",
+        "Patient_Gender": "Male",
+        "Patient_Height": 160,
+        "Patient_Weight": 60,
+        "Patient_Contact_No": "451321987",
+        "Employed": true,
+        "Occupation": "Engineer",
+        "Address": "VIT, TN, India",
+        "Assessment": [
+            {
+                "Date": "2023-06-24",
+                "Complaint": "qertyuoplkjhgazxcvbnm,asdfghjklzxcvbnmasdfghjklqwertyuiopasdfghjklzxcvbnmasdfghjklqwertyuiop",
+                "Injury": "Concussion in head",
+                "DateOfInjury": "2023-06-02",
+                "DateOfSurgery": "2023-06-09",
+                "DecriptionOfInjury": "While playing chess",
+                "RecievedTherapy": null,
+                "DateofTherapy": null,
+                "CurrentCondition": "Worse",
+                "CurrentStatusSymptoms": "Constant",
+                "AtWorstPain": "9",
+                "SurgicalHistory": " sd sdsd",
+                "ReferalDoctor": "bebtebt",
+                "MakesConditionWorse": [
+                    "Bending",
+                    "Prolonged Positioning",
+                    "Movement"
+                ],
+                "MakesConditionBetter": [
+                    "Sitting",
+                    "Lying",
+                    "Heat"
+                ],
+                "MedicalIntervention": [
+                    "X Ray MRI"
+                ],
+                "GoalsAfterTreat": "Get Better",
+                "MedicalInformation": [
+                    "Unexplainable Weight Loss",
+                    "Diabetes"
+                ],
+                "OtherInformation": "evrev",
+                "Medications": "cwecwe",
+                "Allergies": " v vevv",
+                "SeniorDoctorPrescription": {
+                    "GeneralAssessment": {
+                        "Date": "2023-06-24",
+                        "ReferrenceReason": "qerty",
+                        "ReferredBy": "cwecwec",
+                        "VitalSigns": {
+                            "BP": "cwecwe",
+                            "Temp": "cwec",
+                            "SPO2": "wecwe",
+                            "RR": "cwec",
+                            "OtherVitals": "wecwec"
+                        },
+                        "pastSA": "wecwe",
+                        "presentSA": "wecwec",
+                        "medKCO": [
+                            "HT"
+                        ],
+                        "personal": [
+                            "Married"
+                        ],
+                        "stiffness": "No",
+                        "duration": [
+                            "Years"
+                        ],
+                        "painAss": [
+                            "Traumatic"
+                        ],
+                        "irritability": [
+                            "Intermittent"
+                        ],
+                        "nature": {
+                            "bones": [
+                                {
+                                    "value": "Deep",
+                                    "label": "Deep"
+                                }
+                            ],
+                            "ligament": [
+                                {
+                                    "value": "Stabbing",
+                                    "label": "Stabbing"
+                                }
+                            ],
+                            "muscle": [
+                                {
+                                    "value": "Aching",
+                                    "label": "Aching"
+                                }
+                            ],
+                            "arterioles": [
+                                {
+                                    "value": "Throbbing",
+                                    "label": "Throbbing"
+                                }
+                            ],
+                            "visceral": [
+                                {
+                                    "value": "Referred",
+                                    "label": "Referred"
+                                }
+                            ],
+                            "neural": [
+                                {
+                                    "value": "Shooting",
+                                    "label": "Shooting"
+                                }
+                            ]
+                        },
+                        "observation": {
+                            "bodyBuilt": [
+                                {
+                                    "value": "Mesomorph",
+                                    "label": "Mesomorph"
+                                }
+                            ],
+                            "posture": [
+                                {
+                                    "value": "Handedness",
+                                    "label": "Handedness"
+                                }
+                            ],
+                            "cervical": [
+                                {
+                                    "value": "Chin Poke",
+                                    "label": "Chin Poke"
+                                }
+                            ],
+                            "lumbarSpine": [
+                                {
+                                    "value": "Scoliosis",
+                                    "label": "Scoliosis"
+                                }
+                            ],
+                            "scapula": [
+                                {
+                                    "value": "Downward Rotated",
+                                    "label": "Downward Rotated"
+                                }
+                            ],
+                            "oedema": [
+                                {
+                                    "value": "Non-pitting",
+                                    "label": "Non-pitting"
+                                }
+                            ],
+                            "muscleWasting": [
+                                {
+                                    "value": "Yes",
+                                    "label": "Yes"
+                                }
+                            ],
+                            "attitudeOfLimb": [
+                                {
+                                    "value": "Wound",
+                                    "label": "Wound"
+                                }
+                            ],
+                            "onPalpation": [
+                                {
+                                    "value": "Crepitus",
+                                    "label": "Crepitus"
+                                }
+                            ]
+                        },
+                        "examination": {
+                            "limbLength": [
+                                {
+                                    "value": "True",
+                                    "label": "True"
+                                }
+                            ],
+                            "gait": [
+                                {
+                                    "value": "Antalgic",
+                                    "label": "Antalgic"
+                                }
+                            ],
+                            "ROMExam": "dvvevrev",
+                            "endFeel": [
+                                {
+                                    "value": "Bony/Hard",
+                                    "label": "Bony/Hard"
+                                }
+                            ]
+                        },
+                        "sensoryExamination": {
+                            "grading": "S2",
+                            "dermatomes": "revrev",
+                            "dtr": "9+",
+                            "jointPlayMovements": "vervrevrev"
+                        },
+                        "funcQuestionnares": "vervrevre",
+                        "deformity": "erve",
+                        "resistedIsometric": "rverver",
+                        "specialTest": "verve",
+                        "plan": "rvrevrev"
+                    },
+                    "ShoulderAssessment": {},
+                    "KneeAssessment": {},
+                    "BalanceAssessment": {},
+                    "LowBackAssessment": {},
+                    "PARQPlusAssessment": {},
+                    "FMSAssessment": {},
+                    "TreatmentPrescription": {}
+                },
+                "JuniorDoctorPrescription": {
+                    "DayWise": []
+                },
+                "TrainerPrescription": {},
+                "Feedback": {},
+                "SeniorWrittenPres": false,
+                "SeniorWrittenAsses": false
+            }
+        ]
+    }
+]
