@@ -12,6 +12,7 @@ from pymongo.mongo_client import MongoClient
 import joblib
 import random as rd
 import datetime
+from loguru import logger
 
 from datetime import date
 
@@ -47,15 +48,13 @@ async def loginCheck(info : Request):
     
     req_info = await info.json()
     req_info = dict(req_info)
-    print(req_info)
+    logger.info("recieved login info")
 
     Result = (LoginDatabase.find_one(req_info))
 
-    print(Result)
 
     if Result != None:
         Result = dict(Result)
-        print(Result)
         if req_info['userName'] == Result['userName'] and req_info['password'] == Result['password'] and req_info['userType'] == Result['userType']:
             return {
                 "Status" : True
@@ -79,9 +78,9 @@ async def loginCheck(info : Request):
 @app.post("/newPatient")
 async def NewPatient(info : Request):
 
-    print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
+    logger.info("recieved new patient details")
 
     CurrentData = {
                 "Patient_Id" : "23" + "ST" + str(rd.randint(100,1000)),
@@ -98,12 +97,7 @@ async def NewPatient(info : Request):
             }
     
     
-    print(CurrentData)
-    ReturnObj = dict(CurrentData)
-
-
-    ConnectData = Data['Test']['Test']
-    
+    ReturnObj = dict(CurrentData)    
     Check = PatientData.insert_one(CurrentData)
 
     if Check.acknowledged == True:
@@ -119,7 +113,7 @@ async def addBasicAssessment(info : Request):
     # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
-    print(req_info)
+    logger.info("recieved basic assesment")
 
     SearchKey = req_info['Patient_Id']
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
@@ -135,19 +129,19 @@ async def addBasicAssessment(info : Request):
         # --- MakesConditionWorse Pre-Processing ------- #
         
         MakesConditionWorse = [i['value'] for i in req_info['Assessment']['MakesConditionWorse']]
-        print(MakesConditionWorse)
+        # print(MakesConditionWorse)
         req_info['Assessment']['MakesConditionWorse'] = MakesConditionWorse
 
         MakesConditionBetter = [i['value'] for i in req_info['Assessment']['MakesConditionBetter']]
-        print(MakesConditionBetter)
+        # print(MakesConditionBetter)
         req_info['Assessment']['MakesConditionBetter'] = MakesConditionBetter
 
         MedicalInformation = [i['value'] for i in req_info['Assessment']['MedicalInformation']]
-        print(MedicalInformation)
+        # print(MedicalInformation)
         req_info['Assessment']['MedicalInformation'] = MedicalInformation
 
         MedicalIntervention = [i['value'] for i in req_info['Assessment']['MedicalIntervention']]
-        print(MedicalIntervention)
+        # print(MedicalIntervention)
         req_info['Assessment']['MedicalIntervention'] = MedicalIntervention
 
         UpdateDict = req_info['Assessment']
@@ -176,7 +170,7 @@ async def addBasicAssessment(info : Request):
 @app.post("/viewPatient")
 async def viewPatient(info : Request):
 
-    print(await info.body())
+    # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
@@ -193,7 +187,6 @@ async def viewPatient(info : Request):
 @app.get("/allPatients")
 async def allPatients():
     Find = PatientData.find({})
-    print("Hello")
     if Find == None:
         return {"Status" : "Patient Not Found"}
     else:
@@ -221,7 +214,7 @@ async def allPatients():
 @app.post("/updatePatient")
 async def updatePatient(info : Request):
 
-    print(await info.body())
+    # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
@@ -258,11 +251,11 @@ async def updatePatient(info : Request):
 @app.post("/patientFeedback")
 async def patientFeedback(info : Request):
 
-    print(await info.body())
+    # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
 
-    print(req_info)
+    # print(req_info)
 
     SearchKey = req_info['Patient_Id']
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
@@ -312,11 +305,11 @@ async def allPatientsTodayCount():
     for Data in Results:
         for i in Data['Assessment']:
             if i['Date'] == str(datetime.date.today()) and i['SeniorWrittenPres'] == False:
-                print("Happy")
+                # print("Happy")
                 del Data['_id']
                 Data['LastAssessment'] = i
                 DatedPatients.append(Data)
-                print(Data)
+                # print(Data)
                 break
     
 
@@ -337,7 +330,7 @@ async def allPatientsToday():
     for Data in Results:
         for i in Data['Assessment']:
             if i['Date'] == str(datetime.date.today()) and i['SeniorWrittenPres'] == False:
-                print("Happy")
+                # print("Happy")
                 del Data['_id']
                 Data['LastAssessment'] = i
                 Data['Status'] = None
