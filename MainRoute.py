@@ -682,6 +682,7 @@ async def GetGeneralAssessment(info : Request):
                 return ResultSend
     return {"Status" : "Not Found"}
 
+## getting details
 
 @app.post("/GetShoulderAssessment")
 async def GetShoulderAssessment(info : Request):
