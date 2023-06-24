@@ -669,11 +669,15 @@ async def GetGeneralAssessment(info : Request):
     else:
         Find = dict(Find)
         Assessment = Find['Assessment']
-        for i in Assessment:
-            if i['Date'] == req_info['Date']:
-                ResultSend = i['SeniorDoctorPrescription']['GeneralAssessment']
-                return ResultSend
-    return {"Status" : "Not Found"}
+        try:
+            for i in Assessment:
+                if i['Date'] == req_info['Date']:
+                    ResultSend = i['SeniorDoctorPrescription']['GeneralAssessment']
+                    return ResultSend
+        except:
+            return {"Status" : "Not Found"}
+     
+    
 
 ## getting details
 
