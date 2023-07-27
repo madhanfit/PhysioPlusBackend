@@ -7,3 +7,4 @@ pymongo==4.3.3
 loguru==0.7.0
 plotly
 reportlab
+kaleido
