@@ -7,12 +7,15 @@ import pandas as pd
 from fastapi import FastAPI, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
 import json
+from fastapi.responses import FileResponse
 from fastapi.encoders import jsonable_encoder
 from pymongo.mongo_client import MongoClient
 import joblib
+from fastapi import Response, BackgroundTasks
 import random as rd
 import datetime
 from loguru import logger
+import reportgenerator
 
 from datetime import date
 
@@ -23,6 +26,8 @@ Data = MongoClient(Key_Mongo_Cloud)
 PatientData = Data['Test']['Test']
 LoginDatabase = Data['Test']['LoginCred']
 ReviewData = Data['Test']['Reviews']
+ReHab = Data['Test']['Re-Hab']
+
 
 app = FastAPI()
 
@@ -84,7 +89,7 @@ async def loginCheck(info : Request):
 
 
 
-# -------------------- Receptionist Routes -------
+# -------------------- Receptionist Routes ------- ###################### 
 
 @app.post("/newPatient")
 async def NewPatient(info : Request):
@@ -257,7 +262,25 @@ async def updatePatient(info : Request):
         
 
 
-        return Result
+
+@app.post("/GetDischargeSummary")
+async def GetDischargeSummary(info : Request):
+
+    # print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    
+    return FileResponse("hospital_report.pdf")
+    
+
+    
+
+
     
 @app.post("/patientFeedback")
 async def patientFeedback(info : Request):
@@ -1052,8 +1075,126 @@ async def RaiseReview(info : Request):
     if Check.acknowledged == True:
         return {"Status" : "successful"}
     else:
-        return {"Status" :  "no successful"}
+        return {"Status" :  "not successful"}
     
 
+
+##################### ------------ All Trainer / Re-Hab Routes ----------------------- ################
+
+
+
+@app.post("/trainer/AddPatientBasic")
+async def AddPatientBasic(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+
+    print(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found" }
+    
+    req_info['ExerciseSchedule'] = []
+    req_info['ExerciseTracking'] = []
+    
+    Check = ReHab.insert_one(req_info)
+
+    if Check.acknowledged == True:
+        return {"Status" : "successful"}
+    else:
+        return {"Status" :  "not successful"}
+
+
+@app.post("/trainer/PARQ_Assessment")
+async def PARQ_Assessment(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+
+    print(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found in Re-Hab" }
+    
+    myquery = { "Patient_Id": SearchKey }
+    del req_info['Patient_Id']
+    newvalues = { "$set": { "PARQ_Assessment": req_info } }
+    ReHab.update_one(myquery, newvalues)
+    return {"Satus" : "Successfully"}
+    
+
+    
+@app.post("/trainer/AddExerciseSchedule")
+async def ExerciseSchedule(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found in Re-Hab" }
+    
+    myquery = { "Patient_Id": SearchKey }
+    del req_info['Patient_Id']
+    newvalues = { "$set": { "ExerciseSchedule": req_info['ExerciseSchedule'] } }
+    ReHab.update_one(myquery, newvalues)
+    return {"Satus" : "Successfully"}
+
+
+@app.post("/trainer/ViewExerciseSchedule")
+async def ViewExerciseSchedule(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found in Re-Hab" }
+    else:
+        Find = dict(Find)
+        return Find['ExerciseSchedule']
+    
+
+@app.post("/trainer/AddExerciseTracking")
+async def ExerciseTracking(info : Request):
+
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found in Re-Hab" }
+    
+    myquery = { "Patient_Id": SearchKey }
+    del req_info['Patient_Id']
+    newvalues = { "$set": { "ExerciseTracking": req_info['ExerciseTracking'] } }
+    ReHab.update_one(myquery, newvalues)
+    return {"Satus" : "Successfully"}
+
+
+@app.post("/trainer/ViewExerciseTracking")
+async def ViewExerciseTracking(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found in Re-Hab" }
+    else:
+        Find = dict(Find)
+        return Find['ExerciseTracking']
+    
 
 
