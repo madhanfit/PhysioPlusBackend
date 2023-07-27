@@ -1202,4 +1202,22 @@ async def ViewExerciseTracking(info : Request):
         return Find['ExerciseTracking']
     
 
+@app.post("/trainer/ViewRehabView")
+async def ViewRehabView(info : Request):
+    print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    if Find == None:
+        return {"Status" : "Patient Not Found in Re-Hab" }
+    else:
+        Find = dict(Find)
+        del Find['_id']
+        return Find
+    
+
+
+
 
