@@ -16,6 +16,7 @@ import random as rd
 import datetime
 from loguru import logger
 import reportgenerator
+from reportgenerator import create_pdf
 
 from datetime import date
 
@@ -305,7 +306,30 @@ async def GetDischargeSummary(info : Request):
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
     if Find == None:
         return {"Status" : "Patient Not Found" }
-    
+    name = Find['Patient_Name']
+    age = Find['Patient_Age']
+    gender = Find['Patient_Gender']
+    Date = req_info['DateOfAssessment']
+    currAssessment = None
+    for assessment in Find['Assessment']:
+        if assessment['Date'] == Date:
+            currAssessment = assessment
+            break
+    referred_by = currAssessment['ReferalDoctor']
+    chief_complaint = currAssessment['Complaint']
+    previous_treatment = currAssessment['RecievedTherapy']
+    diagnosis = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['diagnosis']
+    duration = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['numberOfDays']
+    treatment_given = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercisePrescription']
+    treatment_dates = ["2023-07-25", "2023-07-26", "2023-07-27", "2023-07-28", "2023-07-29"] # from junior
+    painscales = [2, 3, 1, 2, 1] # from junior
+    advised_exercise = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercise']
+    home_advice = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercise']
+    next_review = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['reviewNext']
+
+    create_pdf(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
+            treatment_given, treatment_dates, painscales, advised_exercise, home_advice, next_review)
+
     return FileResponse("hospital_report.pdf")
     
 
