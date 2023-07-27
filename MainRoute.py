@@ -1097,6 +1097,11 @@ async def AddPatientBasic(info : Request):
     if Find == None:
         return {"Status" : "Patient Not Found" }
     
+    ReHabSearch = ReHab.find_one({'Patient_Id' : SearchKey})
+    if ReHabSearch != None:
+        if ReHabSearch['DateOfAssessment'] == req_info['DateOfAssessment']:
+            return {"status" : "Same date 2 visits"}
+    
     req_info['ExerciseSchedule'] = []
     req_info['ExerciseTracking'] = []
     
