@@ -57,6 +57,36 @@ def process_dictionary(data):
         for i in range(len(data)):
             process_dictionary(data[i])
 
+
+def convert_to_second_json_format(first_json):
+    second_json = {
+        "Basic": {
+            "Patient_Id": first_json["Patient_Id"],
+            "DateOfAssessment": first_json["DateOfAssessment"],
+            "Patient_Name": first_json["Patient_Name"],
+            "Patient_Age": first_json["Patient_Age"],
+            "Patient_Weight": first_json["Patient_Weight"],
+            "Patient_Contact_No": first_json["Patient_Contact_No"],
+            "Diagnosis": first_json["Diagnosis"],
+            "TreatmentGiven": first_json["TreatmentGiven"],
+            "Package": first_json["Package"],
+            "FollowUp": first_json["FollowUp"],
+            "ReviewDate": first_json["ReviewDate"],
+            "Contradiction": first_json["Contradiction"],
+            "Category": first_json["Category"],
+            "InvestigationDone": first_json["InvestigationDone"],
+            "TargetingMuscle": first_json["TargetingMuscle"],
+            "TargetingJoint": first_json["TargetingJoint"],
+            "PainScale": first_json["PainScale"],
+            "AssessmentDoneBy": first_json["AssessmentDoneBy"]
+        },
+        "ExerciseSchedule": first_json["ExerciseSchedule"],
+        "ExerciseTracking": first_json["ExerciseTracking"],
+        "PARQ_Assessment": first_json["PARQ_Assessment"]
+    }
+    return second_json
+
+
 # --------------------------- Login Routes -----------------------------------
 
 @app.post("/loginCheck")
@@ -86,6 +116,7 @@ async def loginCheck(info : Request):
         }
 
     
+
 
 
 
@@ -1202,6 +1233,8 @@ async def ViewExerciseTracking(info : Request):
         return Find['ExerciseTracking']
     
 
+
+
 @app.post("/trainer/ViewRehabView")
 async def ViewRehabView(info : Request):
     print(await info.body())
@@ -1215,7 +1248,7 @@ async def ViewRehabView(info : Request):
     else:
         Find = dict(Find)
         del Find['_id']
-        return Find
+        return convert_to_second_json_format(Find)
     
 
 
