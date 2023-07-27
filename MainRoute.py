@@ -333,6 +333,7 @@ async def GetDischargeSummary(info : Request):
     return FileResponse("hospital_report.pdf")
     
 
+
     
 
 
