@@ -8,3 +8,4 @@ loguru==0.7.0
 plotly
 reportlab
 kaleido
+typing
