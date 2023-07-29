@@ -10,11 +10,15 @@ import json
 from fastapi.responses import FileResponse
 from fastapi.encoders import jsonable_encoder
 from pymongo.mongo_client import MongoClient
+from typing import List, Optional
+import json
 import joblib
 from fastapi import Response, BackgroundTasks
 import random as rd
 import datetime
 from loguru import logger
+from fastapi import BackgroundTasks, FastAPI
+from fastapi.responses import StreamingResponse
 import reportgenerator
 from reportgenerator import create_pdf
 
@@ -57,6 +61,52 @@ def process_dictionary(data):
         for i in range(len(data)):
             process_dictionary(data[i])
 
+# Utility function to remove _id field from documents
+def remove_id(documents: List[dict]) -> List[dict]:
+    return [{**doc, "_id": None} for doc in documents]
+
+# Background job to process the data and generate the JSON response
+def process_patients(background_response: BackgroundTasks):
+    Find = PatientData.find({})
+    Find = list(Find) if Find is not None else []
+    if len(list(Find)) == 0:
+        return None
+
+    Result = list(Find)
+    Result = remove_id(Result)
+
+    for i in Result:
+        LastAsses = i.get('Assessment', [])
+        Checker = len(LastAsses)
+        if Checker == 0:
+            i['LastAssessment'] = 'No Assessment'
+            i['Status'] = "Not Yet"
+        else:
+            i['LastAssessment'] = LastAsses[-1]
+            SeniorDoctorPrescription = i['LastAssessment'].get('SeniorDoctorPrescription', {})
+            TreatmentPrescription = SeniorDoctorPrescription.get('TreatmentPrescription', {})
+            if TreatmentPrescription != {}:
+                i['Status'] = "Completed"
+            else:
+                i['Status'] = "Partial"
+
+    return Result
+
+# Helper function to generate streaming JSON response
+def stream_generator(background_response: BackgroundTasks):
+    patients = process_patients(background_response)
+    if patients is None:
+        yield "[]"
+        return
+
+    yield "["
+    first = True
+    for patient in patients:
+        if not first:
+            yield ","
+        yield json.dumps(patient)
+        first = False
+    yield "]"
 
 def convert_to_second_json_format(first_json):
     second_json = {
@@ -232,31 +282,18 @@ async def viewPatient(info : Request):
         # process_dictionary(Result)
         return Result
 
-@app.get("/allPatients")
-async def allPatients():
-    Find = PatientData.find({})
-    if Find == None:
-        return {"Status" : "Patient Not Found"}
-    else:
-        Result = list(Find)
-        for i in Result:
-            del i['_id']
-        for i in Result:
-            LastAsses = i['Assessment']
-            Checker = len(LastAsses)
-            if Checker == 0:
-                i['LastAssessment'] = 'No Assessment'
-                i['Status'] = "Not Yet"
-            else:
-                i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
-                if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
-                    if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
-                        i['Status'] = "Completed"
-                    else:
-                        i['Status'] = "Partial"
-                else:
-                    i['Status'] = "Not Yet"
-        return {"allPatients" : Result}
+@app.get("/allPatients/", response_model=List[dict])
+async def all_patients(
+    skip: int = 0,
+    limit: int = 10
+):
+    background_response = BackgroundTasks()
+    background_response.add_task(process_patients, background_response)
+
+    return StreamingResponse(
+        stream_generator(background_response),
+        media_type="application/json"
+    )
     
 
 @app.post("/updatePatient")

@@ -18,7 +18,7 @@ def remove_id(documents: List[dict]) -> List[dict]:
 # Background job to process the data and generate the JSON response
 def process_patients(background_response: BackgroundTasks):
     Find = PatientData.find({})
-    Find = list(Find) if Find != None else []
+    Find = list(Find) if Find is not None else []
     if len(list(Find)) == 0:
         return None
 
@@ -43,8 +43,12 @@ def process_patients(background_response: BackgroundTasks):
     return Result
 
 # Helper function to generate streaming JSON response
-async def stream_generator(background_response: BackgroundTasks):
-    patients = await background_response()
+def stream_generator(background_response: BackgroundTasks):
+    patients = process_patients(background_response)
+    if patients is None:
+        yield "[]"
+        return
+
     yield "["
     first = True
     for patient in patients:
