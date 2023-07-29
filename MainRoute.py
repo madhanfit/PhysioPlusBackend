@@ -29,7 +29,6 @@ LoginDatabase = Data['Test']['LoginCred']
 ReviewData = Data['Test']['Reviews']
 ReHab = Data['Test']['Re-Hab']
 
-
 app = FastAPI()
 
 
@@ -68,6 +67,7 @@ def convert_to_second_json_format(first_json):
             "Patient_Age": first_json["Patient_Age"],
             "Patient_Weight": first_json["Patient_Weight"],
             "Patient_Contact_No": first_json["Patient_Contact_No"],
+            "Patient_Email" : first_json['Patient_Email'],
             "Diagnosis": first_json["Diagnosis"],
             "TreatmentGiven": first_json["TreatmentGiven"],
             "Package": first_json["Package"],
@@ -321,8 +321,12 @@ async def GetDischargeSummary(info : Request):
     diagnosis = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['diagnosis']
     duration = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['numberOfDays']
     treatment_given = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercisePrescription']
-    treatment_dates = ["2023-07-25", "2023-07-26", "2023-07-27", "2023-07-28", "2023-07-29"] # from junior
-    painscales = [2, 3, 1, 2, 1] # from junior
+
+    # treatment_dates = ["2023-07-25", "2023-07-26", "2023-07-27", "2023-07-28", "2023-07-29"] # from junior
+    # painscales = [2, 3, 1, 2, 1] # from junior
+
+    treatment_dates = [i['Date'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
+    painscales = [i['PainScale'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
     advised_exercise = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercise']
     home_advice = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercise']
     next_review = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['reviewNext']
@@ -332,6 +336,8 @@ async def GetDischargeSummary(info : Request):
 
     return FileResponse("hospital_report.pdf")
     
+
+
 
 
     

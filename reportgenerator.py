@@ -4,7 +4,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, PageTemplate, BaseDocTemplate, Paragraph, Table, TableStyle, Image, Spacer, Frame, PageBreak
-
+from reportlab.pdfgen import canvas
 from io import BytesIO
 
 def create_pain_scale_graph(painscales, dates):
@@ -49,6 +49,8 @@ def create_pdf(name, age, gender, referred_by, chief_complaint, previous_treatme
     img_buffer = BytesIO(graph)
     pain_scale_img = Image(img_buffer, width=6*inch, height=4*inch)
 
+    hospital_logo = Image('hospital_logo.png', width=4*inch, height=1*inch)
+
     # Build the PDF content for the first page
     first_page_content = []
 
@@ -56,8 +58,8 @@ def create_pdf(name, age, gender, referred_by, chief_complaint, previous_treatme
     # first_page_content.append(Paragraph("<b>------------------------ HEADER BAR ------------------------</b>", heading_style))
 
     # Main Title
-    first_page_content.append(Paragraph("SRI THIRUMALA PHYSIOTHERAPHY & PAIN RELIEF CLINIC", title_style))
-
+    # first_page_content.append(Paragraph("SRI THIRUMALA PHYSIOTHERAPHY & PAIN RELIEF CLINIC", title_style))
+    first_page_content.append(hospital_logo)
     # Address and line break
     first_page_content.append(Paragraph("69, Arcot Road, Cheyyar – 604407, Thiruvannamalai District,", heading_style))
     first_page_content.append(Paragraph("(Opp Government Boys Higher Secondary School)", heading_style))
@@ -133,3 +135,6 @@ def draw_page_border(canvas, doc):
 # # Generate the PDF report
 # create_pdf(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
 #            treatment_given, treatment_dates, painscales, advised_exercise, home_advice, next_review)
+
+
+
