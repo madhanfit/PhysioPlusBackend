@@ -996,9 +996,9 @@ async def AllReviews():
     FinalList = []
 
     for i in Find:
-        if i['SeniorDoctorViewed'] == False:
-            del i['_id']
-            FinalList.append(i)
+        # if i['SeniorDoctorViewed'] == False:
+        del i['_id']
+        FinalList.append(i)
 
     return {"AllReviews" : FinalList[::-1]}
 
