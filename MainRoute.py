@@ -971,14 +971,15 @@ async def UpdateReview(info : Request):
             if i['SeniorDoctorViewed'] == False and i['DateOfReview'] == req_info['DateOfReview']:
                 query = {
                     "DateOfReview": req_info['DateOfReview'],
-                    "Patient_Id" : req_info['Patient_Id']
+                    "Patient_Id" : req_info['Patient_Id'],
                 }
                 update = {
                     "$set": {
-                        "SeniorDoctorViewed": True
+                        "SeniorDoctorViewed": True,
+                        "srDocNote" : req_info['srDocNote']
                     }
                 }
-                Status = ReviewData.update_many(query, update)
+                Status = ReviewData.update_one(query, update)
                 if Status.acknowledged == True:
                     return {"Status" : "successful"}
             if i['SeniorDoctorViewed'] == True:
@@ -1086,6 +1087,7 @@ async def TreatmentTracker(info : Request):
 
 
 
+
 @app.post("/UpdateTreatmentTracker")
 async def TreatmentTracker(info : Request):
     print(await info.body())
@@ -1159,6 +1161,9 @@ async def RaiseReview(info : Request):
         return {"Status" : "successful"}
     else:
         return {"Status" :  "not successful"}
+    
+
+
     
 
 
