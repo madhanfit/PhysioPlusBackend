@@ -32,6 +32,7 @@ PatientData = Data['Test']['Test']
 LoginDatabase = Data['Test']['LoginCred']
 ReviewData = Data['Test']['Reviews']
 ReHab = Data['Test']['Re-Hab']
+ReVisit = Data['Test']['ReVisitPopUps']
 
 app = FastAPI()
 
@@ -139,6 +140,14 @@ def stream_generator(background_response: BackgroundTasks):
         first = False
     yield "]"
 
+def check_dict_fields(dictionary):
+    print("Hello")
+    del dictionary['Occupation']
+    for value in dictionary.values():
+        if value is None or value == "":
+            return False
+    return True
+
 
 # --------------------------- Login Routes -----------------------------------
 
@@ -182,6 +191,11 @@ async def NewPatient(info : Request):
     req_info = dict(req_info)
     logger.info("recieved new patient details")
 
+    Dictionary = req_info.copy()
+    Checker = check_dict_fields(Dictionary)
+    if Checker == False:
+        return {"Status" : "Fields are empty"}
+
     CurrentData = {
                 "Patient_Id" : "23" + "ST" + str(rd.randint(100,1000)),
                 "Patient_Name" : req_info["Patient_Name"],
@@ -196,7 +210,7 @@ async def NewPatient(info : Request):
                 "Assessment" : []
             }
     
-    
+
     ReturnObj = dict(CurrentData)    
     Check = PatientData.insert_one(CurrentData)
 
@@ -292,6 +306,33 @@ async def allPatients():
     else:
         Result = list(Find)
         for i in Result:
+            del i['_id']
+        for i in Result:
+            LastAsses = i['Assessment']
+            Checker = len(LastAsses)
+            if Checker == 0:
+                i['LastAssessment'] = 'No Assessment'
+                i['Status'] = "Not Yet"
+            else:
+                i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
+                if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
+                    if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
+                        i['Status'] = "Completed"
+                    else:
+                        i['Status'] = "Partial"
+                else:
+                    i['Status'] = "Not Yet"
+        return {"allPatients" : Result}
+    
+
+@app.get("/allPatients10")
+async def allPatients10():
+    Find = PatientData.find({})
+    if Find == None:
+        return {"Status" : "Patient Not Found"}
+    else:
+        Result = []
+        for i in Find:
             del i['_id']
         for i in Result:
             LastAsses = i['Assessment']
@@ -764,11 +805,27 @@ async def TreatmentPrescription(info : Request):
                 "Assessment.$.SeniorDoctorPrescription.TreatmentPrescription": req_info
             }}
         )
+        EntityReVisit = {
+            "Patient_Name" : Find['Patient_Name'],
+            "Patient_Id" : Find['Patient_Id'],
+            "ReviewDate" : req_info['reviewNext']            
+        }
+
+        ReVisit.insert_one(EntityReVisit)
         print("Status:",status.acknowledged)
 
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
+
+
+@app.get("/ReVisitPatients")
+async def ReVisitPatients():
+
+    Result = ReVisit.find({'ReviewDate' : str(datetime.date.today())})
+
+    return {"AllRevisit" : list(Result)}
+
 
 @app.post("/GeneralAssessment")
 async def GeneralAssessment(info : Request):

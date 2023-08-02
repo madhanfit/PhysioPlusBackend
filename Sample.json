@@ -1,10 +1,19 @@
 {
-    "userName" : "ad",
-    "password" : "ss",
-    "userType" : "Senior"
-}
-
-
-{
-    "Status" : true
+    "AllPatientsVisit" :
+    [
+        {
+            "Patient_Name" : "Jack" ,
+            "Patient_Id" : "23ST345" ,
+            "LastVisit" : "23-09-2023",
+            "Diagnosis" : "Malfunctioning",
+            "TreatmentGiven" : ""
+        },
+        {
+            "Patient_Name" : "Jack" ,
+            "Patient_Id" : "23ST345" ,
+            "LastVisit" : "23-09-2023",
+            "Diagnosis" : "Malfunctioning",
+            "TreatmentGiven" : ""
+        }
+    ]
 }
