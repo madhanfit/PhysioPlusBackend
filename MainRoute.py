@@ -1369,8 +1369,9 @@ async def ExerciseSchedule(info : Request):
     
     myquery = { "Patient_Id": SearchKey }
     del req_info['Patient_Id']
-    newvalues = { "$set": { "ExerciseSchedule": req_info['ExerciseSchedule'] } }
-    ReHab.update_one(myquery, newvalues)
+    newvalues = { "$set": { "ExerciseSchedule": req_info['ExerciseSchedule'] , "ScheduleDoneBy" : req_info['ScheduleDoneBy']} }
+
+    ReHab.update_many(myquery, newvalues)
     return {"Status" : "Successfully"}
 
 
