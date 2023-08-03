@@ -88,7 +88,9 @@ def convert_to_second_json_format(first_json):
         },
         "ExerciseSchedule": first_json["ExerciseSchedule"],
         "ExerciseTracking": first_json["ExerciseTracking"],
-        "PARQ_Assessment": first_json["PARQ_Assessment"]
+        "PARQ_Assessment": first_json["PARQ_Assessment"],
+        "ScheduleDoneBy": first_json["ScheduleDoneBy"],
+        "TrainerName": first_json["TrainerName"]
     }
     return second_json
 
