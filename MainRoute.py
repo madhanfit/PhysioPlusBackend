@@ -1352,7 +1352,7 @@ async def PARQ_Assessment(info : Request):
     del req_info['Patient_Id']
     newvalues = { "$set": { "PARQ_Assessment": req_info } }
     ReHab.update_one(myquery, newvalues)
-    return {"Satus" : "Successfully"}
+    return {"Status" : "Successfully"}
     
 
     
@@ -1371,7 +1371,7 @@ async def ExerciseSchedule(info : Request):
     del req_info['Patient_Id']
     newvalues = { "$set": { "ExerciseSchedule": req_info['ExerciseSchedule'] } }
     ReHab.update_one(myquery, newvalues)
-    return {"Satus" : "Successfully"}
+    return {"Status" : "Successfully"}
 
 
 @app.post("/trainer/ViewExerciseSchedule")
@@ -1405,7 +1405,7 @@ async def ExerciseTracking(info : Request):
     del req_info['Patient_Id']
     newvalues = { "$set": { "ExerciseTracking": req_info['ExerciseTracking'] } }
     ReHab.update_one(myquery, newvalues)
-    return {"Satus" : "Successfully"}
+    return {"Status" : "Successfully"}
 
 
 @app.post("/trainer/ViewExerciseTracking")
