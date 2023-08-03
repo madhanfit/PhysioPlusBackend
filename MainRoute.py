@@ -1404,8 +1404,8 @@ async def ExerciseTracking(info : Request):
     
     myquery = { "Patient_Id": SearchKey }
     del req_info['Patient_Id']
-    newvalues = { "$set": { "ExerciseTracking": req_info['ExerciseTracking'] } }
-    ReHab.update_one(myquery, newvalues)
+    newvalues = { "$set": { "ExerciseTracking": req_info['ExerciseTracking'] , "TrainerName" : req_info['TrainerName'] } }
+    ReHab.update_many(myquery, newvalues)
     return {"Status" : "Successfully"}
 
 
