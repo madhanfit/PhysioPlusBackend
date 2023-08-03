@@ -3,17 +3,17 @@
     [
         {
             "Patient_Name" : "Jack" ,
-            "Patient_Id" : "23ST345" ,
-            "LastVisit" : "23-09-2023",
-            "Diagnosis" : "Malfunctioning",
-            "TreatmentGiven" : ""
+            "Patient_Id" : "23ST345" 
+
         },
         {
             "Patient_Name" : "Jack" ,
-            "Patient_Id" : "23ST345" ,
-            "LastVisit" : "23-09-2023",
-            "Diagnosis" : "Malfunctioning",
-            "TreatmentGiven" : ""
+            "Patient_Id" : "23ST345" 
         }
     ]
+}
+
+
+{
+
 }

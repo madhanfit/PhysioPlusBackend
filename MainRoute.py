@@ -524,8 +524,19 @@ async def allPatientsTodayCount():
 
 @app.get("/allPatientsToday")
 async def allPatientsToday():
-    Find = PatientData.find({})
+
+    query = {
+        "Assessment": {
+            "$elemMatch": {
+                "Date": str(datetime.date.today()),
+            }
+        }
+    }
+    print(str(datetime.date.today()))
+    Find = PatientData.find(query)
+    
     Results = list(Find)
+    print(Results)
 
     DatedPatients = []
 
@@ -1413,8 +1424,6 @@ async def ViewExerciseTracking(info : Request):
         return Find['ExerciseTracking']
     
 
-
-
 @app.post("/trainer/ViewRehabView")
 async def ViewRehabView(info : Request):
     print(await info.body())
@@ -1430,6 +1439,7 @@ async def ViewRehabView(info : Request):
         del Find['_id']
         return convert_to_second_json_format(Find)
     
+
 
 
 
