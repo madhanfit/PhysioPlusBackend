@@ -345,9 +345,10 @@ async def viewPatient(info : Request):
         # process_dictionary(Result)
         return Result
 
-@app.get("/allPatients") # only Top 2 patients will be shown
+@app.get("/allPatients") # only Top 10 patients will be shown
 async def allPatients():
-    Find = PatientData.find().limit(5).sort([("$natural", -1)])
+    # Find = PatientData.find().limit(5).sort([("$natural", -1)])
+    Find = PatientData.find({})
     if Find == None:
         return {"Status" : "Patient Not Found"}
     else:
@@ -1481,7 +1482,9 @@ async def ViewRehabView(info : Request):
     req_info = dict(req_info)
 
     SearchKey = req_info['Patient_Id']
+    print(SearchKey)
     Find = ReHab.find_one({'Patient_Id' : SearchKey})
+    print(list(Find))
     if Find == None:
         return {"Status" : "Patient Not Found in Re-Hab" }
     else:
