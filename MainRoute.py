@@ -403,7 +403,7 @@ async def allPatients():
     ]
 
     result = list(PatientData.aggregate(pipeline))
-    return {"allPatients": result}
+    return {"allPatients": result[::-1]}
 
 
     
