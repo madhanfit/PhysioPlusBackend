@@ -589,8 +589,8 @@ async def allPatientsTodayCount():
     }
 
 
-@app.get("/allPatientsToday")
-async def allPatientsToday():
+# @app.get("/allPatientsToday")
+# async def allPatientsToday():
 
     query = {
         "Assessment": {
@@ -630,6 +630,69 @@ async def allPatientsToday():
     return {
         "allPatientsToday" : DatedPatients
     }
+
+@app.get("/allPatientsToday")
+async def allPatientsToday():
+    pipeline = [
+        {
+            "$unwind": "$Assessment"
+        },
+        {
+            "$match": {
+                "Assessment.Date": str(datetime.date.today()),
+                "Assessment.SeniorWrittenPres": False
+            }
+        },
+        {
+            "$project": {
+                "_id": 0,
+                "Patient_Id": 1,
+                "Patient_Name": 1,
+                "Patient_Age": 1,
+                "Patient_Gender": 1,
+                "Patient_Contact_No": 1,
+                "Status": {
+                    "$cond": {
+                        "if": {
+                            "$and": [
+                                { "$eq": [ "$Assessment.SeniorWrittenPres", False ] },
+                                { "$ne": [ "$Assessment.SeniorDoctorPrescription", {} ] },
+                                { "$ne": [ "$Assessment.SeniorDoctorPrescription.TreatmentPrescription", {} ] }
+                            ]
+                        },
+                        "then": "Completed",
+                        "else": {
+                            "$cond": {
+                                "if": {
+                                    "$and": [
+                                        { "$eq": [ "$Assessment.SeniorWrittenPres", False ] },
+                                        { "$eq": [ "$Assessment.SeniorDoctorPrescription", {} ] }
+                                    ]
+                                },
+                                "then": "Partial",
+                                "else": "Not Yet"
+                            }
+                        }
+                    }
+                },
+                "LastAssessment": {
+                    "Date": "$Assessment.Date",
+                    "Complaint": "$Assessment.Complaint"
+                },
+                "createdBy": 1
+            }
+        },
+        {
+            "$sort": {
+                "createdBy": 1
+            }
+        }
+    ]
+
+    results = list(PatientData.aggregate(pipeline))
+    return {"allPatientsToday": results}
+
+
 
 ## Adding Assessments;
 
