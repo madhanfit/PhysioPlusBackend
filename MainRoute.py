@@ -216,7 +216,7 @@ async def NewPatient(info : Request):
                 "Assessment" : []
             }
     SearchData = {
-        "Patient_Id" : req_info['Patient_Id'],
+        "Patient_Id" : CurrentData['Patient_Id'],
         "Patient_Name" : req_info['Patient_Name'],
         "Patient_Gender" : req_info['Patient_Gender'],
         "Patient_Age" : req_info['Patient_Age'],
