@@ -299,9 +299,9 @@ async def viewPatient(info : Request):
         # process_dictionary(Result)
         return Result
 
-@app.get("/allPatients")
+@app.get("/allPatients") # only Top 2 patients will be shown
 async def allPatients():
-    Find = PatientData.find({})
+    Find = PatientData.find().limit(5).sort([("$natural", -1)])
     if Find == None:
         return {"Status" : "Patient Not Found"}
     else:
@@ -835,7 +835,9 @@ async def TreatmentPrescription(info : Request):
 async def ReVisitPatients():
 
     Result = ReVisit.find({'ReviewDate' : str(datetime.date.today())})
-
+    Result = list(Result)
+    for i in Result:
+        del i['_id']
     return {"AllRevisit" : list(Result)}
 
 
