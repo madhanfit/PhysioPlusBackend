@@ -370,34 +370,53 @@ async def allPatients():
                         i['Status'] = "Partial"
                 else:
                     i['Status'] = "Not Yet"
+        
+        
         return {"allPatients" : Result}
     
 
-@app.get("/allPatients10")
-async def allPatients10():
-    Find = PatientData.find({})
-    if Find == None:
-        return {"Status" : "Patient Not Found"}
-    else:
-        Result = []
-        for i in Find:
-            del i['_id']
-        for i in Result:
-            LastAsses = i['Assessment']
-            Checker = len(LastAsses)
-            if Checker == 0:
-                i['LastAssessment'] = 'No Assessment'
-                i['Status'] = "Not Yet"
-            else:
-                i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
-                if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
-                    if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
-                        i['Status'] = "Completed"
-                    else:
-                        i['Status'] = "Partial"
-                else:
-                    i['Status'] = "Not Yet"
-        return {"allPatients" : Result}
+@app.get("/allPatientsFasterX")
+async def allPatients():
+    pipeline = [
+        { "$sort": { "createdAt": -1 } },  # Sort the documents based on the "createdAt" field
+        {
+            "$project": {
+                "_id": 0,
+                "LastAssessment": {
+                    "$cond": {
+                        "if": { "$eq": [ { "$size": "$Assessment" }, 0 ] },
+                        "then": "No Assessment",
+                        "else": { "$arrayElemAt": [ "$Assessment", -1 ] }
+                    }
+                },
+                "Status": {
+                    "$cond": {
+                        "if": {
+                            "$and": [
+                                { "$isArray": "$Assessment" },
+                                { "$gt": [ { "$size": "$Assessment" }, 0 ] },
+                                { "$ifNull": [ { "$type": { "$arrayElemAt": [ "$Assessment", -1 ] } }, "" ] }
+                            ]
+                        },
+                        "then": {
+                            "$cond": {
+                                "if": { "$ne": [ "$Assessment.seniorDoctorPrescription.TreatmentPrescription", {} ] },
+                                "then": "Completed",
+                                "else": "Partial"
+                            }
+                        },
+                        "else": "Not Yet"
+                    }
+                }
+            }
+        },
+        { "$limit": 10 }
+    ]
+
+
+    result = list(PatientData.aggregate(pipeline))
+    return {"allPatients": result}
+
     
 # Endpoint for retrieving paginated patients
 @app.get("/allPatientsFaster/", response_model=List[dict])
