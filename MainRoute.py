@@ -378,7 +378,6 @@ async def viewPatient(info : Request):
 @app.get("/allPatients")
 async def allPatients():
     pipeline = [
-        { "$sort": { "Assessment.Date": -1 } },
         {
             "$project": {
                 "_id": 0,
@@ -389,21 +388,33 @@ async def allPatients():
                 "Patient_Contact_No": 1,
                 "LastAssessment": {
                     "$cond": {
-                        "if": { "$eq": [ { "$size": "$Assessment" }, 0 ] },
-                        "then": { "Date": "No Assessment", "Complaint": "" },
-                        "else": {
-                            "Date": { "$arrayElemAt": [ "$Assessment.Date", -1 ] },
-                            "Complaint": { "$arrayElemAt": [ "$Assessment.Complaint", -1 ] }
-                        }
+                        "if": { "$eq": [ { "$size": { "$ifNull": ["$Assessment", []] } }, 0 ] },
+                        "then": {},
+                        "else": { "$arrayElemAt": [ "$Assessment", -1 ] }
                     }
-                }
+                },
+                "createdAt": 1  # Assuming "createdAt" field represents the insertion timestamp
             }
         },
+        {
+            "$project": {
+                "Patient_Id": 1,
+                "Patient_Name": 1,
+                "Patient_Age": 1,
+                "Patient_Gender": 1,
+                "Patient_Contact_No": 1,
+                "LastAssessment.Date": 1,
+                "LastAssessment.Complaint": 1,
+                "createdAt": 1
+            }
+        },
+        { "$sort": { "createdAt": -1 } },  # Sort by createdAt field in descending order
         { "$limit": 10 }
     ]
 
     result = list(PatientData.aggregate(pipeline))
-    return {"allPatients": result[::-1]}
+    return {"allPatients": result}
+
 
 
     
