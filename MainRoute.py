@@ -33,6 +33,7 @@ LoginDatabase = Data['Test']['LoginCred']
 ReviewData = Data['Test']['Reviews']
 ReHab = Data['Test']['Re-Hab']
 ReVisit = Data['Test']['ReVisitPopUps']
+SearchIndex = Data['Test']['Patient_Search']
 
 app = FastAPI()
 
@@ -210,12 +211,21 @@ async def NewPatient(info : Request):
                 "Address" : req_info["Address"],
                 "Assessment" : []
             }
+    SearchData = {
+        "Patient_Id" : req_info['Patient_Id'],
+        "Patient_Name" : req_info['Patient_Name'],
+        "Patient_Gender" : req_info['Patient_Gender'],
+        "Patient_Age" : req_info['Patient_Age'],
+        "Patient_Height" : req_info['Patient_Height'],
+        "Patient_Weight" : req_info['Patient_Weight'],
+        "Patient_Contact_No" : req_info['Patient_Contact_No']
+    }
     
 
     ReturnObj = dict(CurrentData)    
-    Check = PatientData.insert_one(CurrentData)
-
-    if Check.acknowledged == True:
+    Check1 = PatientData.insert_one(CurrentData)
+    Check2 = SearchIndex.insert_one(SearchData)
+    if Check1.acknowledged == True and Check2.acknowledged == True:
         return ReturnObj
     else:
         return {"Status" :  False}
@@ -280,7 +290,38 @@ async def addBasicAssessment(info : Request):
         return {"Satus" : "Successfully"}
     
 
+@app.post("/SearchPatient")
+async def SearchPatient(info : Request):
 
+    # print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['SearchString']
+
+    results = SearchIndex.aggregate([
+        {
+            "$search": {
+                "index": "Patient_Search",
+                "text": {
+                    "query": SearchKey,
+                    "path": ["Patient_Id","Patient_Contact_No","Patient_Name"],
+                    "fuzzy": {}
+                }
+            }
+        },
+        {
+            "$limit" : 5
+        }
+    ])
+
+    FinalResutls = list(results)
+
+    for i in FinalResutls:
+        del i['_id']
+
+
+    return {"Results" : FinalResutls}
 
 @app.post("/viewPatient")
 async def viewPatient(info : Request):
