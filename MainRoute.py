@@ -191,12 +191,16 @@ async def NewPatient(info : Request):
 
     req_info = await info.json()
     req_info = dict(req_info)
+    print(req_info)
     logger.info("recieved new patient details")
 
     Dictionary = req_info.copy()
     Checker = check_dict_fields(Dictionary)
+
     if Checker == False:
         return {"Status" : "Fields are empty"}
+    
+    print(Checker)
 
     CurrentData = {
                 "Patient_Id" : "23" + "ST" + str(rd.randint(100,1000)),
