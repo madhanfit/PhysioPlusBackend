@@ -346,66 +346,55 @@ async def viewPatient(info : Request):
         return Result
 
 @app.get("/allPatients") # only Top 10 patients will be shown
-async def allPatients():
-    # Find = PatientData.find().limit(5).sort([("$natural", -1)])
-    Find = PatientData.find({})
-    if Find == None:
-        return {"Status" : "Patient Not Found"}
-    else:
-        Result = list(Find)
-        for i in Result:
-            del i['_id']
-        for i in Result:
-            LastAsses = i['Assessment']
-            Checker = len(LastAsses)
-            if Checker == 0:
-                i['LastAssessment'] = 'No Assessment'
-                i['Status'] = "Not Yet"
-            else:
-                i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
-                if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
-                    if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
-                        i['Status'] = "Completed"
-                    else:
-                        i['Status'] = "Partial"
-                else:
-                    i['Status'] = "Not Yet"
+# async def allPatients():
+#     # Find = PatientData.find().limit(5).sort([("$natural", -1)])
+#     Find = PatientData.find({})
+#     if Find == None:
+#         return {"Status" : "Patient Not Found"}
+#     else:
+#         Result = list(Find)
+#         for i in Result:
+#             del i['_id']
+#         for i in Result:
+#             LastAsses = i['Assessment']
+#             Checker = len(LastAsses)
+#             if Checker == 0:
+#                 i['LastAssessment'] = 'No Assessment'
+#                 i['Status'] = "Not Yet"
+#             else:
+#                 i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
+#                 if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
+#                     if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
+#                         i['Status'] = "Completed"
+#                     else:
+#                         i['Status'] = "Partial"
+#                 else:
+#                     i['Status'] = "Not Yet"
         
         
-        return {"allPatients" : Result}
+#         return {"allPatients" : Result}
     
 
-@app.get("/allPatientsFasterX")
+@app.get("/allPatients")
 async def allPatients():
     pipeline = [
-        { "$sort": { "createdAt": -1 } },  # Sort the documents based on the "createdAt" field
+        { "$sort": { "Assessment.Date": -1 } },
         {
             "$project": {
                 "_id": 0,
+                "Patient_Id": 1,
+                "Patient_Name": 1,
+                "Patient_Age": 1,
+                "Patient_Gender": 1,
+                "Patient_Contact_No": 1,
                 "LastAssessment": {
                     "$cond": {
                         "if": { "$eq": [ { "$size": "$Assessment" }, 0 ] },
-                        "then": "No Assessment",
-                        "else": { "$arrayElemAt": [ "$Assessment", -1 ] }
-                    }
-                },
-                "Status": {
-                    "$cond": {
-                        "if": {
-                            "$and": [
-                                { "$isArray": "$Assessment" },
-                                { "$gt": [ { "$size": "$Assessment" }, 0 ] },
-                                { "$ifNull": [ { "$type": { "$arrayElemAt": [ "$Assessment", -1 ] } }, "" ] }
-                            ]
-                        },
-                        "then": {
-                            "$cond": {
-                                "if": { "$ne": [ "$Assessment.seniorDoctorPrescription.TreatmentPrescription", {} ] },
-                                "then": "Completed",
-                                "else": "Partial"
-                            }
-                        },
-                        "else": "Not Yet"
+                        "then": { "Date": "No Assessment", "Complaint": "" },
+                        "else": {
+                            "Date": { "$arrayElemAt": [ "$Assessment.Date", -1 ] },
+                            "Complaint": { "$arrayElemAt": [ "$Assessment.Complaint", -1 ] }
+                        }
                     }
                 }
             }
@@ -413,9 +402,9 @@ async def allPatients():
         { "$limit": 10 }
     ]
 
-
     result = list(PatientData.aggregate(pipeline))
     return {"allPatients": result}
+
 
     
 # Endpoint for retrieving paginated patients
