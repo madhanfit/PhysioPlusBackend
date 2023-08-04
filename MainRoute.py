@@ -291,7 +291,8 @@ async def addBasicAssessment(info : Request):
         myquery = { "Patient_Id": SearchKey }
         newvalues = { "$set": { "Assessment": UpdateAssigment } }
         PatientData.update_one(myquery, newvalues)
-        return {"Satus" : "Successfully"}
+    
+        return {"Status" : "Successfully"}
     
 
 @app.post("/SearchPatient")
