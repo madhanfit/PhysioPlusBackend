@@ -339,6 +339,7 @@ async def SearchPatient(info : Request):
         ]
 
         result = list(PatientData.aggregate(pipeline))
+
         return {"allPatients": result[::-1]}
 
 
@@ -545,7 +546,7 @@ async def GetDischargeSummary(info : Request):
     doctor_prescription = currAssessment['JuniorDoctorPrescription']['DayWise']
     exercises = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercises']
 
-    create_pdf(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
+    create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
             treatment_given, treatment_dates, painscales, home_advice, next_review , doctor_prescription,
             exercises)
 
@@ -559,6 +560,12 @@ async def GetRehabBill(info : Request):
     # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
+
+    # bill_no = 
+    # create_billing_slip_rehab
+
+
+
 
 
 
