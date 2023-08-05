@@ -15,7 +15,7 @@ from fastapi import Response, BackgroundTasks
 import random as rd
 import datetime
 from loguru import logger
-from reportgenerator1 import create_pdf
+from reportgenerator1 import create_pdf_discharge
 from fastapi import BackgroundTasks, FastAPI
 from fastapi.responses import StreamingResponse
 from pymongo import MongoClient
@@ -302,6 +302,46 @@ async def SearchPatient(info : Request):
 
     SearchKey = req_info['SearchString']
 
+    if SearchKey == "":
+        pipeline = [
+            {
+                "$project": {
+                    "_id": 0,
+                    "Patient_Id": 1,
+                    "Patient_Name": 1,
+                    "Patient_Age": 1,
+                    "Patient_Gender": 1,
+                    "Patient_Contact_No": 1,
+                    "LastAssessment": {
+                        "$cond": {
+                            "if": { "$eq": [ { "$size": { "$ifNull": ["$Assessment", []] } }, 0 ] },
+                            "then": {},
+                            "else": { "$arrayElemAt": [ "$Assessment", -1 ] }
+                        }
+                    },
+                    "createdAt": 1  # Assuming "createdAt" field represents the insertion timestamp
+                }
+            },
+            {
+                "$project": {
+                    "Patient_Id": 1,
+                    "Patient_Name": 1,
+                    "Patient_Age": 1,
+                    "Patient_Gender": 1,
+                    "Patient_Contact_No": 1,
+                    "LastAssessment.Date": 1,
+                    "LastAssessment.Complaint": 1,
+                    "createdAt": 1
+                }
+            },
+            { "$sort": { "createdAt": -1 } },  # Sort by createdAt field in descending order
+            { "$limit": 10 }
+        ]
+
+        result = list(PatientData.aggregate(pipeline))
+        return {"allPatients": result[::-1]}
+
+
     results = SearchIndex.aggregate([
         {
             "$search": {
@@ -511,6 +551,15 @@ async def GetDischargeSummary(info : Request):
 
     return FileResponse("hospital_report.pdf")
     
+
+
+@app.post("/GetRehabBill")
+async def GetRehabBill(info : Request):
+
+    # print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
 
 
 
