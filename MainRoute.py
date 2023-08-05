@@ -1,4 +1,6 @@
  
+# Importing all the necessary libraries
+
 import re
 import math
 from collections import Counter
@@ -25,71 +27,14 @@ import json
 from datetime import date
 from bson.timestamp import Timestamp
 import datetime as dt
-from reportlab.lib import colors
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
-from reportlab.pdfgen import canvas
 
 
-styles = getSampleStyleSheet()
-styles.add(ParagraphStyle(name='Center', alignment=1))
-
-
-def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amount_paid, no_days):
-    doc = SimpleDocTemplate("billing_slip.pdf", pagesize=letter, rightMargin=0.5*inch, leftMargin=0.5*inch, topMargin=0.5*inch, bottomMargin=0.5*inch)
-
-    # Build the PDF content
-    content = []
-
-    # Logo and Address
-    logo = "hospital_logo.png"
-    address_lines = [
-        "69, Arcot Road, Cheyyar – 604407, Thiruvannamalai District,",
-        "Opp Government Boys Higher Secondary School",
-        "04182 – 222527 Cell: 9843078583, 9566376777",
-    ]
-    content.append(Spacer(1, 0.2*inch))
-    content.append(Paragraph("<img src='{}' width='250' height='50'/>".format(logo), styles['Center']))
-    for address_line in address_lines:
-        content.append(Paragraph(address_line, styles['Center']))
-    content.append(Spacer(1, 0.2*inch))
-
-    # Bill Information
-    bill_info = [
-        ["Bill No:", bill_no],
-        ["Patient ID:", patient_id],
-        ["Date:", date],
-        ["Name:", name],
-        ["Address:", address],
-        ["Cell No:", cell_no],
-        ["Amount Paid:", amount_paid],
-        ["Number of Days", no_days],
-    ]
-    bill_table_data = [[Paragraph(cell, styles['Normal']) for cell in row] for row in bill_info]
-    bill_table = Table(bill_table_data, colWidths=[1.2*inch, 3.8*inch])
-    bill_table.setStyle(TableStyle([
-        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-    ]))
-    content.append(bill_table)
-    content.append(Spacer(1, 0.2*inch))  # Line break
-
-    # Additional Sections (if needed)
-    # ...
-
-    # Footer
-    footer_text = "Thank you for choosing our services. For any queries, please contact us at 04182 - 222527."
-    footer = Paragraph(footer_text, styles['Normal'])
-    content.append(footer)
-
-    doc.build(content)
+# mongoDB connection keys for both local and cloud
 
 Key_Mongo_Cloud = "mongodb://aioverflow:12345@ac-pu6wews-shard-00-00.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-01.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-02.me4dkct.mongodb.net:27017/?ssl=true&replicaSet=atlas-jcoztp-shard-0&authSource=admin&retryWrites=true&w=majority"
 Key_Mongo_Local = "mongodb://localhost:27017/"
+
+# Connecting to the database
 
 Data = MongoClient(Key_Mongo_Cloud)
 PatientData = Data['Test']['Test']
@@ -100,9 +45,10 @@ ReVisit = Data['Test']['ReVisitPopUps']
 SearchIndex = Data['Test']['Patient_Search']
 billData = Data['Test']['Bills']
 
+
+# creating fastapi instance
+
 app = FastAPI()
-
-
 origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
@@ -112,7 +58,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-### ----- General Functions ----------
+### ----- General Functions ---------- #####3
 
 def Dict_to_List(Dictionary):
     return [i['value'] for i in Dictionary]
@@ -216,7 +162,7 @@ def check_dict_fields(dictionary):
     return True
 
 
-# --------------------------- Login Routes -----------------------------------
+############### --------------------------- Login Routes ---------------------------- ##############
 
 @app.post("/loginCheck")
 async def loginCheck(info : Request):
@@ -244,12 +190,7 @@ async def loginCheck(info : Request):
             "Status" : False
         }
 
-    
-
-
-
-
-# -------------------- Receptionist Routes ------- ###################### 
+#################  -------------------- Receptionist Routes ------- ###################### 
 
 @app.post("/newPatient")
 async def NewPatient(info : Request):
@@ -297,8 +238,6 @@ async def NewPatient(info : Request):
         return ReturnObj
     else:
         return {"Status" :  False}
-    
-
     
 @app.post("/addBasicAssessment")
 async def addBasicAssessment(info : Request):
@@ -358,7 +297,6 @@ async def addBasicAssessment(info : Request):
     
         return {"Status" : "Successfully"}
     
-
 @app.post("/SearchPatient")
 async def SearchPatient(info : Request):
 
@@ -450,35 +388,34 @@ async def viewPatient(info : Request):
         # process_dictionary(Result)
         return Result
 
-@app.get("/allPatients") # only Top 10 patients will be shown
-# async def allPatients():
-#     # Find = PatientData.find().limit(5).sort([("$natural", -1)])
-#     Find = PatientData.find({})
-#     if Find == None:
-#         return {"Status" : "Patient Not Found"}
-#     else:
-#         Result = list(Find)
-#         for i in Result:
-#             del i['_id']
-#         for i in Result:
-#             LastAsses = i['Assessment']
-#             Checker = len(LastAsses)
-#             if Checker == 0:
-#                 i['LastAssessment'] = 'No Assessment'
-#                 i['Status'] = "Not Yet"
-#             else:
-#                 i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
-#                 if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
-#                     if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
-#                         i['Status'] = "Completed"
-#                     else:
-#                         i['Status'] = "Partial"
-#                 else:
-#                     i['Status'] = "Not Yet"
+@app.get("/allPatientsOld") # only Top 10 patients will be shown
+async def allPatientsOld():
+    # Find = PatientData.find().limit(5).sort([("$natural", -1)])
+    Find = PatientData.find({})
+    if Find == None:
+        return {"Status" : "Patient Not Found"}
+    else:
+        Result = list(Find)
+        for i in Result:
+            del i['_id']
+        for i in Result:
+            LastAsses = i['Assessment']
+            Checker = len(LastAsses)
+            if Checker == 0:
+                i['LastAssessment'] = 'No Assessment'
+                i['Status'] = "Not Yet"
+            else:
+                i['LastAssessment'] = LastAsses[len(LastAsses) - 1]
+                if "TreatmentPrescription" in i['LastAssessment']['SeniorDoctorPrescription']:
+                    if i['LastAssessment']['SeniorDoctorPrescription']['TreatmentPrescription'] != dict():
+                        i['Status'] = "Completed"
+                    else:
+                        i['Status'] = "Partial"
+                else:
+                    i['Status'] = "Not Yet"
         
         
-#         return {"allPatients" : Result}
-    
+        return {"allPatients" : Result}
 
 @app.get("/allPatients")
 async def allPatients():
@@ -520,9 +457,6 @@ async def allPatients():
     result = list(PatientData.aggregate(pipeline))
     return {"allPatients": result[::-1]}
 
-
-
-    
 # Endpoint for retrieving paginated patients
 @app.get("/allPatientsFaster/", response_model=List[dict])
 async def all_patients(
@@ -538,7 +472,6 @@ async def all_patients(
     )
 
 # Additional endpoints can be added here for filtering or specific patient retrieval
-
 @app.post("/updatePatient")
 async def updatePatient(info : Request):
 
@@ -572,9 +505,6 @@ async def updatePatient(info : Request):
         else:
             return {"Status" : False , "Patient_Id" : req_info["Patient_Id"]}
         
-
-
-
 @app.post("/GetDischargeSummary")
 async def GetDischargeSummary(info : Request):
 
@@ -618,8 +548,6 @@ async def GetDischargeSummary(info : Request):
 
     return FileResponse("hospital_report.pdf")
     
-
-
 @app.post("/GetRehabBill")
 async def GetRehabBill(info : Request):
 
@@ -643,9 +571,6 @@ async def GetRehabBill(info : Request):
     billData.insert_one(req_info)
 
     return FileResponse("billing_slip_rehab.pdf")
-
-
-
 
 @app.post("/GetNormalBill")
 async def GetNormalBill(info : Request):
@@ -671,12 +596,6 @@ async def GetNormalBill(info : Request):
 
     return FileResponse("billing_slip.pdf")
 
-
-
-    
-
-
-    
 @app.post("/patientFeedback")
 async def patientFeedback(info : Request):
 
@@ -729,8 +648,6 @@ async def allPatientsTodayCount():
 
     DatedPatients = []
 
-
-
     for Data in Results:
         for i in Data['Assessment']:
             if i['Date'] == str(datetime.date.today()) and i['SeniorWrittenPres'] == False:
@@ -745,6 +662,7 @@ async def allPatientsTodayCount():
     return {
         "allPatientsTodayCount" : len(DatedPatients)
     }
+
 
 
 # @app.get("/allPatientsToday")
@@ -788,6 +706,8 @@ async def allPatientsTodayCount():
     return {
         "allPatientsToday" : DatedPatients
     }
+
+
 
 @app.get("/allPatientsToday")
 async def allPatientsToday():
@@ -850,10 +770,7 @@ async def allPatientsToday():
     results = list(PatientData.aggregate(pipeline))
     return {"allPatientsToday": results}
 
-
-
 ## Adding Assessments;
-
 @app.post("/ShoulderAssessment")
 async def ShoulderAssessment(info : Request):
 
@@ -888,10 +805,6 @@ async def ShoulderAssessment(info : Request):
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
-
-    
-    
-
 
 @app.post("/KneeAssessment")
 async def KneeAssessment(info : Request):
@@ -928,7 +841,6 @@ async def KneeAssessment(info : Request):
 
         return {"Status" : "Successful"}  
 
-
 @app.post("/BalanceAssessment")
 async def BalanceAssessment(info : Request):
     print(await info.body())
@@ -962,10 +874,6 @@ async def BalanceAssessment(info : Request):
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}  
-
-
-
-
 
 @app.post("/LowBackAssessment")
 async def LowBackAssessment(info : Request):
@@ -1002,9 +910,6 @@ async def LowBackAssessment(info : Request):
 
         return {"Status" : "Successful"}
 
-
-
-
 @app.post("/PARQPlusAssessment")
 async def PARQPlusAssessmen(info : Request):
     print(await info.body())
@@ -1036,9 +941,6 @@ async def PARQPlusAssessmen(info : Request):
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
-
-
-
 
 @app.post("/FMSAssessment")
 async def FMSAssessment(info : Request):
@@ -1073,7 +975,6 @@ async def FMSAssessment(info : Request):
         #medKCO,personal,duration,painAss,irritability:
 
         return {"Status" : "Successful"}
-
 
 @app.post("/TreatmentPrescription")
 async def TreatmentPrescription(info : Request):
@@ -1117,7 +1018,6 @@ async def TreatmentPrescription(info : Request):
 
         return {"Status" : "Successful"}
 
-
 @app.get("/ReVisitPatients")
 async def ReVisitPatients():
 
@@ -1126,7 +1026,6 @@ async def ReVisitPatients():
     for i in Result:
         del i['_id']
     return {"AllRevisit" : list(Result)}
-
 
 @app.post("/GeneralAssessment")
 async def GeneralAssessment(info : Request):
@@ -1198,11 +1097,8 @@ async def GetGeneralAssessment(info : Request):
                     return ResultSend
         except:
             return {"Status" : "Not Found"}
-     
-    
 
 ## getting details
-
 @app.post("/GetShoulderAssessment")
 async def GetShoulderAssessment(info : Request):
     print(await info.body())
@@ -1225,8 +1121,6 @@ async def GetShoulderAssessment(info : Request):
                     return ResultSend
     except:
         return {"Status" : "Not Found"}
-
-
 
 @app.post("/GetKneeAssessment")
 async def GetKneeAssessment(info : Request):
@@ -1251,8 +1145,7 @@ async def GetKneeAssessment(info : Request):
                     ResultSend = i['SeniorDoctorPrescription']['KneeAssessment']
                     return ResultSend
     except:
-        return {"Status" : "Not Found"}
-    
+        return {"Status" : "Not Found"} 
 
 @app.post("/GetBalanceAssessment")
 async def GetBalanceAssessment(info : Request):
@@ -1276,7 +1169,6 @@ async def GetBalanceAssessment(info : Request):
     except:
         return {"Status" : "Not Found"}
     
-
 @app.post("/GetLowBackAssessment")
 async def GetLowBackAssessment(info : Request):
     print(await info.body())
@@ -1300,7 +1192,6 @@ async def GetLowBackAssessment(info : Request):
     except:
         return {"Status" : "Not Found"}
     
-
 @app.post("/GetPARQPlusAssessment")
 async def GetPARQPlusAssessment(info : Request):
     print(await info.body())
@@ -1324,7 +1215,6 @@ async def GetPARQPlusAssessment(info : Request):
     except:
         return {"Status" : "Not Found"}
     
-
 @app.post("/GetFMSAssessment")
 async def GetFMSAssessment(info : Request):
     print(await info.body())
@@ -1347,8 +1237,6 @@ async def GetFMSAssessment(info : Request):
     except:
         return {"Status" : "Not Found"}
     
-
-
 @app.post("/GetTreatmentPrescription")
 async def GetTreatmentPrescription(info : Request):
     print(await info.body())
@@ -1371,7 +1259,6 @@ async def GetTreatmentPrescription(info : Request):
     except:
         return {"Status" : "Not Found"}
     
-
 @app.post("/UpdateReview")
 async def UpdateReview(info : Request):
     print(await info.body())
@@ -1411,7 +1298,6 @@ async def UpdateReview(info : Request):
 
     return {"Status" : "Couldn't update"}
 
-
 @app.get("/AllReviews")
 async def AllReviews():
     Find = ReviewData.find({})
@@ -1426,7 +1312,6 @@ async def AllReviews():
 
     return {"AllReviews" : FinalList[::-1]}
 
-
 @app.get("/ReviewCount")
 async def ReviewCount():
     Find = ReviewData.find({})
@@ -1440,9 +1325,6 @@ async def ReviewCount():
             FinalList.append(i)
 
     return {"ReviewCount" : len(FinalList[::-1])}
-
-
-
 
 @app.post("/ViewReview")
 async def ViewReview(info : Request):
@@ -1466,10 +1348,7 @@ async def ViewReview(info : Request):
 
 
 
-
-
-
-###-------------------- Junior Route --------------------- ######
+################# -------------------- Junior Route --------------------- #################
 
 @app.post("/GetTreatmentTracker")
 async def TreatmentTracker(info : Request):
@@ -1506,11 +1385,6 @@ async def TreatmentTracker(info : Request):
         print(ListOfItems)
 
         return ResultDict
-
-
-
-
-
 
 @app.post("/UpdateTreatmentTracker")
 async def TreatmentTracker(info : Request):
@@ -1553,9 +1427,6 @@ async def TreatmentTracker(info : Request):
     else:
         return {"Status" : "Not Successful"}
 
-    
-
-
 @app.post("/RaiseReview")
 async def RaiseReview(info : Request):
     print(await info.body())
@@ -1587,13 +1458,7 @@ async def RaiseReview(info : Request):
         return {"Status" :  "not successful"}
     
 
-
-    
-
-
 ##################### ------------ All Trainer / Re-Hab Routes ----------------------- ################
-
-
 
 @app.post("/trainer/AddPatientBasic")
 async def AddPatientBasic(info : Request):
@@ -1616,6 +1481,8 @@ async def AddPatientBasic(info : Request):
     
     req_info['ExerciseSchedule'] = []
     req_info['ExerciseTracking'] = []
+    req_info['ScheduleDoneBy']= ""
+    req_info['TrainerName']= ""
     
     Check = ReHab.insert_one(req_info)
 
@@ -1623,7 +1490,6 @@ async def AddPatientBasic(info : Request):
         return {"Status" : "successful"}
     else:
         return {"Status" :  "not successful"}
-
 
 @app.post("/trainer/PARQ_Assessment")
 async def PARQ_Assessment(info : Request):
@@ -1644,9 +1510,7 @@ async def PARQ_Assessment(info : Request):
     newvalues = { "$set": { "PARQ_Assessment": req_info } }
     ReHab.update_one(myquery, newvalues)
     return {"Status" : "Successfully"}
-    
-
-    
+      
 @app.post("/trainer/AddExerciseSchedule")
 async def ExerciseSchedule(info : Request):
     print(await info.body())
@@ -1665,7 +1529,6 @@ async def ExerciseSchedule(info : Request):
     ReHab.update_many(myquery, newvalues)
     return {"Status" : "Successfully"}
 
-
 @app.post("/trainer/ViewExerciseSchedule")
 async def ViewExerciseSchedule(info : Request):
     print(await info.body())
@@ -1680,7 +1543,6 @@ async def ViewExerciseSchedule(info : Request):
         Find = dict(Find)
         return Find['ExerciseSchedule']
     
-
 @app.post("/trainer/AddExerciseTracking")
 async def ExerciseTracking(info : Request):
 
@@ -1699,7 +1561,6 @@ async def ExerciseTracking(info : Request):
     ReHab.update_many(myquery, newvalues)
     return {"Status" : "Successfully"}
 
-
 @app.post("/trainer/ViewExerciseTracking")
 async def ViewExerciseTracking(info : Request):
     print(await info.body())
@@ -1714,7 +1575,6 @@ async def ViewExerciseTracking(info : Request):
         Find = dict(Find)
         return Find['ExerciseTracking']
     
-
 @app.post("/trainer/ViewRehabView")
 async def ViewRehabView(info : Request):
     print(await info.body())
@@ -1734,6 +1594,6 @@ async def ViewRehabView(info : Request):
     
 
 
-
+################ ------------------- End of all the routes ------------------ #####################
 
 
