@@ -15,8 +15,7 @@ from fastapi import Response, BackgroundTasks
 import random as rd
 import datetime
 from loguru import logger
-import reportgenerator
-from reportgenerator import create_pdf
+from reportgenerator1 import create_pdf
 from fastapi import BackgroundTasks, FastAPI
 from fastapi.responses import StreamingResponse
 from pymongo import MongoClient
@@ -494,19 +493,21 @@ async def GetDischargeSummary(info : Request):
     previous_treatment = currAssessment['RecievedTherapy']
     diagnosis = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['diagnosis']
     duration = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['numberOfDays']
-    treatment_given = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercisePrescription']
+    treatment_given = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['treatmentPlan']
 
     # treatment_dates = ["2023-07-25", "2023-07-26", "2023-07-27", "2023-07-28", "2023-07-29"] # from junior
     # painscales = [2, 3, 1, 2, 1] # from junior
 
     treatment_dates = [i['Date'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
     painscales = [i['PainScale'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
-    advised_exercise = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercise']
-    home_advice = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercise']
+    home_advice = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['homeAdvice']
     next_review = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['reviewNext']
+    doctor_prescription = currAssessment['JuniorDoctorPrescription']['DayWise']
+    exercises = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercises']
 
     create_pdf(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
-            treatment_given, treatment_dates, painscales, advised_exercise, home_advice, next_review)
+            treatment_given, treatment_dates, painscales, home_advice, next_review , doctor_prescription,
+            exercises)
 
     return FileResponse("hospital_report.pdf")
     
