@@ -78,6 +78,7 @@ def create_exercises_table(exercises):
 def create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
                treatment_given, treatment_dates, painscales, home_advice, next_review,
                doctor_prescription, exercises):
+    print(treatment_dates, painscales)
     doc = SimpleDocTemplate("hospital_report.pdf", pagesize=letter, rightMargin=0.5*inch, leftMargin=0.5*inch, topMargin=0.5*inch, bottomMargin=0.5*inch)
 
     # Create custom page template with borders

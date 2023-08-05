@@ -22,6 +22,8 @@ from pymongo import MongoClient
 from typing import List, Optional
 import json
 from datetime import date
+from bson.timestamp import Timestamp
+import datetime as dt
 
 Key_Mongo_Cloud = "mongodb://aioverflow:12345@ac-pu6wews-shard-00-00.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-01.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-02.me4dkct.mongodb.net:27017/?ssl=true&replicaSet=atlas-jcoztp-shard-0&authSource=admin&retryWrites=true&w=majority"
 Key_Mongo_Local = "mongodb://localhost:27017/"
@@ -213,7 +215,7 @@ async def NewPatient(info : Request):
                 "Occupation" : req_info["Occupation"],
                 "Address" : req_info["Address"],
                 "Assessment" : [],
-                "createdAt" : datetime.datetime.now()
+                "createdAt" : dt.datetime.today().timestamp()
             }
     SearchData = {
         "Patient_Id" : CurrentData['Patient_Id'],
@@ -340,7 +342,7 @@ async def SearchPatient(info : Request):
 
         result = list(PatientData.aggregate(pipeline))
 
-        return {"allPatients": result[::-1]}
+        return {"allPatients": result}
 
 
     results = SearchIndex.aggregate([
