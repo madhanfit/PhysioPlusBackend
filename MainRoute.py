@@ -7,6 +7,8 @@ import pandas as pd
 from fastapi import FastAPI, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import subprocess
+from reportgenerator import create_pdf_discharge
 from fastapi.responses import FileResponse
 from fastapi.encoders import jsonable_encoder
 from pymongo.mongo_client import MongoClient
@@ -15,7 +17,6 @@ from fastapi import Response, BackgroundTasks
 import random as rd
 import datetime
 from loguru import logger
-from reportgenerator1 import create_pdf_discharge
 from fastapi import BackgroundTasks, FastAPI
 from fastapi.responses import StreamingResponse
 from pymongo import MongoClient
@@ -24,6 +25,68 @@ import json
 from datetime import date
 from bson.timestamp import Timestamp
 import datetime as dt
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
+from reportlab.pdfgen import canvas
+
+
+styles = getSampleStyleSheet()
+styles.add(ParagraphStyle(name='Center', alignment=1))
+
+
+def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amount_paid, no_days):
+    doc = SimpleDocTemplate("billing_slip.pdf", pagesize=letter, rightMargin=0.5*inch, leftMargin=0.5*inch, topMargin=0.5*inch, bottomMargin=0.5*inch)
+
+    # Build the PDF content
+    content = []
+
+    # Logo and Address
+    logo = "hospital_logo.png"
+    address_lines = [
+        "69, Arcot Road, Cheyyar – 604407, Thiruvannamalai District,",
+        "Opp Government Boys Higher Secondary School",
+        "04182 – 222527 Cell: 9843078583, 9566376777",
+    ]
+    content.append(Spacer(1, 0.2*inch))
+    content.append(Paragraph("<img src='{}' width='250' height='50'/>".format(logo), styles['Center']))
+    for address_line in address_lines:
+        content.append(Paragraph(address_line, styles['Center']))
+    content.append(Spacer(1, 0.2*inch))
+
+    # Bill Information
+    bill_info = [
+        ["Bill No:", bill_no],
+        ["Patient ID:", patient_id],
+        ["Date:", date],
+        ["Name:", name],
+        ["Address:", address],
+        ["Cell No:", cell_no],
+        ["Amount Paid:", amount_paid],
+        ["Number of Days", no_days],
+    ]
+    bill_table_data = [[Paragraph(cell, styles['Normal']) for cell in row] for row in bill_info]
+    bill_table = Table(bill_table_data, colWidths=[1.2*inch, 3.8*inch])
+    bill_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+    ]))
+    content.append(bill_table)
+    content.append(Spacer(1, 0.2*inch))  # Line break
+
+    # Additional Sections (if needed)
+    # ...
+
+    # Footer
+    footer_text = "Thank you for choosing our services. For any queries, please contact us at 04182 - 222527."
+    footer = Paragraph(footer_text, styles['Normal'])
+    content.append(footer)
+
+    doc.build(content)
 
 Key_Mongo_Cloud = "mongodb://aioverflow:12345@ac-pu6wews-shard-00-00.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-01.me4dkct.mongodb.net:27017,ac-pu6wews-shard-00-02.me4dkct.mongodb.net:27017/?ssl=true&replicaSet=atlas-jcoztp-shard-0&authSource=admin&retryWrites=true&w=majority"
 Key_Mongo_Local = "mongodb://localhost:27017/"
@@ -35,6 +98,7 @@ ReviewData = Data['Test']['Reviews']
 ReHab = Data['Test']['Re-Hab']
 ReVisit = Data['Test']['ReVisitPopUps']
 SearchIndex = Data['Test']['Patient_Search']
+billData = Data['Test']['Bills']
 
 app = FastAPI()
 
@@ -563,13 +627,49 @@ async def GetRehabBill(info : Request):
     req_info = await info.json()
     req_info = dict(req_info)
 
-    # bill_no = 
-    # create_billing_slip_rehab
+    bill_no = rd.randint(1,100)
+    patient_id = req_info['Patient_Id']
+    date = req_info['date']
+    name = req_info['name']
+    address = req_info['address']
+    cell_no = req_info['cell_no']
+    amount_paid = req_info['amount_paid']
+    package_program = req_info['package_program']
+
+    subprocess.run(["python", "generaterehabbill.py", str(bill_no), str(patient_id), str(date), str(name), str(address), str(cell_no), str(amount_paid), str(package_program)])
+
+
+    # create_billing_slip_rehab(bill_no, patient_id, date, name, address, cell_no, amount_paid, package_program)
+    billData.insert_one(req_info)
+
+    return FileResponse("billing_slip_rehab.pdf")
 
 
 
 
+@app.post("/GetNormalBill")
+async def GetNormalBill(info : Request):
 
+    # print(await info.body())
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    bill_no = str(rd.randint(1,100))
+    patient_id = req_info['Patient_Id']
+    date = req_info['date']
+    name = req_info['name']
+    address = req_info['address']
+    cell_no = req_info['cell_no']
+    amount_paid = req_info['amount_paid']
+    no_days = req_info['no_days']
+
+    print(bill_no, patient_id, date, name, address, cell_no, amount_paid, no_days)
+
+    subprocess.run(["python", "generatenormalbill.py", str(bill_no), str(patient_id), str(date), str(name), str(address), str(cell_no), str(amount_paid), str(no_days)])
+
+    billData.insert_one(req_info)
+
+    return FileResponse("billing_slip.pdf")
 
 
 
