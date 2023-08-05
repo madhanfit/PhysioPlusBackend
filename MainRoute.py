@@ -213,15 +213,14 @@ async def NewPatient(info : Request):
                 "Employed" : req_info["Employed"],
                 "Occupation" : req_info["Occupation"],
                 "Address" : req_info["Address"],
-                "Assessment" : []
+                "Assessment" : [],
+                "createdAt" : datetime.datetime.now()
             }
     SearchData = {
         "Patient_Id" : CurrentData['Patient_Id'],
         "Patient_Name" : req_info['Patient_Name'],
         "Patient_Gender" : req_info['Patient_Gender'],
         "Patient_Age" : req_info['Patient_Age'],
-        "Patient_Height" : req_info['Patient_Height'],
-        "Patient_Weight" : req_info['Patient_Weight'],
         "Patient_Contact_No" : req_info['Patient_Contact_No']
     }
     
