@@ -8,7 +8,7 @@ import argparse
 import subprocess
 
 
-def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amount_paid, no_days):
+def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amount_paid, package_program):
     doc = SimpleDocTemplate("billing_slip_rehab.pdf", pagesize=letter, rightMargin=0.5*inch, leftMargin=0.5*inch, topMargin=0.5*inch, bottomMargin=0.5*inch)
 
     # Build the PDF content
@@ -36,7 +36,7 @@ def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amoun
         ["Address:", address],
         ["Cell No:", cell_no],
         ["Amount Paid:", amount_paid],
-        ["Number of Days", no_days],
+        ["Package / Program", package_program],
     ]
     bill_table_data = [[Paragraph(cell, styles['Normal']) for cell in row] for row in bill_info]
     bill_table = Table(bill_table_data, colWidths=[1.2*inch, 3.8*inch])
