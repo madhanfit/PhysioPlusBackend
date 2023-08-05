@@ -9,7 +9,7 @@ import subprocess
 
 
 def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amount_paid, no_days):
-    doc = SimpleDocTemplate("billing_slip.pdf", pagesize=letter, rightMargin=0.5*inch, leftMargin=0.5*inch, topMargin=0.5*inch, bottomMargin=0.5*inch)
+    doc = SimpleDocTemplate("billing_slip_rehab.pdf", pagesize=letter, rightMargin=0.5*inch, leftMargin=0.5*inch, topMargin=0.5*inch, bottomMargin=0.5*inch)
 
     # Build the PDF content
     content = []
