@@ -1575,7 +1575,6 @@ async def ViewRehabView(info : Request):
     SearchKey = req_info['Patient_Id']
     print(SearchKey)
     Find = ReHab.find_one({'Patient_Id' : SearchKey})
-    print(list(Find))
     if Find == None:
         return {"Status" : "Patient Not Found in Re-Hab" }
     else:
