@@ -1266,37 +1266,28 @@ async def UpdateReview(info : Request):
     req_info = dict(req_info)
 
     SearchKey = req_info['Patient_Id']
-    Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    Find = ReviewData.find_one({'Patient_Id' : SearchKey , "DateOfReview" :  req_info['DateOfReview']})
+    print()
     if Find == None:
         return {"Status" : "Patient Not Found" }
     
     SearchKey = req_info['Patient_Id']
-    Find = ReviewData.find({'Patient_Id' : SearchKey})
+    Find = ReviewData.find_one({'Patient_Id' : SearchKey})
     Find = list(Find)
+    print(Find)
 
     if Find == []:
         return {"Status" : "Review not found"}
     else:
-        Find = list(Find)
-        for i in Find:
-            if i['SeniorDoctorViewed'] == False and i['DateOfReview'] == req_info['DateOfReview']:
-                query = {
-                    "DateOfReview": req_info['DateOfReview'],
-                    "Patient_Id" : req_info['Patient_Id'],
+        Status = ReviewData.update_one(
+            {"Patient_Id": SearchKey, "DateOfReview": req_info['DateOfReview']},
+            {"$set": {
+                "srDocNote": req_info['srDocNote'],
+                "SeniorDoctorViewed" : True
                 }
-                update = {
-                    "$set": {
-                        "SeniorDoctorViewed": True,
-                        "srDocNote" : req_info['srDocNote']
-                    }
-                }
-                Status = ReviewData.update_one(query, update)
-                if Status.acknowledged == True:
-                    return {"Status" : "successful"}
-            if i['SeniorDoctorViewed'] == True:
-                return {"Status" : "Already updated"}
-
-    return {"Status" : "Couldn't update"}
+            }
+        )
+        return {"Status" : "Updated"}
 
 @app.get("/AllReviews")
 async def AllReviews():
