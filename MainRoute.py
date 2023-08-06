@@ -84,6 +84,7 @@ def convert_to_second_json_format(first_json):
             "Patient_Name": first_json["Patient_Name"],
             "Patient_Age": first_json["Patient_Age"],
             "Patient_Weight": first_json["Patient_Weight"],
+            "Patient_Height": first_json["Patient_Height"],
             "Patient_Contact_No": first_json["Patient_Contact_No"],
             "Diagnosis": first_json["Diagnosis"],
             "TreatmentGiven": first_json["TreatmentGiven"],
