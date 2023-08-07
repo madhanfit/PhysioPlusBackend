@@ -3,6 +3,7 @@
 
 import re
 import math
+import pymongo
 from collections import Counter
 from urllib import request
 import pandas as pd
@@ -732,7 +733,6 @@ async def allPatientsTodayCount():
     return {
         "allPatientsToday" : DatedPatients
     }
-
 
 
 @app.get("/allPatientsToday")
@@ -1607,6 +1607,85 @@ async def ViewRehabView(info : Request):
         del Find['_id']
         return convert_to_second_json_format(Find)
     
+
+#################  -------------------------------- all app related routes --------------------------- ################
+
+@app.post("/app/login")
+async def app_login(info : Request):
+    req_info = await info.json()
+    userId = req_info['userId']
+    password = req_info['password']
+    result = PatientData.find_one({"Patient_Id" : userId})
+
+    # Check if the entity exists or not
+    if result and password == userId:
+        return True
+    else:
+        return False
+
+
+@app.post("/app/ViewPatientData")
+async def ViewPatientData(info : Request):
+    req_info = await info.json()
+    req_info = dict(req_info)
+
+    SearchKey = req_info['Patient_Id']
+    
+    query = {"Patient_Id": SearchKey}
+    projection = {
+        "Patient_Id": 1,
+        "Patient_Name": 1,
+        "Patient_Age": 1,
+        "Patient_Gender": 1,
+        "Patient_Height": 1,
+        "Patient_Weight": 1,
+        "Patient_Contact_No": 1,
+        "Occupation": 1,
+        "Address": 1,
+        "Assessment": {
+            "$elemMatch": {
+                "SeniorDoctorPrescription.TreatmentPrescription.DateOfAssessment": {
+                    "$exists": True
+                }
+            }
+        }
+    }
+
+    # Sort the assessments in descending order based on the date
+    sort_order = [("Assessment.SeniorDoctorPrescription.TreatmentPrescription.DateOfAssessment", pymongo.DESCENDING)]
+
+    # Execute the query and get the result
+    result = PatientData.find_one(query, projection, sort=sort_order)
+
+    if result:
+        # Extract the required details from the result
+        patient_details = {
+            "Patient_Id": result["Patient_Id"],
+            "Patient_Name": result["Patient_Name"],
+            "Patient_Age": result["Patient_Age"],
+            "Patient_Gender": result["Patient_Gender"],
+            "Patient_Height": result["Patient_Height"],
+            "Patient_Weight": result["Patient_Weight"],
+            "Patient_Contact_No": result["Patient_Contact_No"],
+            "Occupation": result["Occupation"],
+            "Address": result["Address"]
+        }
+
+        # Extract the latest assessment details
+        assessment = result["Assessment"][0]
+        latest_assessment = {
+            "Diagnosis": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["diagnosis"],
+            "DateOfAssessment": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["DateOfAssessment"],
+            "Exercise": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["exercises"],
+        }
+
+        return {"patient_details" : patient_details, "latest_assessment" : latest_assessment}
+
+    else:
+        return None
+
+
+
 
 
 ################ ------------------- End of all the routes ------------------ #####################
