@@ -539,39 +539,39 @@ async def GetDischargeSummary(info : Request):
     req_info = dict(req_info)
     print(req_info)
 
-    SearchKey = req_info['Patient_Id']
-    Find = PatientData.find_one({'Patient_Id' : SearchKey})
-    if Find == None:
-        return {"Status" : "Patient Not Found" }
-    name = Find['Patient_Name']
-    age = Find['Patient_Age']
-    gender = Find['Patient_Gender']
-    Date = req_info['DateOfAssessment']
-    currAssessment = None
-    for assessment in Find['Assessment']:
-        if assessment['Date'] == Date:
-            currAssessment = assessment
-            break
-    referred_by = currAssessment['ReferalDoctor']
-    chief_complaint = currAssessment['Complaint']
-    previous_treatment = currAssessment['RecievedTherapy']
-    diagnosis = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['diagnosis']
-    duration = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['numberOfDays']
-    treatment_given = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['treatmentPlan']
+    # SearchKey = req_info['Patient_Id']
+    # Find = PatientData.find_one({'Patient_Id' : SearchKey})
+    # if Find == None:
+    #     return {"Status" : "Patient Not Found" }
+    # name = Find['Patient_Name']
+    # age = Find['Patient_Age']
+    # gender = Find['Patient_Gender']
+    # Date = req_info['DateOfAssessment']
+    # currAssessment = None
+    # for assessment in Find['Assessment']:
+    #     if assessment['Date'] == Date:
+    #         currAssessment = assessment
+    #         break
+    # referred_by = currAssessment['ReferalDoctor']
+    # chief_complaint = currAssessment['Complaint']
+    # previous_treatment = currAssessment['RecievedTherapy']
+    # diagnosis = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['diagnosis']
+    # duration = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['numberOfDays']
+    # treatment_given = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['treatmentPlan']
 
-    # treatment_dates = ["2023-07-25", "2023-07-26", "2023-07-27", "2023-07-28", "2023-07-29"] # from junior
-    # painscales = [2, 3, 1, 2, 1] # from junior
+    # # treatment_dates = ["2023-07-25", "2023-07-26", "2023-07-27", "2023-07-28", "2023-07-29"] # from junior
+    # # painscales = [2, 3, 1, 2, 1] # from junior
 
-    treatment_dates = [i['Date'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
-    painscales = [i['PainScale'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
-    home_advice = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['homeAdvice']
-    next_review = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['reviewNext']
-    doctor_prescription = currAssessment['JuniorDoctorPrescription']['DayWise']
-    exercises = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercises']
+    # treatment_dates = [i['Date'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
+    # painscales = [i['PainScale'] for i in currAssessment['JuniorDoctorPrescription']['DayWise']]
+    # home_advice = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['homeAdvice']
+    # next_review = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['reviewNext']
+    # doctor_prescription = currAssessment['JuniorDoctorPrescription']['DayWise']
+    # exercises = currAssessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercises']
 
-    create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
-            treatment_given, treatment_dates, painscales, home_advice, next_review , doctor_prescription,
-            exercises)
+    # create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previous_treatment, diagnosis, duration,
+    #         treatment_given, treatment_dates, painscales, home_advice, next_review , doctor_prescription,
+    #         exercises)
 
     return FileResponse("hospital_report.pdf")
     
