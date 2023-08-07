@@ -24,7 +24,7 @@ def get_first_six_words(sentence):
 def create_pain_scale_graph(painscales, dates):
     fig = go.Figure(data=go.Scatter(x=dates, y=painscales, mode='lines+markers'))
     fig.update_layout(title_text='Pain Scale Graph', xaxis_title='Date', yaxis_title='Pain Scale')
-    return fig.to_image(format='png')
+    fig.write_image("painGraph.png")
 
 def create_daywise_exercise_table(doctor_prescription):
     data = [["Date", "Pain Scale", "Comments"]]
@@ -108,9 +108,8 @@ def create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previo
     ]
 
     # Create the pain scale graph
-    graph = create_pain_scale_graph(painscales, treatment_dates)
-    img_buffer = BytesIO(graph)
-    pain_scale_img = Image(img_buffer, width=6*inch, height=4*inch)
+    create_pain_scale_graph(painscales, treatment_dates)
+    pain_graph = Image('painGraph.png', width=6*inch, height=4*inch)
 
     # Create the Daywise exercise analysis table
     exercise_table = create_daywise_exercise_table(doctor_prescription)
@@ -161,7 +160,7 @@ def create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previo
     second_page_content = []
     # Add the pain scale graph on the second page
     second_page_content.append(Paragraph("<b>Pain Scale Graph during the Treatment Period:</b>", subheading_style))
-    second_page_content.append(pain_scale_img)
+    second_page_content.append(pain_graph)
 
 
     

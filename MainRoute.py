@@ -74,8 +74,6 @@ def process_dictionary(data):
         for i in range(len(data)):
             process_dictionary(data[i])
 
-
-
 def convert_to_second_json_format(first_json):
     second_json = {
         "Basic": {
@@ -162,6 +160,33 @@ def check_dict_fields(dictionary):
             return False
     return True
 
+### ids generator ###
+
+
+def get_latest_id():
+    with open('patient_id.txt', 'r') as file:
+        latest_id = file.readline().strip()
+    return latest_id
+
+def update_latest_id(new_id):
+    with open('patient_id.txt', 'w') as file:
+        file.write(new_id)
+
+def create_id():
+    latest_id = get_latest_id()
+
+    # Extract the numeric part of the latest ID
+    numeric_part = int(latest_id[5:])
+
+    # Generate the new ID by incrementing the numeric part
+    new_numeric_part = numeric_part + 1
+    new_id = f'23ST{new_numeric_part:04d}'
+
+    # Update the latest ID in the text file
+    update_latest_id(new_id)
+
+    return new_id
+
 
 ############### --------------------------- Login Routes ---------------------------- ##############
 
@@ -207,10 +232,10 @@ async def NewPatient(info : Request):
     if Checker == False:
         return {"Status" : "Fields are empty"}
     
-    print(Checker)
+    new_patient_id = create_id()
 
     CurrentData = {
-                "Patient_Id" : "23" + "ST" + str(rd.randint(100,1000)),
+                "Patient_Id" : new_patient_id,
                 "Patient_Name" : req_info["Patient_Name"],
                 "Patient_Age" : req_info["Patient_Age"],
                 "Patient_Gender" : req_info["Patient_Gender"],
@@ -1130,9 +1155,7 @@ async def GetKneeAssessment(info : Request):
     req_info = dict(req_info)
 
     SearchKey = req_info['Patient_Id']
-
-
-
+    print("trigger1")
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
 
     try:
@@ -1141,6 +1164,7 @@ async def GetKneeAssessment(info : Request):
         else:
             Find = dict(Find)
             Assessment = Find['Assessment']
+    
             for i in Assessment:
                 if i['Date'] == req_info['Date']:
                     ResultSend = i['SeniorDoctorPrescription']['KneeAssessment']
@@ -1302,7 +1326,7 @@ async def AllReviews():
         del i['_id']
         FinalList.append(i)
 
-    return {"AllReviews" : FinalList[::-1]}
+    return {"AllReviews" : FinalList[::-1][:10]}
 
 @app.get("/ReviewCount")
 async def ReviewCount():
