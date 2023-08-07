@@ -537,6 +537,7 @@ async def GetDischargeSummary(info : Request):
     # print(await info.body())
     req_info = await info.json()
     req_info = dict(req_info)
+    print(req_info)
 
     SearchKey = req_info['Patient_Id']
     Find = PatientData.find_one({'Patient_Id' : SearchKey})
