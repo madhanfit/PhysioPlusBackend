@@ -45,6 +45,7 @@ ReHab = Data['Test']['Re-Hab']
 ReVisit = Data['Test']['ReVisitPopUps']
 SearchIndex = Data['Test']['Patient_Search']
 billData = Data['Test']['Bills']
+currId = Data['Test']['PatientID']
 
 
 # creating fastapi instance
@@ -165,13 +166,13 @@ def check_dict_fields(dictionary):
 
 
 def get_latest_id():
-    with open('patient_id.txt', 'r') as file:
-        latest_id = file.readline().strip()
-    return latest_id
+    Find = currId.find({})
+    Find = list(Find) 
+    Find = Find[0]
+    return Find['currId']
 
 def update_latest_id(new_id):
-    with open('patient_id.txt', 'w') as file:
-        file.write(new_id)
+    currId.update_one({}, {"$set": {"currId": new_id}})
 
 def create_id():
     latest_id = get_latest_id()
