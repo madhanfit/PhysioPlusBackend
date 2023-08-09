@@ -1680,8 +1680,21 @@ async def ViewPatientData(info : Request):
             "Exercise": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["exercises"],
         }
 
-        return {"patient_details" : patient_details, "latest_assessment" : latest_assessment}
+        # Load the JSON data from the file
+        with open('restructured_exercise.json', 'r') as json_file:
+            exercise_links = json.load(json_file)
 
+        # Add links to exercise data
+        for exercise_entry in latest_assessment['Exercise']:
+            exercise_name = exercise_entry['NameOfExercise']
+            
+            for exercise_category, exercises in exercise_links.items():
+                for exercise in exercises:
+                    if exercise['Title'] == exercise_name:
+                        exercise_entry['Link'] = exercise['Link']
+                        break
+
+        return {"patient_details" : patient_details, "latest_assessment" : latest_assessment}
     else:
         return None
 

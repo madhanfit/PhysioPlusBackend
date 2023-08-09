@@ -130,6 +130,7 @@ def create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previo
     first_page_content.append(Paragraph("(Opp Government Boys Higher Secondary School)", heading_style))
     first_page_content.append(Paragraph("04182 – 222527 Cell: 9843078583, 9566376777", heading_style))
     first_page_content.append(Spacer(1, 0.2*inch))  # Line break
+    
 
     # Add the main table
     main_table = Table(data)
