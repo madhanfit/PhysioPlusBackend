@@ -130,8 +130,8 @@ def create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previo
     first_page_content.append(Paragraph("(Opp Government Boys Higher Secondary School)", heading_style))
     first_page_content.append(Paragraph("04182 – 222527 Cell: 9843078583, 9566376777", heading_style))
     first_page_content.append(Spacer(1, 0.2*inch))  # Line break
-    
-
+    first_page_content.append(Paragraph("Daily Treatment summary", heading_style))
+    first_page_content.append(Spacer(1, 0.2*inch))
     # Add the main table
     main_table = Table(data)
     main_table.setStyle(TableStyle([
@@ -166,7 +166,7 @@ def create_pdf_discharge(name, age, gender, referred_by, chief_complaint, previo
 
     
     # Add the Daywise exercise analysis table
-    second_page_content.append(Paragraph("Daywise Exercise Analysis:", heading_style))
+    second_page_content.append(Paragraph("Daywise Treatment Analysis:", heading_style))
     second_page_content.append(exercise_table)
 
     # Combine the content for the second page

@@ -244,6 +244,7 @@ def NewPatient(info : dict):
                 "Patient_Height" : req_info["Patient_Height"],
                 "Patient_Weight" : req_info["Patient_Weight"],
                 "Patient_Contact_No" : req_info["Patient_Contact_No"],
+                "Patient_Email" : req_info["Patient_Email"],
                 "Employed" : req_info["Employed"],
                 "Occupation" : req_info["Occupation"],
                 "Address" : req_info["Address"],
@@ -1332,11 +1333,9 @@ def AllReviews():
 
 @app.get("/ReviewCount")
 def ReviewCount():
-    Find = ReviewData.find({})
+    Find = ReviewData.find({'SeniorDoctorViewed' : False})
     Find = list(Find)
-
     FinalList = []
-
     for i in Find:
         if i['SeniorDoctorViewed'] == False:
             del i['_id']
@@ -1346,7 +1345,6 @@ def ReviewCount():
 
 @app.post("/ViewReview")
 def ViewReview(info : dict):
-    
     req_info = info
     req_info = dict(req_info)
 
