@@ -62,6 +62,10 @@ app.add_middleware(
 
 ### ----- General Functions ---------- #####3
 
+
+with open('restructured_exercise.json', 'r') as json_file:
+    exercise_links = json.load(json_file)
+
 def Dict_to_List(Dictionary):
     return [i['value'] for i in Dictionary]
 
@@ -1677,11 +1681,18 @@ def ViewPatientData(info : dict):
             "Diagnosis": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["diagnosis"],
             "DateOfAssessment": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["DateOfAssessment"],
             "Exercise": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["exercises"],
+            "TreatmentPlan": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["treatmentPlan"],
+            "NumberOfDays" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["numberOfDays"],
+            "HomeAdvice" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["homeAdvice"],
+            "ReviewNext" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["reviewNext"],
+            "FollowUp" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["followUp"],
+            "Contraindication" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["contraindication"],
+            "DayWise" : assessment["JuniorDoctorPrescription"]["DayWise"]
         }
 
-        # Load the JSON data from the file
-        with open('restructured_exercise.json', 'r') as json_file:
-            exercise_links = json.load(json_file)
+        print(assessment)
+
+        
 
         # Add links to exercise data
         for exercise_entry in latest_assessment['Exercise']:
