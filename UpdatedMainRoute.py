@@ -201,6 +201,7 @@ def loginCheck(info : dict):
     
     req_info = info
     req_info = dict(req_info)
+    logger.info(req_info)
     logger.info("recieved login info")
 
     Result = (LoginDatabase.find_one(req_info))
