@@ -290,7 +290,7 @@ def create_billing_slip(bill_no, patient_id, date, name, address, cell_no, amoun
 bill_no = "BS12345"
 patient_id = "PAT12345"
 date = "2023-07-28"
-name = "John Doe"
+name = "John Doe Dan"
 address = "123 Main Street, Cityville"
 cell_no = "9876543210"
 amount_paid = "$200.00"

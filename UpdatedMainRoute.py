@@ -196,6 +196,10 @@ def create_id():
 
 ############### --------------------------- Login Routes ---------------------------- ##############
 
+@app.get("/healthCheck")
+def healthCheck():
+    return {"Status" : True}
+
 @app.post("/loginCheck")
 def loginCheck(info : dict):
     
@@ -1688,7 +1692,8 @@ def ViewPatientData(info : dict):
             "ReviewNext" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["reviewNext"],
             "FollowUp" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["followUp"],
             "Contraindication" : assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["contraindication"],
-            "DayWise" : assessment["JuniorDoctorPrescription"]["DayWise"]
+            "DayWise" : assessment["JuniorDoctorPrescription"]["DayWise"],
+            "ReferalDoctor" : assessment["ReferalDoctor"]
         }
 
         print(assessment)
