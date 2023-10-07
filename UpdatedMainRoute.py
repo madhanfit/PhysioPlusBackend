@@ -1716,6 +1716,18 @@ def ViewPatientData(info : dict):
 
 
 
+@app.post("/app/ViewRehabDetails")
+def ViewRehabDetails(info : dict):
+    req_info = info
+    req_info = dict(req_info)
+    SearchKey = req_info['Patient_Id']
+    query = {"Patient_Id": SearchKey}
+    result = ReHab.find_one(query)
+    del result['_id']
+    return result
+
+
+
 
 
 ################ ------------------- End of all the routes ------------------ #####################
