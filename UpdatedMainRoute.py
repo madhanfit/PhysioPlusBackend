@@ -1724,8 +1724,7 @@ def ViewRehabDetails(info : dict):
     query = {"Patient_Id": SearchKey}
     result = ReHab.find_one(query)
     del result['_id']
-    return result
-
+    return result   
 
 
 
