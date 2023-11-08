@@ -4,7 +4,6 @@
 import re
 import math
 import pymongo
-from pydantic import BaseModel
 from collections import Counter
 from urllib import request
 import pandas as pd
@@ -1757,21 +1756,16 @@ def send_email(sender_email, sender_password, recipient_email, cc_emails, subjec
     except Exception as e:
         raise e
 
-class ContactInfo(BaseModel):
-    name: str
-    email: str
-    requirement: str
-
 # Define a route for handling Contact Us form submissions
 @app.post("/ContactUs")
-def ContactUs(info: ContactInfo):
+def ContactUs(info: dict):
     ContactUsData = Data["AIOverflow-Website"]["ConsultationRequests"]
     
-    Name = info.name
-    Email = info.email
-    Requirement = info.requirement
+    Name = info['name']
+    Email = info['email']
+    Requirement = info['requirement']
     
-    ContactUsData.insert_one(info.dict())  # Save to the database
+    ContactUsData.insert_one(info)  # Save to the database
     
     # Send an email to notify of the form submission
     sender_email = "aioverflow.ml@gmail.com"  # Replace with your email address

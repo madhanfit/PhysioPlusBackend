@@ -9,4 +9,3 @@ plotly
 reportlab
 kaleido
 typing
-pydantic
