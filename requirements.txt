@@ -5,7 +5,6 @@ pandas==1.5.3
 joblib==1.2.0
 pymongo==4.3.3
 loguru==0.7.0
-email==4.0.2
 plotly
 reportlab
 kaleido
