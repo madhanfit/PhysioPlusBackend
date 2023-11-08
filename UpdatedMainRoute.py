@@ -4,12 +4,16 @@
 import re
 import math
 import pymongo
+from pydantic import BaseModel
 from collections import Counter
 from urllib import request
 import pandas as pd
-from fastapi import FastAPI, Request, Query
+from fastapi import FastAPI, Request, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import subprocess
 from reportgenerator import create_pdf_discharge
 from fastapi.responses import FileResponse
@@ -1732,3 +1736,56 @@ def ViewRehabDetails(info : dict):
 ################ ------------------- End of all the routes ------------------ #####################
 
 
+############## Other Routes ##################
+
+# Placeholder function for sending emails
+def send_email(sender_email, sender_password, recipient_email, cc_emails, subject, message):
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = subject
+
+        msg.attach(MIMEText(message, 'plain'))
+
+        # Connect to the SMTP server and send the email
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(sender_email, sender_password)
+            server.sendmail(sender_email, recipient_email, msg.as_string())
+
+    except Exception as e:
+        raise e
+
+class ContactInfo(BaseModel):
+    name: str
+    email: str
+    requirement: str
+
+# Define a route for handling Contact Us form submissions
+@app.post("/ContactUs")
+def ContactUs(info: ContactInfo):
+    ContactUsData = Data["AIOverflow-Website"]["ConsultationRequests"]
+    
+    Name = info.name
+    Email = info.email
+    Requirement = info.requirement
+    
+    ContactUsData.insert_one(info.dict())  # Save to the database
+    
+    # Send an email to notify of the form submission
+    sender_email = "aioverflow.ml@gmail.com"  # Replace with your email address
+    sender_password =  "iyfngcdhgfcbkufv"  # Replace with your email password
+    recipient_email = "achethanreddy1921@gmail.com"  # Replace with your email address
+    cc_emails = ["achethanreddy1921@gmail.com", "subhanu12@gmail.com"]
+    subject = "New Contact Us Form Submission"
+    message_team = f"Hello Team,\n\nYou have a new contact form submission from:\n\nName: {Name}\nEmail: {Email}\nRequirement: {Requirement}\n\nPlease respond promptly.\n\nBest regards,\nYour AIOverflow Team"
+    
+    message_user = f"Hello {Name},\n\nThank you for reaching out to us! We have received your message and one of our team members will get in touch with you shortly to discuss your requirements further.\n\nBest regards,\nTeam AIOverflow"
+    
+    try:
+        send_email(sender_email, sender_password, recipient_email, cc_emails, subject, message_team)
+        send_email(sender_email, sender_password, Email, None, "Thank you for contacting AIOverflow", message_user)  # Send a customized message to the user
+        return {"Status": "Successful"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to send confirmation email. Error: {e}")
