@@ -1295,6 +1295,8 @@ def GetTreatmentPrescription(info : dict):
             for i in Assessment:
                 if i['Date'] == req_info['Date']:
                     ResultSend = i['SeniorDoctorPrescription']['TreatmentPrescription']
+                    if ResultSend == {}:
+                        return {"Status" : "Not Found"}
                     return ResultSend
     except:
         return {"Status" : "Not Found"}
