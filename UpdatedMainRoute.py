@@ -1039,6 +1039,9 @@ def TreatmentPrescription(info : dict):
         #     req_info[i] = Dict_to_List(req_info[i])
         # print(req_info)
 
+        if 'exercises' not in req_info.keys():
+            req_info['exercises'] = []
+
         status = PatientData.update_one(
             {"Patient_Id": SearchKey, "Assessment.Date": req_info['DateOfAssessment']},
             {"$set": {
