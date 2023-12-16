@@ -1688,6 +1688,10 @@ def ViewPatientData(info : dict):
             "Address": result["Address"]
         }
 
+        if 'Assessment' not in result.keys():
+            result['Assessment'] = []
+            return None
+
         # Extract the latest assessment details
         assessment = result["Assessment"][0]
         if 'exercises' not in assessment['SeniorDoctorPrescription']['TreatmentPrescription'].keys():
