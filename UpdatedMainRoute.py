@@ -1690,6 +1690,8 @@ def ViewPatientData(info : dict):
 
         # Extract the latest assessment details
         assessment = result["Assessment"][0]
+        if 'exercises' not in assessment['SeniorDoctorPrescription']['TreatmentPrescription'].keys():
+            assessment['SeniorDoctorPrescription']['TreatmentPrescription']['exercises'] = []
         latest_assessment = {
             "Diagnosis": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["diagnosis"],
             "DateOfAssessment": assessment["SeniorDoctorPrescription"]["TreatmentPrescription"]["DateOfAssessment"],
