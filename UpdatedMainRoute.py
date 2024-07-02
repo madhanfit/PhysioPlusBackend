@@ -189,7 +189,7 @@ def create_id():
 
     # Generate the new ID by incrementing the numeric part
     new_numeric_part = numeric_part + 1
-    new_id = f'23ST{new_numeric_part:04d}'
+    new_id = f'24ST{new_numeric_part:04d}'
 
     # Update the latest ID in the text file
     update_latest_id(new_id)
